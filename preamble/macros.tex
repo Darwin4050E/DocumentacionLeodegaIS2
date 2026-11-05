@@ -1,0 +1,28 @@
+\graphicspath{{figures/}}
+
+\IfFileExists{build/gitinfo.tex}{%
+  \input{build/gitinfo.tex}%
+}{%
+  \newcommand{\GitSHA}{unknown}%
+  \newcommand{\BuildDate}{unknown}%
+}
+
+\newcommand{\sha}[1]{\texttt{#1}}
+\newcommand{\evid}[1]{\texttt{#1}}
+\newcommand{\story}[1]{\texttt{#1}}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\newcommand{\evidencefigure}[4][\linewidth]{%
+  \begin{figure}[H]
+    \centering
+    \IfFileExists{figures/#2}{%
+      \includegraphics[width=#1]{#2}%
+    }{%
+      \fbox{\parbox[c][4cm][c]{0.8\linewidth}{\centering Missing figure:\\\texttt{\detokenize{#2}}}}%
+    }
+    \caption{#3}
+    \label{#4}
+  \end{figure}%
+}
