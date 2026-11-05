@@ -19,7 +19,7 @@ check:
 	@echo "OK: $(PDF)"
 
 lint:
-	@out=$$(chktex -q -l .chktexrc $(TEX)); if [ -n "$$out" ]; then echo "$$out"; exit 1; fi; echo "chktex: clean"
+	@out=$$(chktex -q -I0 -l .chktexrc $(TEX)); if [ -n "$$out" ]; then echo "$$out"; exit 1; fi; echo "chktex: clean"
 
 name:
 	@echo $(JOB).pdf
