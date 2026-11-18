@@ -1,17 +1,32 @@
 \subsection{Sprint 2 Analysis}
 \label{sec:static-sprint2}
 
+Sprint 2 has a CI pipeline, but it runs only PHPStan and ESLint.
+To compare both sprints with the same tools, all five tools were run by hand in a terminal.
+The counting rules are the same as in Sprint 1 (Section~\ref{sec:static-sprint1}).
+
+The fixes are the real ones made by the team in pull request \#57, on 2026-11-04.
+The ``before'' run used the commit just before them, and the ``after'' run used the merge of that pull request.
+Both commits are on the \texttt{develop} branch.
+The deployed commit (\sha{9b8427d}, tag \texttt{sprint2-deploy}) only adds deployment files and gives the same results as \sha{d7e8459}.
+
 \begin{table}[H]
   \centering
-  \begin{tabularx}{\linewidth}{L{3.2cm}YY}
+  \begin{tabularx}{\linewidth}{L{4.6cm}YY}
     \toprule
     & Before fixes & After fixes \\
     \midrule
-    Date & & \\
-    Branch & & \\
-    Commit SHA & & \\
-    Errors & & \\
-    Warnings & & \\
+    Analysis date (UTC) & 2026-11-17 & 2026-11-17 \\
+    Commit date & 2026-11-04 & 2026-11-04 \\
+    Branch & \texttt{develop} & \texttt{develop} \\
+    Commit SHA & \sha{d563d66} & \sha{d7e8459} \\
+    \midrule
+    PHPStan, with baseline & 194 errors & 0 errors \\
+    PHPStan, without baseline & 225 errors & 126 errors \\
+    PHPMD & 39 violations & 39 violations \\
+    Pint & 5 files & 5 files \\
+    ESLint, frontend & 8 errors, 2 warnings & 0 errors, 2 warnings \\
+    ESLint, Leodeguita & 0 errors, 0 warnings & 0 errors, 0 warnings \\
     \bottomrule
   \end{tabularx}
   \caption{Sprint 2 static analysis results.}
@@ -24,6 +39,75 @@
 
 \subsubsection*{Issues by Type and Severity}
 
+PHPStan and Pint have no severity levels, so every finding counts as an error.
+PHPMD reports a priority from 1 (highest) to 5.
+All findings below have priority 1 or 3.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\linewidth}{L{2.4cm}YL{1.6cm}L{1.4cm}L{1.4cm}}
+    \toprule
+    Tool & Type & Severity & Before & After \\
+    \midrule
+    PHPStan & Unknown property (\texttt{property.notFound}) & Error & 155 & 95 \\
+    PHPStan & Unknown relation (\texttt{larastan.relationExistence}) & Error & 38 & 0 \\
+    PHPStan & Invalid PHPDoc annotation & Error & 4 & 4 \\
+    PHPStan & Other type problems & Error & 28 & 27 \\
+    PHPMD & Unused parameter & P3 & 28 & 28 \\
+    PHPMD & Undefined variable & P3 & 3 & 3 \\
+    PHPMD & Else expression & P1 & 2 & 2 \\
+    PHPMD & Boolean flag argument & P1 & 2 & 2 \\
+    PHPMD & Complexity, class and method size & P3 & 4 & 4 \\
+    Pint & Code style & Error & 5 & 5 \\
+    ESLint & Unused variable or import & Error & 6 & 0 \\
+    ESLint & Fast refresh export & Error & 2 & 0 \\
+    ESLint & Missing hook dependency & Warning & 2 & 2 \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Sprint 2 findings by tool and type. PHPStan counts are without baseline.}
+  \label{tab:static-sprint2-types}
+\end{table}
+
 \subsubsection*{Representative Fixes}
 
+\begin{itemize}[nosep]
+  \item \textbf{ESLint} (\sha{16e62e9}): removed unused imports from three test files.
+        Allowed the ``unused key in a rest object'' pattern.
+        Disabled the fast refresh rule only in \texttt{WizardContext.tsx}, where the context, provider and hook belong together.
+        This removed all 8 errors.
+  \item \textbf{PHPStan} (\sha{82949ae}): added return types to 67 model relations in 25 models.
+        Unknown relation errors went from 38 to 0 and unknown property errors from 155 to 95.
+        In total, PHPStan errors went from 225 to 126.
+        The commit message reports that the backend suite did not change (1820 passed, 17 skipped).
+  \item \textbf{Baseline} (\sha{654eeff}): regenerated the PHPStan baseline. It now lists only the 126 remaining errors.
+  \item \textbf{CI} (\sha{2052024}): removed \texttt{continue-on-error} from the ESLint steps in the \texttt{frontend} and \texttt{leodeguita} jobs.
+        Before this change, a failing ESLint step did not fail the job.
+\end{itemize}
+
 \subsubsection*{Unresolved Issues}
+
+\begin{itemize}[nosep]
+  \item \textbf{PHPStan, 126 errors.}
+        They are recorded in the baseline, not fixed.
+        The five files with most errors hold 72 of them (22, 20, 16, 7 and 7 errors):
+        \begin{itemize}[nosep]
+          \item \texttt{StoreRoomDetailResource}
+          \item \texttt{StoreRoomModerationDetailResource}
+          \item \texttt{ReservationsController}
+          \item \texttt{OrganizationResource}
+          \item \texttt{WalletMovementResource}
+        \end{itemize}
+        The with-baseline result (0 errors) hides this debt, so both numbers are reported.
+        The 4 PHPDoc errors come from \texttt{@SuppressWarnings} annotations written without quotes, and they were not fixed.
+  \item \textbf{PHPMD, 39 violations.}
+        The pull request did not touch PHPMD, so the result is the same before and after.
+        Most are unused parameters, which is also the biggest group in Sprint 1.
+        The new ones from Sprint 2 were not reviewed one by one.
+  \item \textbf{Pint, 5 files.}
+        The pull request did not fix them, so the result is the same before and after.
+  \item \textbf{ESLint, 2 warnings.}
+        The \texttt{useEffect} hooks in \texttt{PreguntaInicio5} and \texttt{PreguntaInicio6} miss a dependency.
+        The commit message says they were left as they are on purpose.
+  \item \textbf{Not covered.}
+        Pint and PHPMD are not run by the CI, so they depend on manual runs.
+\end{itemize}

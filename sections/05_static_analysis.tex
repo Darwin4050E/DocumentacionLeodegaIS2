@@ -9,8 +9,17 @@
     \toprule
     Component & Tool & Configuration \\
     \midrule
-    Backend & & \\
-    Frontend & & \\
+    Backend (Laravel) & PHPStan with Larastan &
+    Level 5 on \texttt{app/}, service providers excluded.
+    Known issues are listed in \texttt{phpstan-baseline.neon}. \\
+    Backend (Laravel) & PHPMD &
+    \texttt{phpmd.xml}: clean code, code size, unused code and design rules.
+    Cyclomatic complexity is reported from 15. \\
+    Backend (Laravel) & Laravel Pint &
+    Default Laravel preset (no \texttt{pint.json}). \\
+    Frontend and Leodeguita (React) & ESLint &
+    \texttt{eslint.config.js} with \texttt{typescript-eslint}, \texttt{react-hooks} and \texttt{react-refresh}.
+    Rule \texttt{no-unused-vars} ignores rest siblings. \\
     \bottomrule
   \end{tabularx}
   \caption{Static analysis tools.}
