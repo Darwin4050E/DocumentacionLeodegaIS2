@@ -3,21 +3,125 @@
 
 \subsection{Pipeline Configuration}
 
-\subsection{Pipeline Runs}
+The pipeline is a GitHub Actions workflow in the application repository.
+The file is \texttt{.github/}\allowbreak\texttt{workflows/}\allowbreak\texttt{ci.yml}, and its last change is commit \sha{2052024} (2026-11-04).
+It is the same in the Sprint 2 deployment tag (\sha{9b8427d}).
+Sprint 1 has no pipeline, because the workflow was added in Sprint 2.
+
+The workflow starts on every push and pull request to \texttt{main} and \texttt{develop}, and it can also be started by hand.
+A new run on the same branch cancels the older one.
+It has three independent jobs.
 
 \begin{table}[H]
   \centering
-  \begin{tabularx}{\linewidth}{L{1.6cm}L{2.2cm}L{1.8cm}L{2.2cm}L{2cm}Y}
+  \begin{tabularx}{\linewidth}{L{2.6cm}L{2.4cm}YL{3.8cm}}
     \toprule
-    Run & Date & Status & Branch & SHA & Notes \\
+    Job & Runtime & Steps & Reports saved \\
     \midrule
-    & & & & & \\
+    \texttt{backend} (Laravel) & PHP 8.3, Composer &
+    Install dependencies, PHPUnit with coverage, PHPStan &
+    \texttt{junit.xml}, \texttt{coverage.xml} \\
+    \texttt{frontend} (React) & Node 20 &
+    Install dependencies, ESLint, Vitest, build &
+    \texttt{junit.xml}, \texttt{eslint-report.json} \\
+    \texttt{leodeguita} (mobile web) & Node 20 &
+    Install dependencies, ESLint, Vitest, build &
+    \texttt{junit.xml}, \texttt{eslint-report.json} \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Jobs of the CI workflow.}
+  \label{tab:ci-jobs}
+\end{table}
+
+The main parts of the file are shown below.
+The reports are uploaded even when a step fails.
+PHPStan also runs when the tests fail, so one run shows both problems.
+Pint and PHPMD are not part of the pipeline.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[language={}]
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+# backend job
+- name: PHPUnit
+  run: php artisan test --coverage-clover=coverage.xml --log-junit=junit.xml
+- name: PHPStan
+  if: ${{ !cancelled() }}
+  run: vendor/bin/phpstan analyse --memory-limit=1G --no-progress --error-format=github
+
+# frontend and leodeguita jobs
+- name: ESLint
+  run: |
+    npx eslint . --format json --output-file eslint-report.json || true
+    npx eslint .
+- name: Vitest
+  run: npx vitest run --reporter=default --reporter=junit --outputFile.junit=junit.xml
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Pipeline Runs}
+
+The pipeline has run 7 times since it was added.
+The list below comes from the GitHub Actions page of the repository (\url{https://github.com/Darwin4050E/Leodega/actions}), and every run ID can be opened there.
+Dates are in UTC\@.
+In Ecuador time (UTC$-$5), runs R1 to R5 happened on the evening of 2026-11-04.
+
+\begin{table}[H]
+  \centering
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabularx}{\linewidth}{L{0.7cm}L{2.3cm}L{2.1cm}L{1.3cm}L{2.7cm}L{1.4cm}Y}
+    \toprule
+    \# & Run ID & Date (UTC) & Status & Branch & SHA & Notes \\
+    \midrule
+    R1 & \texttt{\footnotesize 41928519922} & 2026-11-04 22:48 & Failed & \texttt{ci/}\allowbreak\texttt{github-}\allowbreak\texttt{actions} (PR) & \sha{80f9d69} & PHPStan failed; PHPUnit skipped. \\
+    R2 & \texttt{\footnotesize 41939749165} & 2026-11-05 00:13 & Failed & \texttt{ci/}\allowbreak\texttt{github-}\allowbreak\texttt{actions} (PR) & \sha{296231f} & PHPUnit passed; PHPStan failed. \\
+    R3 & \texttt{\footnotesize 41942989196} & 2026-11-05 00:39 & Failed & \texttt{develop} (push) & \sha{d563d66} & Merge of PR \#56. PHPUnit passed; PHPStan failed. \\
+    R4 & \texttt{\footnotesize 41951226187} & 2026-11-05 01:50 & Passed & \texttt{fix/}\allowbreak\texttt{lint-y-}\allowbreak\texttt{phpstan} (PR) & \sha{2052024} & PR \#57. All jobs passed. \\
+    R5 & \texttt{\footnotesize 41951633606} & 2026-11-05 01:54 & Passed & \texttt{develop} (push) & \sha{d7e8459} & Merge of PR \#57. All jobs passed. \\
+    R6 & \texttt{\footnotesize 43932543256} & 2026-11-16 18:47 & Passed & \texttt{develop} (PR) & \sha{d7e8459} & PR \#58 to \texttt{main}. All jobs passed. \\
+    R7 & \texttt{\footnotesize 43933294028} & 2026-11-16 18:51 & Passed & \texttt{main} (push) & \sha{90dbf81} & Merge of PR \#58. All jobs passed. \\
     \bottomrule
   \end{tabularx}
   \caption{Dated pipeline runs.}
   \label{tab:ci-runs}
 \end{table}
 
-\evidencefigure{ci/pipeline-run.png}{Pipeline run with status, date and SHA.}{fig:ci-run}
+In every run where it ran, PHPUnit passed (R2 to R7).
+Vitest and the build passed in all 7 runs.
+In R7, PHPUnit reported 1820 tests passed and 17 skipped (6259 assertions, 64.76 seconds), as Figure~\ref{fig:ci-run} shows.
+
+\evidencefigure{ci/pipeline-run.png}{Backend job of run R7 (ID 43933294028, passed): PHPUnit totals. GitHub shows relative times, so the date and SHA are in Table~\ref{tab:ci-runs}.}{fig:ci-run}
 
 \subsection{Failed Runs}
+
+Three runs failed (R1, R2 and R3).
+In all three, the only failing job was \texttt{backend}, and the failing step was PHPStan.
+
+\begin{itemize}[nosep]
+  \item \textbf{R1} (\sha{80f9d69}): in the first version of the workflow, PHPStan ran before PHPUnit.
+        PHPStan failed, so PHPUnit was skipped.
+  \item \textbf{R2} (\sha{296231f}): the workflow was changed so PHPUnit runs first and PHPStan runs even if the tests fail.
+        PHPUnit passed, and PHPStan failed again.
+  \item \textbf{R3} (\sha{d563d66}): same result after the merge of PR \#56 into \texttt{develop}.
+\end{itemize}
+
+The cause was real code problems, not the pipeline.
+At \sha{d563d66}, PHPStan reports 194 errors with the project baseline (Section~\ref{sec:static-sprint2}).
+The log of R3 (Figure~\ref{fig:ci-run-failed}) shows two kinds of errors.
+Most are ``access to an undefined property'' errors (for example, \texttt{Reservations::\$payment\_status}).
+The other 13 come from the baseline: 8 old entries that no longer match any error, and 5 entries that now occur more times than allowed.
+
+\evidencefigure{ci/pipeline-run-failed.png}{Backend job of run R3 (ID 41942989196, failed): PHPStan errors and exit code 1.}{fig:ci-run-failed}
+
+The team fixed them in PR \#57 (\sha{82949ae} and \sha{654eeff}).
+After that, PHPStan passed in R4 to R7.
+
+ESLint did not fail these runs, even though the frontend had 8 ESLint errors at \sha{d563d66}.
+Until commit \sha{2052024}, the ESLint steps had \texttt{continue-on-error: true}, so ESLint errors did not fail the job.
+That commit removed it, and the frontend has had 0 ESLint errors since then.
