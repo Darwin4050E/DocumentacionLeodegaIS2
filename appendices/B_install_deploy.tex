@@ -3,23 +3,205 @@
 
 \subsection{Dependencies}
 
-\subsection{Installation Steps}
-
-\subsection{Environment Variables}
+The system has three parts: a Laravel API (\texttt{backend}) and two React web apps (\texttt{frontend} and \texttt{leodeguita}).
+Table~\ref{tab:dependencies} lists what is needed to install and run it.
 
 \begin{table}[H]
   \centering
-  \begin{tabularx}{\linewidth}{L{4.5cm}L{5cm}Y}
+  \begin{tabularx}{\linewidth}{L{3.3cm}L{3.9cm}Y}
     \toprule
-    Variable & Purpose & Example value \\
+    Component & Version & Purpose \\
     \midrule
-    & & \\
+    \multicolumn{3}{@{}l}{\textit{Tools on the computer}} \\
+    Git & Any recent version & Clone the repository. \\
+    PHP & 8.2 or newer (CI uses 8.3) & Run the backend. \\
+    PHP extensions & \texttt{mbstring}, \texttt{gd}, \texttt{zip}, \texttt{bcmath}, \texttt{pdo\_sqlite}, \texttt{sqlite3}; \texttt{pdo\_pgsql} for PostgreSQL & The CI installs the first six. The Docker image installs \texttt{pdo\_pgsql} and \texttt{zip}. \\
+    Composer & 2 & Install backend libraries. \\
+    Node.js and npm & 20 (CI), 26 (Vercel) & Install and run the web apps. \\
+    PostgreSQL & 18 on Railway & Main database. Local development can use PostgreSQL or SQLite. Tests use an in-memory SQLite database. \\
+    Docker (optional) & Any recent version & Build the backend image from \texttt{backend/Dockerfile}, as Railway does. \\
+    \midrule
+    \multicolumn{3}{@{}l}{\textit{Main libraries (installed by Composer and npm)}} \\
+    Laravel & 12 & Backend framework. \\
+    Laravel Sanctum & 4.2 & Token authentication. \\
+    Laravel DomPDF & 3.1 & PDF generation. \\
+    React, Vite, TypeScript & 19, 7, 5.9 & Web apps. \\
+    Vitest and Cypress & 4 and 15 & Tests of the web apps. Cypress is only in \texttt{frontend}. \\
+    \midrule
+    \multicolumn{3}{@{}l}{\textit{Online accounts (only for deployment)}} \\
+    GitHub & Free account & Repository and CI\@. \\
+    Railway & Hobby plan & Hosts the API, the PostgreSQL database and a volume for uploaded files. \\
+    Vercel & Hobby plan & Hosts the two web apps. \\
     \bottomrule
   \end{tabularx}
+  \caption{Dependencies.}
+  \label{tab:dependencies}
+\end{table}
+
+\subsection{Installation Steps}
+
+These steps run the system on one computer.
+They use Linux or macOS commands; on Windows, use \texttt{copy} instead of \texttt{cp}.
+
+\begin{enumerate}[nosep]
+  \item \textbf{Get the code.}
+        The tags \texttt{sprint1-deploy} and \texttt{sprint2-deploy} mark the delivered version of each sprint.
+\begin{lstlisting}[language={}]
+git clone https://github.com/Darwin4050E/Leodega.git
+cd Leodega
+git checkout sprint2-deploy
+\end{lstlisting}
+  \item \textbf{Install and start the backend.}
+        By default the backend uses SQLite, so the empty database file must exist before \texttt{migrate}.
+        To use PostgreSQL instead, skip the \texttt{touch} line and set the database variables in \texttt{backend/.env} (Table~\ref{tab:env-vars}).
+        The seeder creates the admin user and, outside production, demo data.
+\begin{lstlisting}[language={}]
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+touch database/database.sqlite
+php artisan migrate
+php artisan db:seed
+php artisan storage:link
+php artisan serve        # http://127.0.0.1:8000
+\end{lstlisting}
+  \item \textbf{Install and start the main web app} in a second terminal.
+        Create \texttt{frontend/.env} with the line \texttt{VITE\_API\_URL=http://127.0.0.1:8000/api}.
+        If the Cypress download fails, run \texttt{npm ci} as \texttt{CYPRESS\_INSTALL\_BINARY=0 npm ci}.
+\begin{lstlisting}[language={}]
+cd frontend
+npm ci
+npm run dev              # http://localhost:5173
+\end{lstlisting}
+  \item \textbf{Install and start the mobile web app} (\texttt{leodeguita}) in a third terminal.
+        Create \texttt{leodeguita/.env} with the same \texttt{VITE\_API\_URL} line.
+\begin{lstlisting}[language={}]
+cd leodeguita
+npm ci
+npm run dev              # http://localhost:5174
+\end{lstlisting}
+  \item \textbf{Run the tests} (optional).
+        Run them one at a time.
+        If the computer is busy, some tests of \texttt{leodeguita} can fail by timeout, because each test has a limit of 5 seconds.
+        Expected result for \texttt{sprint2-deploy}: backend 1820 passed and 17 skipped, \texttt{frontend} 1553 passed, and \texttt{leodeguita} 478 passed.
+\begin{lstlisting}[language={}]
+cd backend && php artisan test
+cd frontend && npm test
+cd leodeguita && npm test
+\end{lstlisting}
+\end{enumerate}
+
+\subsection{Environment Variables}
+
+Table~\ref{tab:env-vars} lists the variables the system uses.
+The backend reads them from \texttt{backend/.env} locally and from the service variables on Railway.
+The web apps read \texttt{VITE\_API\_URL} when they are built.
+The example values come from the team's deployment.
+Anything that depends on the environment is shown as a placeholder in angle brackets, and real secrets are never written in the repository.
+
+\begin{longtable}{@{}L{4.7cm}L{5.0cm}L{5.1cm}@{}}
+  \toprule
+  Variable & Purpose & Example value \\
+  \midrule
+  \endhead
+  \multicolumn{3}{@{}l}{\textit{Backend (Laravel)}} \\
+  \texttt{APP\_NAME} & Application name. & \texttt{Leodega} \\
+  \texttt{APP\_ENV} & Environment. In \texttt{production}, demo data is not created. & \texttt{production} (locally: \texttt{local}) \\
+  \texttt{APP\_KEY} & Encryption key. Create it with \texttt{php artisan key:generate}, or add \texttt{-{}-show} to print it for Railway. Keep it secret. & \texttt{base64:<generated>} \\
+  \texttt{APP\_DEBUG} & Show detailed errors. Keep it \texttt{false} in production. & \texttt{false} \\
+  \texttt{APP\_URL} & Public URL of the API\@. & \texttt{https://}\allowbreak\texttt{<railway-domain>} \\
+  \texttt{FRONTEND\_URL} & URL of the main web app. It is used in links of invitations and emails. Default: \texttt{http://localhost:5173}. & \texttt{https://}\allowbreak\texttt{<frontend-domain>} \\
+  \texttt{DB\_CONNECTION} & Database driver. Default: \texttt{sqlite}. & \texttt{pgsql} \\
+  \texttt{DB\_URL} & Full database address. Used on Railway. & \texttt{\$\{\{Postgres.}\allowbreak\texttt{DATABASE\_URL\}\}} (reference to the Railway database) \\
+  \texttt{DB\_HOST}, \texttt{DB\_PORT}, \texttt{DB\_DATABASE}, \texttt{DB\_USERNAME}, \texttt{DB\_PASSWORD} & Connection to a local PostgreSQL, instead of \texttt{DB\_URL}. Default host and port: \texttt{127.0.0.1} and \texttt{5432}. & \texttt{127.0.0.1}, \texttt{5432}, \texttt{leodega}, \texttt{<user>}, \texttt{<password>} \\
+  \texttt{TRUSTED\_HOSTS} & Extra host names the API accepts. Comma separated, without \texttt{https://}. & \texttt{<railway-domain>} \\
+  \texttt{CORS\_ALLOWED\_ORIGINS} & Web apps allowed to call the API\@. Comma separated, without a final slash. & \texttt{https://}\allowbreak\texttt{<frontend>.vercel.app,} \texttt{https://}\allowbreak\texttt{<leodeguita>.vercel.app} \\
+  \texttt{SESSION\_DRIVER}, \texttt{CACHE\_STORE}, \texttt{QUEUE\_CONNECTION} & Where sessions, cache and queued jobs are stored. & \texttt{database} \\
+  \texttt{MAIL\_MAILER} & Mail delivery. The value \texttt{log} writes emails in the log instead of sending them. & \texttt{log} \\
+  \texttt{LOG\_CHANNEL} & Where the logs go. & \texttt{stderr} \\
+  \texttt{PHP\_CLI\_SERVER\_WORKERS} & Optional. Number of workers of the PHP server. Saves memory. & \texttt{2} \\
+  \texttt{PORT} & Port of the server. Railway sets it. The Dockerfile uses 8080 when it is missing. & \texttt{8080} \\
+  \texttt{PAYMENT\_HOLD\_MINUTES} & Optional. Minutes that a pending reservation holds its dates. Default: 15. & \texttt{15} \\
+  \midrule
+  \multicolumn{3}{@{}l}{\textit{Web apps (\texttt{frontend} and \texttt{leodeguita})}} \\
+  \texttt{VITE\_API\_URL} & Base URL of the API, ending in \texttt{/api}. It is built into the app, so changing it needs a new build. & \texttt{http://127.0.0.1:8000/api} (locally); \texttt{https://}\allowbreak\texttt{<railway-domain>/api} (Vercel) \\
+  \bottomrule
   \caption{Environment variables (no secrets).}
   \label{tab:env-vars}
-\end{table}
+\end{longtable}
 
 \subsection{Deployment}
 
+The API and the database run on Railway.
+The two web apps run on Vercel.
+The branches \texttt{deploy/sprint1} and \texttt{deploy/sprint2} hold the code of each sprint plus one small deployment commit, and the tags \texttt{sprint1-deploy} and \texttt{sprint2-deploy} mark them.
+Deploy Sprint 1 first and then Sprint 2.
+Do not go back from Sprint 2 to Sprint 1 on the same database, because Sprint 2 adds database migrations.
+
+\paragraph{Backend and database on Railway.}
+\begin{enumerate}[nosep]
+  \item Create a project and add a PostgreSQL database service (the Railway template).
+  \item Add a service from the GitHub repository.
+        Set \textit{Branch} to \texttt{deploy/sprint2} and \textit{Root Directory} to \texttt{/backend}.
+        Railway builds the \texttt{Dockerfile} in that folder.
+  \item Set the \textit{Pre-deploy Command} to \texttt{php artisan migrate -{}-force}, so each deployment updates the database.
+  \item Set the \textit{Healthcheck Path} to \texttt{/up}, and generate a public domain for the service (it listens on port 8080).
+  \item Add a volume mounted at \texttt{/app/storage/app}.
+        Without it, uploaded photos and permits are lost on every deployment.
+  \item Set the environment variables (Table~\ref{tab:env-vars}).
+  \item First deployment only: create the admin user.
+        Set the pre-deploy command to the line below, deploy once, and then set it back to \texttt{php artisan migrate -{}-force}.
+        Demo data is not created in production.
+\begin{lstlisting}[language={}]
+sh -c "php artisan migrate --force && php artisan db:seed --force"
+\end{lstlisting}
+\end{enumerate}
+
+\paragraph{Web apps on Vercel.}
+Create two projects from the same repository, one with \textit{Root Directory} \texttt{frontend} and one with \texttt{leodeguita}.
+In both, use the Vite preset, set \textit{Production Branch} to \texttt{deploy/sprint2}, and add the variable \texttt{VITE\_API\_URL} with the value \texttt{https://}\allowbreak\texttt{<railway-domain>/api}.
+This value is built into the app, so after changing it you must redeploy.
+Each project has a \texttt{vercel.json} that sends every route to the main page, so reloading an inner page does not give a 404 error.
+
+\paragraph{Last step.}
+Copy the two Vercel domains into the Railway variable \texttt{CORS\_ALLOWED\_ORIGINS} (and the main one into \texttt{FRONTEND\_URL}), so the browser can call the API\@.
+To switch sprints, change the branch in Railway and in both Vercel projects.
+
 \subsection{Verification}
+
+These checks confirm that the system works after an installation or a deployment.
+The expected result is written after each check.
+
+\paragraph{Local installation.}
+Start the backend (step 2 of the installation) and run these commands in another terminal.
+The first two must print \texttt{200}.
+The third must print a JSON list with the demo store rooms created by the seeder.
+\begin{lstlisting}[language={}]
+curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:8000/up
+curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:8000/api/storeRooms
+curl -s http://127.0.0.1:8000/api/storeRooms
+\end{lstlisting}
+Then open \texttt{http://localhost:5173} (main web app) and \texttt{http://localhost:5174} (mobile web app).
+Both pages must load.
+The main web app must show the login page, and signing in with a seeded user must work without errors in the browser console.
+An error about CORS means that the address of the web app is missing in \texttt{CORS\_ALLOWED\_ORIGINS}.
+Finally, the test commands of step 5 must give the results listed there.
+
+\paragraph{Deployed system.}
+Replace the placeholders with the real domains (Table~\ref{tab:env-vars}).
+\begin{enumerate}[nosep]
+  \item \textbf{API.}
+        \texttt{https://}\allowbreak\texttt{<railway-domain>/up} must answer \texttt{200}.
+        In Railway, the last deployment must show the status \textit{Success}, and its pre-deploy step must show that the migrations ran.
+  \item \textbf{Web apps.}
+        Both Vercel domains must load the page.
+        Reloading an inner page must not give a 404 error.
+  \item \textbf{Connection.}
+        Sign in from the Vercel web app with the admin user created in the first deployment.
+        The browser console must show no CORS or host errors, and the store room list must load.
+  \item \textbf{Uploaded files.}
+        Upload a photo in a store room, redeploy the backend, and open the store room again.
+        The photo must still be there.
+        If it is lost, the volume at \texttt{/app/storage/app} is missing.
+\end{enumerate}
