@@ -1,22 +1,27 @@
 \subsection{Sprint 2}
 \label{sec:sprint2}
 
-\textbf{Goal:}
+\textbf{Dates:} October 22 -- November 13.
 
-\begin{table}[H]
-  \centering
-  \begin{tabularx}{\linewidth}{L{2.2cm}L{4cm}L{2.6cm}Y}
-    \toprule
-    Story ID & Title & Status & Notes \\
-    \midrule
-    & & Completed & \\
-    & & Postponed & \\
-    & & Rejected & \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Sprint 2 user stories.}
+\textbf{Goal:} Incorporate multi-company operations: creating organizations, inviting members, switching contexts, and making reservations on behalf of the organization.
+
+\begin{longtable}{@{}L{2cm}L{6.2cm}L{2.4cm}L{3.8cm}@{}}
+  \toprule
+  Story ID & Title & Status & Notes \\
+  \midrule
+  \endhead
+  \story{HUE-01} & Member invitation to organization & Completed & \\
+  \story{HUE-02} & Switching between personal / organization context & Completed & \\
+  \story{HUE-03} & Enterprise management dashboard & Completed & \\
+  \story{HUE-04} & Organization creation & Completed & \\
+  \story{HUE-05} & Enterprise-level reservation & Completed & \\
+  \story{HUE-06} & Control over enterprise reservation deletion & Completed & Enforced by the HUG-07 deletion guard. No dedicated commit or test. \\
+  \story{HUC-14} & Acceptance or rejection of organization invitation & Completed & \\
+  \story{HUL-02} & Company selection in Leodeguita & Completed & \\
+  \bottomrule
+  \caption{Sprint 2 user stories. No story was postponed or rejected. All were accepted by the client.}
   \label{tab:sprint2-stories}
-\end{table}
+\end{longtable}
 
 \begin{table}[H]
   \centering
@@ -24,13 +29,14 @@
     \toprule
     Artifact & Reference \\
     \midrule
-    Backlog board & \\
-    Deployment tag and SHA & \\
-    Acceptance form date & \\
+    Deployed URLs & Web: \url{https://leodega-frontend.vercel.app}. Mobile: \url{https://leodeguita.vercel.app}. \\
+    Deployment tag and SHA & \texttt{sprint2-deploy}, \sha{9b8427d} \\
+    Acceptance form date & 2026-11-16 (see Section~\ref{sec:client}) \\
     \bottomrule
   \end{tabularx}
   \caption{Sprint 2 evidence.}
   \label{tab:sprint2-evidence}
 \end{table}
 
-\evidencefigure{sprints/sprint2-backlog.png}{Sprint 2 backlog.}{fig:sprint2-backlog}
+\evidencefigure{sprints/sprint2-backlog.png}{Sprint 2 backlog in Jira, captured 2026-11-20.}{fig:sprint2-backlog}
+\evidencefigure[0.85\linewidth]{sprints/sprint2-deployment.png}{Sprint 2 stories in the deployed application, one screenshot per story, captured 2026-11-20.}{fig:sprint2-deployment}

@@ -1,19 +1,98 @@
 \subsection{Sprint 2 Results}
 \label{sec:results-sprint2}
 
-\begin{longtable}{@{}L{1.5cm}L{1.6cm}L{2.8cm}L{2.8cm}L{1.3cm}L{1.5cm}L{1.8cm}@{}}
+All results come from CI run \#7 on branch \texttt{main}, commit \sha{90dbf81}, executed on 2026-11-16.
+The three jobs passed.
+Raw reports are \evid{EV-S2-01} to \evid{EV-S2-04}.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\linewidth}{L{3cm}L{2.6cm}L{1.4cm}L{1.4cm}L{1.3cm}L{1.4cm}Y}
+    \toprule
+    Suite & Level & Tests & Passed & Failed & Skipped & Evidence \\
+    \midrule
+    Backend, Unit & Unit & 274 & 274 & 0 & 0 & \evid{EV-S2-01} \\
+    Backend, Feature & Integration & 1563 & 1546 & 0 & 17 & \evid{EV-S2-01} \\
+    Frontend & Unit, component & 1553 & 1553 & 0 & 0 & \evid{EV-S2-03} \\
+    Leodeguita & Unit, component & 478 & 478 & 0 & 0 & \evid{EV-S2-04} \\
+    \midrule
+    \textbf{Total} & & \textbf{3868} & \textbf{3851} & \textbf{0} & \textbf{17} & \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Sprint 2 automated tests.}
+  \label{tab:results-sprint2-automated}
+\end{table}
+
+The backend uses PHPUnit and the two frontends use Vitest.
+The same run measured backend coverage at 92.0\,\% of statements and 82.6\,\% of methods (\evid{EV-S2-02}).
+
+\evidencefigure{tests/sprint2-backend-phpunit.png}{Backend, PHPUnit result. Run \#7, \texttt{main}, \sha{90dbf81}, 2026-11-16.}{fig:results-sprint2-backend}
+\evidencefigure{tests/sprint2-frontend-vitest.png}{Frontend, Vitest result. Run \#7, \texttt{main}, \sha{90dbf81}, 2026-11-16.}{fig:results-sprint2-frontend}
+\evidencefigure{tests/sprint2-leodeguita-vitest.png}{Leodeguita, Vitest result. Run \#7, \texttt{main}, \sha{90dbf81}, 2026-11-16.}{fig:results-sprint2-leodeguita}
+
+\subsubsection*{High-priority test cases}
+
+Case IDs come from the test plan in Section~\ref{sec:test-plan}.
+Integration cases are PHPUnit tests, and their results come from the report \evid{EV-S2-01}.
+Functional cases run on the deployed system.
+
+\begin{longtable}{@{}L{1.9cm}L{1.9cm}L{3.4cm}L{1.7cm}L{1.4cm}L{1.1cm}L{1.9cm}@{}}
   \toprule
   Case ID & Level & Expected & Actual & Result & Defect & Evidence \\
   \midrule
   \endhead
-  & & & & & & \\
+  \multicolumn{7}{@{}l}{\textit{HUE-05, enterprise-level reservation (High)}} \\
+  TC-HUE-05-01 & Integration & Reservation in organization context belongs to the organization & As expected & Pass & --- & \evid{EV-S2-01} \\
+  TC-HUE-05-02 & Integration & Another member sees the reservation and who made it & As expected & Pass & --- & \evid{EV-S2-01} \\
+  TC-HUE-05-03 & Integration & Reservation without organization header stays personal & As expected & Pass & --- & \evid{EV-S2-01} \\
+  TC-HUE-05-04 & Integration & Header of an organization the client does not belong to is rejected & As expected & Pass & --- & \evid{EV-S2-01} \\
+  TC-HUE-05-05 & Integration & Reservation in an inactive organization is rejected, nothing written & As expected & Pass & --- & \evid{EV-S2-01} \\
   \bottomrule
-  \caption{Sprint 2 test case results.}
+  \caption{Sprint 2 test cases of High-priority stories.}
   \label{tab:results-sprint2}
 \end{longtable}
 
-\evidencefigure{tests/sprint2-report.png}{Sprint 2 test report.}{fig:results-sprint2}
+All 5 High-priority cases passed.
+They are verified by PHPUnit integration tests, which call the API and check the database, not the web interface.
+\texttt{TC-HUE-05-01} is also shown live in the video.
+\texttt{TC-HUE-05-02} is verified by \texttt{TenantReservationIndexTest::test\_\allowbreak org\_\allowbreak context\_\allowbreak list\_\allowbreak returns\_\allowbreak every\_\allowbreak members\_\allowbreak reservation\_\allowbreak with\_\allowbreak creator\_\allowbreak name}.
+
+\evidencefigure{tests/sprint2-backend-hue05.png}{HUE-05, the four integration cases of the table above (\texttt{TC-HUE-05-01, 03, 04, 05}). Branch \texttt{main}, \sha{90dbf81}, run on 2026-11-20.}{fig:results-sprint2-hue05}
 
 \subsubsection*{Summary}
 
+3851 of 3868 tests passed, none failed, and 17 were skipped.
+No defects were recorded.
+
+\subsubsection*{Skipped tests}
+
+The 17 skipped tests need PostgreSQL\@.
+CI runs the backend on SQLite, which cannot open two concurrent connections, add \texttt{CHECK} constraints or enforce decimal scale, so these tests skip themselves.
+They cover invitation concurrency, wallet locking and schema constraints of the organization features.
+Their behavior is not covered by the evidence in this report.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\linewidth}{Yr}
+    \toprule
+    Test class & Skipped \\
+    \midrule
+    \texttt{InvitationRespondConcurrencyTest} & 5 \\
+    \texttt{OrganizationWalletSchemaTest} & 3 \\
+    \texttt{MemberSpendingLimitLockingTest} & 2 \\
+    \texttt{OrganizationWalletLockingTest} & 2 \\
+    \texttt{OrganizationInvitationConcurrencyTest} & 1 \\
+    \texttt{OrganizationInvitationRevokeConcurrencyTest} & 1 \\
+    \texttt{OrganizationInvitationSchemaTest} & 1 \\
+    \texttt{OrganizationUserSpendingLimitSchemaTest} & 1 \\
+    \texttt{RevokeInvitationTest} & 1 \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Skipped backend tests by class.}
+  \label{tab:skipped-sprint2}
+\end{table}
+
 \subsubsection*{Failures and Re-tests}
+
+Run \#7 had no failed or retried test.
+Earlier runs on 2026-11-04 and 2026-11-05 failed at the PHPStan step, not at a test step, as explained in Section~\ref{sec:ci}.

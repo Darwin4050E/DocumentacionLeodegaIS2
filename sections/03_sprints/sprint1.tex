@@ -1,22 +1,35 @@
 \subsection{Sprint 1}
 \label{sec:sprint1}
 
-\textbf{Goal:}
+\textbf{Dates:} October 1--21.
 
-\begin{table}[H]
-  \centering
-  \begin{tabularx}{\linewidth}{L{2.2cm}L{4cm}L{2.6cm}Y}
-    \toprule
-    Story ID & Title & Status & Notes \\
-    \midrule
-    & & Completed & \\
-    & & Postponed & \\
-    & & Rejected & \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Sprint 1 user stories.}
+\textbf{Goal:} Implement shared web/mobile login (Leodeguita) and basic operations for registering, editing, deleting, and moderating storage facilities, alongside customer search and booking, simulated payment, and booking management by the manager.
+
+\begin{longtable}{@{}L{2cm}L{6.2cm}L{2.4cm}L{3.8cm}@{}}
+  \toprule
+  Story ID & Title & Status & Notes \\
+  \midrule
+  \endhead
+  \story{HUG-04} & Warehouse registration with fire department permit & Completed & \\
+  \story{HUG-07} & Storage unit deletion (no active or future reservations) & Completed & \\
+  \story{HUG-08} & Editing warehouse information & Completed & \\
+  \story{HUA-01} & Fire department permit validation & Completed & \\
+  \story{HUA-03} & User account blocking and reactivation & Completed & \\
+  \story{HUL-01} & Mobile login to Leodeguita with Leodega credentials & Completed & \\
+  \story{HUL-03} & Mobile warehouse publication for review & Completed & \\
+  \story{HUL-04} & List of published warehouses (mobile) & Completed & \\
+  \story{HUC-01} & Search, filtering, and map view of warehouses & Completed & \\
+  \story{HUC-02} & Warehouse detail view & Completed & \\
+  \story{HUC-03} & Warehouse reservation with date conflict detection & Completed & \\
+  \story{HUC-05} & Simulated payment confirmation & Completed & \\
+  \story{HUG-02} & Payment confirmation notification and contract activation & Completed & \\
+  \story{HUG-05} & Reservation list view, filtering, and detail & Completed & \\
+  \story{HUG-06} & Cancellation of future paid reservations & Completed & \\
+  \story{HUL-06} & Mobile warehouse detail view & Completed & \\
+  \bottomrule
+  \caption{Sprint 1 user stories. No story was postponed or rejected. All were accepted by the client.}
   \label{tab:sprint1-stories}
-\end{table}
+\end{longtable}
 
 \begin{table}[H]
   \centering
@@ -24,13 +37,15 @@
     \toprule
     Artifact & Reference \\
     \midrule
-    Backlog board & \\
-    Deployment tag and SHA & \\
-    Acceptance form date & \\
+    Deployed URLs & Web: \url{https://leodega-frontend.vercel.app}. Mobile: \url{https://leodeguita.vercel.app}. \\
+    Deployment tag and SHA & \texttt{sprint1-deploy}, \sha{3bbef9d} \\
+    Acceptance form date & 2026-11-16 (see Section~\ref{sec:client}) \\
     \bottomrule
   \end{tabularx}
   \caption{Sprint 1 evidence.}
   \label{tab:sprint1-evidence}
 \end{table}
 
-\evidencefigure{sprints/sprint1-backlog.png}{Sprint 1 backlog.}{fig:sprint1-backlog}
+\evidencefigure{sprints/sprint1-backlog.png}{Sprint 1 backlog in Jira, captured 2026-11-20.}{fig:sprint1-backlog}
+\evidencefigure[0.85\linewidth]{sprints/sprint1-deployment-1.png}{Sprint 1 stories in the deployed application, part 1 of 2, one screenshot per story, captured 2026-11-20.}{fig:sprint1-deployment-1}
+\evidencefigure[0.85\linewidth]{sprints/sprint1-deployment-2.png}{Sprint 1 stories in the deployed application, part 2 of 2, one screenshot per story, captured 2026-11-20.}{fig:sprint1-deployment-2}
