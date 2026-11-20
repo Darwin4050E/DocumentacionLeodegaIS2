@@ -1,29 +1,109 @@
 \section{Architecture and Design Decisions}
 \label{sec:architecture}
 
+Leodega uses a client--server architecture with one REST API and two web clients.
+All business rules live in the backend.
+The web app and Leodeguita only show data and call the API, so a rule changes in one place and both clients follow it.
+
 \subsection{Component Diagram}
 
-\evidencefigure{architecture/components.png}{Component diagram.}{fig:components}
+\begin{figure}[H]
+  \centering
+  \resizebox{\linewidth}{!}{\input{figures/architecture/components.tex}}
+  \caption{Component diagram (code at tag \texttt{sprint2-deploy}, \sha{9b8427d}).}
+  \label{fig:components}
+\end{figure}
+
+Figure~\ref{fig:components} shows three parts.
+
+\begin{itemize}
+  \item \textbf{Leodega web app} (\texttt{frontend/}): a single-page app in React~19 with TypeScript and Vite.
+        Context providers keep the session and the active personal or organization context.
+        Route guards block pages by role, and an Axios client with one service file per module calls the API\@.
+  \item \textbf{Leodeguita} (\texttt{leodeguita/}): a separate Vite app with the same stack, built as an installable Progressive Web App (\texttt{vite-plugin-pwa}).
+        It has its own screens and API client, and no business logic.
+  \item \textbf{Backend} (\texttt{backend/}): a Laravel~12 API in layers.
+        A request goes through the routes and then the middleware: authentication, role check, active organization and locale.
+        Then thin controllers validate it with Form Requests, check Policies, and call application services.
+        The services hold the business rules, such as booking date conflicts, simulated payment, organization invitations and warehouse moderation.
+        They use Eloquent models for the database and the \texttt{Storage} facade for files.
+        Receipts are generated as PDF files with DomPDF\@.
+\end{itemize}
 
 \subsection{Deployment Diagram}
 
-\evidencefigure{architecture/deployment.png}{Deployment diagram.}{fig:deployment}
+\begin{figure}[H]
+  \centering
+  \resizebox{\linewidth}{!}{\input{figures/architecture/deployment.tex}}
+  \caption{Deployment diagram (branch \texttt{deploy/sprint2}; the setup is described in Appendix~\ref{app:install}).}
+  \label{fig:deployment}
+\end{figure}
+
+Figure~\ref{fig:deployment} shows the production setup.
+Two Vercel projects serve the static builds of \texttt{frontend} and \texttt{leodeguita}.
+Each project has a \texttt{vercel.json} that sends every route to the main page.
+The browser then calls the API on Railway over HTTPS with a Sanctum Bearer token.
+On Railway, the API runs in a container built from \texttt{backend/Dockerfile}.
+Before each deployment, the pre-deploy command runs the database migrations.
+The container connects to a PostgreSQL service through the \texttt{DB\_URL} variable and saves uploaded photos and fire permits on a volume, so they survive new deployments.
+Railway and Vercel build automatically from the \texttt{deploy/sprintN} branch selected in each project.
 
 \subsection{Technology Decisions}
 
-\begin{table}[H]
-  \centering
-  \begin{tabularx}{\linewidth}{L{3.2cm}L{3.5cm}Y}
-    \toprule
-    Concern & Choice & Rationale \\
-    \midrule
-    Backend framework & & \\
-    Frontend framework & & \\
-    Database & & \\
-    Communication & & \\
-    Deployment platform & & \\
-    \bottomrule
-  \end{tabularx}
+\begin{longtable}{@{}L{2.6cm}L{3.4cm}L{8.9cm}@{}}
+  \toprule
+  Concern & Choice & Rationale \\
+  \midrule
+  \endhead
+  Backend framework & Laravel~12 (PHP~8.2) with Laravel Sanctum &
+    The previous team built the system in Laravel, and the client shared its deployment manuals (Section~\ref{sec:client}).
+    Keeping it avoided a rewrite and let the sprints focus on the new modules.
+    Laravel provides routing, validation, an ORM, migrations, policies and mail, which the services use directly. \\
+  Web frontend & React~19, TypeScript, Vite, Tailwind CSS, Leaflet &
+    This is also the inherited stack.
+    TypeScript catches type errors at build time, Vite gives fast builds, and Leaflet draws the map view of the catalog without a paid map service. \\
+  Mobile companion & Installable PWA in React and Vite &
+    The Software Engineering~I design planned a React Native app.
+    The team chose a PWA on the web stack instead: the same language, libraries and CI steps; one API client pattern; and installation from the browser with no app store review.
+    The trade-off is limited access to native features, which the Leodeguita stories (HUL-01 to HUL-06) do not need. \\
+  Database & PostgreSQL in production; SQLite for local work and CI &
+    The data is relational (users, warehouses, reservations, payments, organizations), and the booking rules need transactions and row locks.
+    PostgreSQL provides them, and Railway offers it as a managed service.
+    SQLite needs no server, so local setup is fast and the test suite runs in memory.
+    The limitation: tests that need concurrent connections or row locks are skipped on SQLite (Section~\ref{sec:test-execution}). \\
+  Communication & REST API with JSON over HTTPS\@; token authentication &
+    Both clients use the same stateless API, and the role and organization checks are done in the backend.
+    In-app notifications are stored in the database and read by the clients.
+    No WebSocket server is used in this phase, which keeps the deployment to one service. \\
+  Deployment platform & Railway (API and PostgreSQL), Vercel (two static apps) &
+    Railway builds the Dockerfile and runs the database, a volume and migrations in one project.
+    Vercel hosts static Vite builds on a CDN with automatic builds from Git.
+    Each sprint is deployed from its own branch and tag, so any delivered version can be redeployed (Appendix~\ref{app:install}). \\
+  Payment & Simulated gateway &
+    Agreed with the client in the Project Scope Document.
+    The real gateway (Paganini) is built by another team and is not available yet. \\
+  \bottomrule
   \caption{Technology decisions and their rationale.}
   \label{tab:tech-decisions}
+\end{longtable}
+
+\subsection{Deployed Versions}
+
+Table~\ref{tab:deployed-versions} identifies the delivered version of each sprint.
+The same tags and SHAs are used in Sections~\ref{sec:sprints},~\ref{sec:static-analysis} and~\ref{sec:ci} and in Appendix~\ref{app:install}.
+Each deployment branch is the code merged for that sprint plus one deployment commit.
+That commit is not merged into \texttt{main}.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\linewidth}{lllY}
+    \toprule
+    Sprint & Tag & Deployed commit & Built on (\texttt{main}) \\
+    \midrule
+    1 & \texttt{sprint1-deploy} & \sha{3bbef9d} (2026-11-16) & \sha{ca1799a}, merge of PR \#44, 2026-10-04 \\
+    2 & \texttt{sprint2-deploy} & \sha{9b8427d} (2026-11-16) & \sha{90dbf81}, merge of PR \#58, 2026-11-16 \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Deployment tags and commits. Branches: \texttt{deploy/sprint1} and \texttt{deploy/sprint2}.}
+  \label{tab:deployed-versions}
 \end{table}
