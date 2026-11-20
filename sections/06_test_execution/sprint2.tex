@@ -30,21 +30,34 @@ The same run measured backend coverage at 92.0\,\% of statements and 82.6\,\% of
 \evidencefigure{tests/sprint2-frontend-vitest.png}{Frontend, Vitest result. Run \#7, \texttt{main}, \sha{90dbf81}, 2026-11-16.}{fig:results-sprint2-frontend}
 \evidencefigure{tests/sprint2-leodeguita-vitest.png}{Leodeguita, Vitest result. Run \#7, \texttt{main}, \sha{90dbf81}, 2026-11-16.}{fig:results-sprint2-leodeguita}
 
-\subsubsection*{Functional tests}
+\subsubsection*{High-priority test cases}
 
-Functional cases for the high-risk Sprint 2 stories run against the deployed system and are shown live in the video.
 Case IDs come from the test plan in Section~\ref{sec:test-plan}.
+Integration cases are PHPUnit tests, and their results come from the report \evid{EV-S2-01}.
+Functional cases run on the deployed system.
 
-\begin{longtable}{@{}L{1.5cm}L{1.6cm}L{2.8cm}L{2.8cm}L{1.3cm}L{1.5cm}L{1.8cm}@{}}
+\begin{longtable}{@{}L{1.9cm}L{1.9cm}L{3.4cm}L{1.7cm}L{1.4cm}L{1.1cm}L{1.9cm}@{}}
   \toprule
   Case ID & Level & Expected & Actual & Result & Defect & Evidence \\
   \midrule
   \endhead
-  TBD & Functional & TBD & TBD & Pending & --- & TBD \\
+  \multicolumn{7}{@{}l}{\textit{HUE-05, enterprise-level reservation (High)}} \\
+  TC-HUE-05-01 & Integration & Reservation in organization context belongs to the organization & As expected & Pass & --- & \evid{EV-S2-01} \\
+  TC-HUE-05-02 & Integration & Another member sees the reservation and who made it & As expected & Pass & --- & \evid{EV-S2-01} \\
+  TC-HUE-05-03 & Integration & Reservation without organization header stays personal & As expected & Pass & --- & \evid{EV-S2-01} \\
+  TC-HUE-05-04 & Integration & Header of an organization the client does not belong to is rejected & As expected & Pass & --- & \evid{EV-S2-01} \\
+  TC-HUE-05-05 & Integration & Reservation in an inactive organization is rejected, nothing written & As expected & Pass & --- & \evid{EV-S2-01} \\
   \bottomrule
-  \caption{Sprint 2 functional cases, pending.}
+  \caption{Sprint 2 test cases of High-priority stories.}
   \label{tab:results-sprint2}
 \end{longtable}
+
+All 5 High-priority cases passed.
+They are verified by PHPUnit integration tests, which call the API and check the database, not the web interface.
+\texttt{TC-HUE-05-01} is also shown live in the video.
+\texttt{TC-HUE-05-02} is verified by \texttt{TenantReservationIndexTest::test\_\allowbreak org\_\allowbreak context\_\allowbreak list\_\allowbreak returns\_\allowbreak every\_\allowbreak members\_\allowbreak reservation\_\allowbreak with\_\allowbreak creator\_\allowbreak name}.
+
+\evidencefigure{tests/sprint2-backend-hue05.png}{HUE-05, the four integration cases of the table above (\texttt{TC-HUE-05-01, 03, 04, 05}). Branch \texttt{main}, \sha{90dbf81}, run on 2026-11-20.}{fig:results-sprint2-hue05}
 
 \subsubsection*{Summary}
 

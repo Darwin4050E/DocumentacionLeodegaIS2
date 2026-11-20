@@ -1,343 +1,343 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="157" failures="0" errors="0" time="14.795718715">
-    <testsuite name="src/auth/returnPath.test.ts" timestamp="2026-11-20T16:59:02.877Z" hostname="cachyos-x8664" tests="30" failures="0" errors="0" skipped="0" time="0.042381271">
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path / unchanged" time="0.01344354">
+<testsuites name="vitest tests" tests="157" failures="0" errors="0" time="9.312613532">
+    <testsuite name="src/api/client.test.ts" timestamp="2026-11-20T17:49:25.384Z" hostname="cachyos-x8664" tests="22" failures="0" errors="0" skipped="0" time="0.110073584">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; clears the session and notifies once on a 401 from a GET" time="0.022581833">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /mis-bodegas unchanged" time="0.001422282">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does the same for a 401 from a mutation" time="0.006185175">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /bodegas/7?x=1#a unchanged" time="0.000749331">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; rejects with the original error instead of swallowing it" time="0.002885668">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /%5c unchanged" time="0.000722955">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; handles three concurrent 401s once" time="0.006763">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /loginx unchanged" time="0.000623913">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; handles the same way a blocked user whose revoked token now returns 401" time="0.003302812">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /a/login unchanged" time="0.0124121">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; ignores a 401 for a request sent before a newer login replaced the token" time="0.003886919">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects protocol-relative" time="0.001005317">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does nothing on a 401 when there was no session" time="0.005328832">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects absolute https URL" time="0.000426984">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 403 as session expiry" time="0.003673767">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects javascript scheme" time="0.000510928">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 404 as session expiry" time="0.003516353">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects data scheme" time="0.00076146">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 422 as session expiry" time="0.002560057">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects slash plus backslash" time="0.000349275">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 500 as session expiry" time="0.002771198">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects leading backslashes" time="0.000237473">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; passes a 2xx response through untouched" time="0.00322701">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects backslash inside the path" time="0.000230059">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /login" time="0.003175736">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects encoded protocol-relative (not a leading slash)" time="0.00022551">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /login/" time="0.004832793">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects newline" time="0.000224396">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /login?next=1" time="0.005499951">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects tab" time="0.000236105">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /logout" time="0.002688088">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects NUL" time="0.000309635">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /logout/" time="0.006780822">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects DEL" time="0.000206607">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; does not exclude the lookalike /loginx" time="0.002639501">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects empty string" time="0.000176203">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; does not exclude the lookalike /users/login" time="0.002631724">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects relative path without a leading slash" time="0.000200457">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; does not exclude the lookalike /logout-all" time="0.002857553">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login itself" time="0.000225959">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session when the real login() gets a 401 for wrong credentials" time="0.002717941">
         </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login with a query" time="0.000279106">
-        </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login with a trailing slash" time="0.000195629">
-        </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login with a hash" time="0.000266729">
-        </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value undefined" time="0.000366576">
-        </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value null" time="0.000181734">
-        </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value number" time="0.000198383">
-        </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value object" time="0.000183774">
-        </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value array" time="0.000181727">
-        </testcase>
-        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value boolean" time="0.000509776">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session when the real logout() gets a 401" time="0.002530381">
         </testcase>
     </testsuite>
-    <testsuite name="src/auth/sessionExpiry.test.ts" timestamp="2026-11-20T16:59:02.890Z" hostname="cachyos-x8664" tests="10" failures="0" errors="0" skipped="0" time="0.040804005">
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="sessionExpiry constants &gt; exposes the router-state reason and the Spanish notice" time="0.006368665">
+    <testsuite name="src/auth/returnPath.test.ts" timestamp="2026-11-20T17:49:25.388Z" hostname="cachyos-x8664" tests="30" failures="0" errors="0" skipped="0" time="0.020988335">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path / unchanged" time="0.00487677">
         </testcase>
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; clears the stored session and calls the handler once when the sent token is the current one" time="0.009068712">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /mis-bodegas unchanged" time="0.000804036">
         </testcase>
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; clears storage before the handler runs" time="0.001146332">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /bodegas/7?x=1#a unchanged" time="0.000518846">
         </testcase>
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; fires once for three concurrent 401s carrying the same token" time="0.0008018">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /%5c unchanged" time="0.001038734">
         </testcase>
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; is a no-op when there is no stored token" time="0.001764985">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /loginx unchanged" time="0.000576467">
         </testcase>
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; ignores a stale 401 whose request was sent with a previous token" time="0.003766222">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /a/login unchanged" time="0.000432113">
         </testcase>
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; ignores a 401 whose request carried no Authorization header" time="0.001112057">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects protocol-relative" time="0.000683295">
         </testcase>
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; still clears storage when no handler is registered" time="0.002436875">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects absolute https URL" time="0.000333781">
         </testcase>
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; stops calling the handler after it is unregistered" time="0.003941457">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects javascript scheme" time="0.00047206">
         </testcase>
-        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; does not drop a newer handler when an older one unregisters late" time="0.002489467">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects data scheme" time="0.000507175">
         </testcase>
-    </testsuite>
-    <testsuite name="src/api/client.test.ts" timestamp="2026-11-20T16:59:02.892Z" hostname="cachyos-x8664" tests="22" failures="0" errors="0" skipped="0" time="0.118164817">
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; clears the session and notifies once on a 401 from a GET" time="0.027691283">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects slash plus backslash" time="0.000410076">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does the same for a 401 from a mutation" time="0.006504244">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects leading backslashes" time="0.000241634">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; rejects with the original error instead of swallowing it" time="0.006493429">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects backslash inside the path" time="0.000178256">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; handles three concurrent 401s once" time="0.00853516">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects encoded protocol-relative (not a leading slash)" time="0.000201896">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; handles the same way a blocked user whose revoked token now returns 401" time="0.004836312">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects newline" time="0.000198045">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; ignores a 401 for a request sent before a newer login replaced the token" time="0.003066268">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects tab" time="0.0001953">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does nothing on a 401 when there was no session" time="0.003001563">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects NUL" time="0.000160656">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 403 as session expiry" time="0.007429167">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects DEL" time="0.000151963">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 404 as session expiry" time="0.003997604">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects empty string" time="0.000527601">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 422 as session expiry" time="0.00212801">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects relative path without a leading slash" time="0.000221427">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 500 as session expiry" time="0.002486199">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login itself" time="0.000174564">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; passes a 2xx response through untouched" time="0.00143462">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login with a query" time="0.000235064">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /login" time="0.006900685">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login with a trailing slash" time="0.000165562">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /login/" time="0.002181645">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login with a hash" time="0.000206007">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /login?next=1" time="0.002060794">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value undefined" time="0.000335045">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /logout" time="0.001739412">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value null" time="0.000172486">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /logout/" time="0.002009704">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value number" time="0.000160219">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; does not exclude the lookalike /loginx" time="0.005443027">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value object" time="0.000214501">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; does not exclude the lookalike /users/login" time="0.004349923">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value array" time="0.000539267">
         </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; does not exclude the lookalike /logout-all" time="0.002398997">
-        </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session when the real login() gets a 401 for wrong credentials" time="0.003165794">
-        </testcase>
-        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session when the real logout() gets a 401" time="0.002719055">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value boolean" time="0.000217879">
         </testcase>
     </testsuite>
-    <testsuite name="src/routes/Protected.test.tsx" timestamp="2026-11-20T16:59:02.895Z" hostname="cachyos-x8664" tests="8" failures="0" errors="0" skipped="0" time="0.67663602">
-        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; renders the protected screen while the session is valid" time="0.126712979">
+    <testsuite name="src/auth/sessionExpiry.test.ts" timestamp="2026-11-20T17:49:25.390Z" hostname="cachyos-x8664" tests="10" failures="0" errors="0" skipped="0" time="0.028605574">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="sessionExpiry constants &gt; exposes the router-state reason and the Spanish notice" time="0.006131851">
         </testcase>
-        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects to /login with the original route and reason when the session expires" time="0.03550481">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; clears the stored session and calls the handler once when the sent token is the current one" time="0.004478934">
         </testcase>
-        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; keeps the hash in the return route" time="0.016904908">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; clears storage before the handler runs" time="0.001241564">
         </testcase>
-        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects a visitor without a session to /login with no state" time="0.015377753">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; fires once for three concurrent 401s carrying the same token" time="0.001158986">
         </testcase>
-        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects a manual logout to /login with no expiry reason" time="0.377784347">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; is a no-op when there is no stored token" time="0.00216545">
         </testcase>
-        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects once and keeps the first route when three 401s land together" time="0.022898482">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; ignores a stale 401 whose request was sent with a previous token" time="0.003939495">
         </testcase>
-        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; does not navigate or store a /login return route on a late 401 while on /login" time="0.016132031">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; ignores a 401 whose request carried no Authorization header" time="0.001060585">
         </testcase>
-        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; clears the expired flag on the next login" time="0.058492727">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; still clears storage when no handler is registered" time="0.00050615">
         </testcase>
-    </testsuite>
-    <testsuite name="src/screens/LoginScreen.test.tsx" timestamp="2026-11-20T16:59:02.897Z" hostname="cachyos-x8664" tests="21" failures="0" errors="0" skipped="0" time="3.622322487">
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen (HUL-01) &gt; AC-3: shows required-field errors and does not call the API when fields are empty" time="0.546870877">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; stops calling the handler after it is unregistered" time="0.000763559">
         </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen (HUL-01) &gt; AC-2: shows an error message on wrong credentials and stays on login" time="0.414461794">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen (HUL-01) &gt; AC-1: stores the session and navigates home on success" time="0.223209847">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; shows the session-ended notice when redirected with the expiry reason" time="0.017003703">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; hides the notice on a plain /login visit" time="0.011138203">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; hides the notice on state without the expiry reason" time="0.007528892">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; hides the notice on an unknown reason" time="0.012184415">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; returns to the original route, query and hash after a successful login" time="0.200409021">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;//evil.com&quot;" time="0.184960506">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;https://evil.com&quot;" time="0.200341914">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;/\\evil.com&quot;" time="0.164644256">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;javascript:alert(1)&quot;" time="0.183470551">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;/login&quot;" time="0.171357999">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;&quot;" time="0.174462658">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the return route is not a string" time="0.146758504">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; goes home when there is no return route" time="0.125631904">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; shows the credentials error without the expiry notice or navigation on a login 401" time="0.18639788">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; shows the backend suspension message and stores no session on a login 403" time="0.15692012">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; does not navigate to the return route on a login 403" time="0.186040608">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; falls back to the generic message on a login 403 with an empty body" time="0.145984681">
-        </testcase>
-        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; falls back to the generic message on a login 403 with no body" time="0.157980246">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; does not drop a newer handler when an older one unregisters late" time="0.000964598">
         </testcase>
     </testsuite>
-    <testsuite name="src/services/storeRooms.test.ts" timestamp="2026-11-20T16:59:02.900Z" hostname="cachyos-x8664" tests="4" failures="0" errors="0" skipped="0" time="0.023542892">
-        <testcase classname="src/services/storeRooms.test.ts" name="listStoreRooms &gt; returns the catalog payload from GET /storeRooms" time="0.014282394">
+    <testsuite name="src/services/storeRooms.test.ts" timestamp="2026-11-20T17:49:25.390Z" hostname="cachyos-x8664" tests="4" failures="0" errors="0" skipped="0" time="0.007181302">
+        <testcase classname="src/services/storeRooms.test.ts" name="listStoreRooms &gt; returns the catalog payload from GET /storeRooms" time="0.003183356">
         </testcase>
-        <testcase classname="src/services/storeRooms.test.ts" name="getStoreRoomDetail &gt; returns the detail payload from GET /store-rooms/{id}/detail" time="0.002043386">
+        <testcase classname="src/services/storeRooms.test.ts" name="getStoreRoomDetail &gt; returns the detail payload from GET /store-rooms/{id}/detail" time="0.000851279">
         </testcase>
-        <testcase classname="src/services/storeRooms.test.ts" name="getStoreRoomDetail &gt; rethrows a 404 as StoreRoomNotFoundError" time="0.002479868">
+        <testcase classname="src/services/storeRooms.test.ts" name="getStoreRoomDetail &gt; rethrows a 404 as StoreRoomNotFoundError" time="0.001155672">
         </testcase>
-        <testcase classname="src/services/storeRooms.test.ts" name="getStoreRoomDetail &gt; rethrows every other error unchanged" time="0.000896493">
-        </testcase>
-    </testsuite>
-    <testsuite name="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" timestamp="2026-11-20T16:59:02.900Z" hostname="cachyos-x8664" tests="8" failures="0" errors="0" skipped="0" time="0.960583421">
-        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-1: renders one card per owned room with title, location and status" time="0.189040198">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-2: an empty result shows the publish CTA and hides the filter row" time="0.394101348">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-2: a residual 404 swallowed to [] lands on the same empty state" time="0.018018568">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-3: status chips carry counts and narrow the list" time="0.243262835">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; blocks a non-landlord and never calls the service" time="0.006744346">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.064695494">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows the rejection reason on a rejected room card" time="0.019987399">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows no rejection reason on an approved room card" time="0.018037698">
+        <testcase classname="src/services/storeRooms.test.ts" name="getStoreRoomDetail &gt; rethrows every other error unchanged" time="0.000399369">
         </testcase>
     </testsuite>
-    <testsuite name="src/screens/MyStoreRooms/model.test.ts" timestamp="2026-11-20T16:59:02.901Z" hostname="cachyos-x8664" tests="13" failures="0" errors="0" skipped="0" time="0.040165562">
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; rejected outranks occupancy" time="0.006075259">
+    <testsuite name="src/routes/Protected.test.tsx" timestamp="2026-11-20T17:49:25.390Z" hostname="cachyos-x8664" tests="8" failures="0" errors="0" skipped="0" time="0.513157662">
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; renders the protected screen while the session is valid" time="0.102567675">
         </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; pending with reservations is still pendiente" time="0.001044244">
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects to /login with the original route and reason when the session expires" time="0.034020104">
         </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; an unknown status enum degrades to pendiente, never disponible" time="0.000692882">
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; keeps the hash in the return route" time="0.013373559">
         </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; approved with reservations is ocupada" time="0.000603363">
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects a visitor without a session to /login with no state" time="0.012800352">
         </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; approved with no reservations is disponible" time="0.00059939">
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects a manual logout to /login with no expiry reason" time="0.268414915">
         </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="countByStatus &gt; counts each derived status plus the total" time="0.004596705">
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects once and keeps the first route when three 401s land together" time="0.01136746">
         </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="filterRooms &gt; returns every room for &quot;todas&quot;" time="0.006154915">
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; does not navigate or store a /login return route on a late 401 while on /login" time="0.013179169">
         </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="filterRooms &gt; narrows to the selected derived status" time="0.002629133">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="filterRooms &gt; returns an empty array when nothing matches" time="0.001850925">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; labels the reason code and keeps the free-text reason of a rejected room" time="0.001381813">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; maps every reason code to its Spanish label" time="0.001959617">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; returns null for a rejected room without rejection data" time="0.001199105">
-        </testcase>
-        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; returns null for a room that is not rejected" time="0.000907609">
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; clears the expired flag on the next login" time="0.052960736">
         </testcase>
     </testsuite>
-    <testsuite name="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" timestamp="2026-11-20T16:59:02.902Z" hostname="cachyos-x8664" tests="12" failures="0" errors="0" skipped="0" time="7.828669724">
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; scenario 1: completes the 7 steps, sends to review and uploads photos" time="1.222151358">
+    <testsuite name="src/screens/LoginScreen.test.tsx" timestamp="2026-11-20T17:49:25.391Z" hostname="cachyos-x8664" tests="21" failures="0" errors="0" skipped="0" time="2.54578909">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen (HUL-01) &gt; AC-3: shows required-field errors and does not call the API when fields are empty" time="0.435817004">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; scenario 2: each step gates &quot;Continuar&quot; until its fields are complete" time="0.716575912">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen (HUL-01) &gt; AC-2: shows an error message on wrong credentials and stays on login" time="0.256431296">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; rejects a non-PDF permit before submit and keeps the flow blocked" time="0.768965001">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen (HUL-01) &gt; AC-1: stores the session and navigates home on success" time="0.215397245">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; photo step stays blocked until at least three photos are added" time="0.137675282">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; shows the session-ended notice when redirected with the expiry reason" time="0.016728522">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; sends latitude/longitude when the gestor drops a pin on the map" time="0.708960824">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; hides the notice on a plain /login visit" time="0.009324281">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; scenario 3: a duplicate title sends the gestor back to the title step with the warning" time="0.691367385">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; hides the notice on state without the expiry reason" time="0.005563193">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; falls back to the backend message when the 422 has no title field error" time="0.794951005">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; hides the notice on an unknown reason" time="0.005178026">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; sends the gestor back to the price step when the 422 is about storePrices" time="0.742525702">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; returns to the original route, query and hash after a successful login" time="0.166325744">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; shows a notice when the listing is created but photo upload fails" time="0.660671911">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;//evil.com&quot;" time="0.139845821">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; retries the photo upload against the created room without creating it again" time="0.779547198">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;https://evil.com&quot;" time="0.15384858">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; keeps the notice and the retry button when the retry fails again" time="0.599613505">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;/\\evil.com&quot;" time="0.112798857">
         </testcase>
-        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; blocks a non-landlord from the publish flow" time="0.002596613">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;javascript:alert(1)&quot;" time="0.105921421">
         </testcase>
-    </testsuite>
-    <testsuite name="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" timestamp="2026-11-20T16:59:02.904Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="0.692840347">
-        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; renders one card per approved room" time="0.18224016">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;/login&quot;" time="0.124369987">
         </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; shows an empty state when there are no rooms" time="0.021427464">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;&quot;" time="0.111283131">
         </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.375819979">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the return route is not a string" time="0.102158509">
         </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; navigates to the detail screen when a card is opened" time="0.084713105">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; goes home when there is no return route" time="0.091162664">
         </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; excludes a room flagged unavailable via navigation state (AC3)" time="0.024476232">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; shows the credentials error without the expiry notice or navigation on a login 401" time="0.105875903">
         </testcase>
-    </testsuite>
-    <testsuite name="src/screens/StoreRoomCatalog/model.test.ts" timestamp="2026-11-20T16:59:02.905Z" hostname="cachyos-x8664" tests="7" failures="0" errors="0" skipped="0" time="0.010483349">
-        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="monthlyPrice &gt; formats a numeric monthly price" time="0.002205406">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; shows the backend suspension message and stores no session on a login 403" time="0.095962553">
         </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="monthlyPrice &gt; returns null when the price is not published" time="0.000361603">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; does not navigate to the return route on a login 403" time="0.100226412">
         </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="excludeUnavailable &gt; drops the matching id" time="0.001753963">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; falls back to the generic message on a login 403 with an empty body" time="0.095430994">
         </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="excludeUnavailable &gt; returns every room when there is no id to exclude" time="0.001865794">
-        </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="excludeUnavailable &gt; returns every room when the id does not match any of them" time="0.000821646">
-        </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="toCardViewModel &gt; maps a catalog room to a display-ready card" time="0.000741992">
-        </testcase>
-        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="toCardViewModel &gt; falls back to the raw room_type value for an unknown type" time="0.000368176">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; falls back to the generic message on a login 403 with no body" time="0.091637043">
         </testcase>
     </testsuite>
-    <testsuite name="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" timestamp="2026-11-20T16:59:02.905Z" hostname="cachyos-x8664" tests="6" failures="0" errors="0" skipped="0" time="0.707163363">
-        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; renders the full profile including the gestor phone (AC1)" time="0.472054359">
+    <testsuite name="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" timestamp="2026-11-20T17:49:25.394Z" hostname="cachyos-x8664" tests="8" failures="0" errors="0" skipped="0" time="0.555610374">
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-1: renders one card per owned room with title, location and status" time="0.104008751">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; omits photos, prices, security, and the map when those fields are empty (AC2)" time="0.034250298">
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-2: an empty result shows the publish CTA and hides the filter row" time="0.23665762">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; shows an amber unavailability banner when the room is no longer available" time="0.028867854">
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-2: a residual 404 swallowed to [] lands on the same empty state" time="0.011771931">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; shows a not-found state distinct from the unavailability notice" time="0.01133535">
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-3: status chips carry counts and narrow the list" time="0.130960735">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.099020305">
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; blocks a non-landlord and never calls the service" time="0.005651671">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; propagates the unavailable id back to the catalog on back navigation (AC3)" time="0.053724296">
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.029658863">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows the rejection reason on a rejected room card" time="0.016006539">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows no rejection reason on an approved room card" time="0.017603555">
         </testcase>
     </testsuite>
-    <testsuite name="src/screens/StoreRoomDetail/model.test.ts" timestamp="2026-11-20T16:59:02.906Z" hostname="cachyos-x8664" tests="11" failures="0" errors="0" skipped="0" time="0.031961457">
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="hasCoordinates &gt; is true only when both latitude and longitude are set" time="0.010411164">
+    <testsuite name="src/screens/MyStoreRooms/model.test.ts" timestamp="2026-11-20T17:49:25.395Z" hostname="cachyos-x8664" tests="13" failures="0" errors="0" skipped="0" time="0.021602098">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; rejected outranks occupancy" time="0.005939796">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="hasPhotos &gt; reflects whether the photos array has entries" time="0.001044537">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; pending with reservations is still pendiente" time="0.000862881">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="monthlyPrice &gt; prefers the month-mode price" time="0.000659764">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; an unknown status enum degrades to pendiente, never disponible" time="0.000648917">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="monthlyPrice &gt; falls back to the first price when no month-mode entry exists" time="0.000538831">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; approved with reservations is ocupada" time="0.000817253">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="monthlyPrice &gt; returns null when there are no prices" time="0.00066448">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; approved with no reservations is disponible" time="0.000751947">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns the keys whose value is true" time="0.003645734">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="countByStatus &gt; counts each derived status plus the total" time="0.00193883">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns an empty array for null" time="0.00083076">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="filterRooms &gt; returns every room for &quot;todas&quot;" time="0.001953017">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns an empty array for malformed JSON instead of throwing" time="0.000787482">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="filterRooms &gt; narrows to the selected derived status" time="0.000909354">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns an empty array for a JSON value that is not an object" time="0.001129726">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="filterRooms &gt; returns an empty array when nothing matches" time="0.000682745">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="availabilityStat &gt; reads &quot;Ahora&quot; when available" time="0.002300941">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; labels the reason code and keeps the free-text reason of a rejected room" time="0.000970321">
         </testcase>
-        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="availabilityStat &gt; reads &quot;No disponible&quot; when not available" time="0.003743181">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; maps every reason code to its Spanish label" time="0.000669083">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; returns null for a rejected room without rejection data" time="0.000451631">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; returns null for a room that is not rejected" time="0.000363798">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" timestamp="2026-11-20T17:49:25.396Z" hostname="cachyos-x8664" tests="12" failures="0" errors="0" skipped="0" time="4.387955281">
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; scenario 1: completes the 7 steps, sends to review and uploads photos" time="1.123811691">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; scenario 2: each step gates &quot;Continuar&quot; until its fields are complete" time="0.454861935">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; rejects a non-PDF permit before submit and keeps the flow blocked" time="0.444743071">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; photo step stays blocked until at least three photos are added" time="0.089947754">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; sends latitude/longitude when the gestor drops a pin on the map" time="0.343887773">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; scenario 3: a duplicate title sends the gestor back to the title step with the warning" time="0.312801128">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; falls back to the backend message when the 422 has no title field error" time="0.331303144">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; sends the gestor back to the price step when the 422 is about storePrices" time="0.32989914">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; shows a notice when the listing is created but photo upload fails" time="0.320887785">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; retries the photo upload against the created room without creating it again" time="0.306803483">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; keeps the notice and the retry button when the retry fails again" time="0.325161556">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; blocks a non-landlord from the publish flow" time="0.001309726">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" timestamp="2026-11-20T17:49:25.397Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="0.542880415">
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; renders one card per approved room" time="0.140888565">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; shows an empty state when there are no rooms" time="0.022704771">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.282197527">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; navigates to the detail screen when a card is opened" time="0.074431625">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; excludes a room flagged unavailable via navigation state (AC3)" time="0.018819398">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/StoreRoomCatalog/model.test.ts" timestamp="2026-11-20T17:49:25.398Z" hostname="cachyos-x8664" tests="7" failures="0" errors="0" skipped="0" time="0.005659055">
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="monthlyPrice &gt; formats a numeric monthly price" time="0.001805115">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="monthlyPrice &gt; returns null when the price is not published" time="0.00030931">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="excludeUnavailable &gt; drops the matching id" time="0.000791767">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="excludeUnavailable &gt; returns every room when there is no id to exclude" time="0.000296215">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="excludeUnavailable &gt; returns every room when the id does not match any of them" time="0.000265729">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="toCardViewModel &gt; maps a catalog room to a display-ready card" time="0.000334676">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="toCardViewModel &gt; falls back to the raw room_type value for an unknown type" time="0.000167808">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" timestamp="2026-11-20T17:49:25.398Z" hostname="cachyos-x8664" tests="6" failures="0" errors="0" skipped="0" time="0.555798166">
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; renders the full profile including the gestor phone (AC1)" time="0.32077179">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; omits photos, prices, security, and the map when those fields are empty (AC2)" time="0.027344663">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; shows an amber unavailability banner when the room is no longer available" time="0.02835342">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; shows a not-found state distinct from the unavailability notice" time="0.016875978">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.106725306">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; propagates the unavailable id back to the catalog on back navigation (AC3)" time="0.052606287">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/StoreRoomDetail/model.test.ts" timestamp="2026-11-20T17:49:25.398Z" hostname="cachyos-x8664" tests="11" failures="0" errors="0" skipped="0" time="0.017312596">
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="hasCoordinates &gt; is true only when both latitude and longitude are set" time="0.003277068">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="hasPhotos &gt; reflects whether the photos array has entries" time="0.000906466">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="monthlyPrice &gt; prefers the month-mode price" time="0.000611522">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="monthlyPrice &gt; falls back to the first price when no month-mode entry exists" time="0.000521847">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="monthlyPrice &gt; returns null when there are no prices" time="0.000538765">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns the keys whose value is true" time="0.002954844">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns an empty array for null" time="0.00098132">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns an empty array for malformed JSON instead of throwing" time="0.000764699">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns an empty array for a JSON value that is not an object" time="0.000549946">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="availabilityStat &gt; reads &quot;Ahora&quot; when available" time="0.001139749">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="availabilityStat &gt; reads &quot;No disponible&quot; when not available" time="0.000598473">
         </testcase>
     </testsuite>
 </testsuites>
