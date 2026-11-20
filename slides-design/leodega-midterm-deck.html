@@ -427,6 +427,20 @@ p  { font-size: 32px; line-height: 1.45; }
 .rule .box .row2:first-of-type { border-top: 0; }
 .rule .box .row2 b { font-family: var(--font-mono); font-weight: 500; color: var(--amber); }
 
+/* --- 5x5 heat map (levels from Table 7 of the report) --- */
+.matrix.m5 { grid-template-columns: 56px repeat(5, 1fr); grid-template-rows: repeat(5, 1fr) 52px; gap: 10px; }
+.m5 .mc { padding: 10px 14px; font-size: 20px; border-radius: 16px; align-items: flex-start; }
+.m5 .mc .sc { font-size: 20px; opacity: .75; }
+.m5 .mc.vl { background: #fff; border: 2px solid var(--lavender-2); color: var(--ink); }
+.m5 .mc.l  { background: #F1E8FF; color: var(--ink); }
+.m5 .mc.m  { background: #DCC6FF; color: var(--ink); }
+.m5 .mc.h  { background: var(--violet); color: #fff; }
+.m5 .mc.vh { background: var(--violet-deep); color: #fff; }
+.m5 .mc.ex { background: #3A1B6B; color: #fff; }
+.m5 .mc .id { font-family: var(--font-mono); font-weight: 700; font-size: 20px; background: var(--amber); color: var(--ink); padding: 4px 12px; border-radius: 999px; align-self: flex-start; }
+.m5 .ax { font-size: 22px; }
+.rule .box .row2 { grid-template-columns: 130px 1fr; font-size: 24px; }
+
 /* --- Technique table (dark) --- */
 .tech { margin-top: 44px; display: grid; grid-template-columns: 1fr 520px; gap: 40px; }
 .dtable { background: var(--card); border: 2px solid var(--line); border-radius: 28px; overflow: hidden; }
@@ -448,6 +462,16 @@ p  { font-size: 32px; line-height: 1.45; }
 .fld i { font-style: normal; font-family: var(--font-mono); font-size: 20px; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
 .dark .pill.pass { color: #5BE0A0; } .dark .pill.fail { color: #FF7C93; } .dark .pill.pending { color: var(--amber); }
 .pill.lg { font-size: 26px; padding: 12px 30px; }
+
+/* --- Build step (data-steps): .pre is shown first, .post replaces it on reveal --- */
+.slide[data-steps] .fld:nth-last-child(2) { min-height: 146px; } /* Obtained row keeps its height, so the card does not jump on reveal */
+.slide[data-steps] .post { display: none; }
+.slide[data-steps].revealed .pre { display: none; }
+.slide[data-steps].revealed .post { display: block; animation: rise .6s var(--ease); }
+.slide[data-steps].revealed .pill.post { display: inline-block; justify-self: start; }
+.pre:not(.pill) { color: var(--t2); display: flex; align-items: center; gap: 18px; }
+.pre:not(.pill)::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--amber); animation: pulse 1.4s infinite; flex: none; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
 /* --- Static analysis table (light) --- */
 .sa { margin-top: 40px; background: var(--card); border: 2px solid var(--line); border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); }
@@ -630,37 +654,61 @@ p  { font-size: 32px; line-height: 1.45; }
         <div class="foot"><span>Leodega &middot; Midterm</span><span>06</span></div>
     </section>
 
-    <!-- ============ 7. RISK MATRIX (Johao) ============ -->
+    <!-- ============ 7. RISK MATRIX (Johao) ============
+         Source: report Section 4.1 to 4.3, Tables 7 to 9. Rows = probability 5..1, columns = impact 1..5.
+         High priority = High, Very high or Extreme (score 10 or more). -->
     <section class="slide light" data-name="Risk matrix">
         <div class="frame">
             <div class="eyebrow reveal">Risk matrix</div>
             <h2 class="reveal">Where the risk is highest</h2>
             <span class="who"><b>Johao</b></span>
             <div class="risk reveal">
-                <div class="matrix">
-                    <div class="ax">High</div>
-                    <div class="mc m"><span class="sc">3</span><span class="ph">[IDs]</span></div>
-                    <div class="mc h"><span class="sc">6</span><span class="ph">[IDs]</span></div>
-                    <div class="mc h"><span class="sc">9</span><span class="ph">[IDs]</span></div>
-                    <div class="ax">Med</div>
-                    <div class="mc l"><span class="sc">2</span><span class="ph">[IDs]</span></div>
-                    <div class="mc m"><span class="sc">4</span><span class="ph">[IDs]</span></div>
-                    <div class="mc h"><span class="sc">6</span><span class="ph">[IDs]</span></div>
-                    <div class="ax">Low</div>
-                    <div class="mc l"><span class="sc">1</span><span class="ph">[IDs]</span></div>
-                    <div class="mc l"><span class="sc">2</span><span class="ph">[IDs]</span></div>
-                    <div class="mc m"><span class="sc">3</span><span class="ph">[IDs]</span></div>
-                    <div class="ax">I &times; P</div>
-                    <div class="ax">Low</div><div class="ax">Med</div><div class="ax">High</div>
+                <div class="matrix m5">
+                    <div class="ax">5</div>
+                    <div class="mc m"><span class="sc">5</span></div>
+                    <div class="mc h"><span class="sc">10</span></div>
+                    <div class="mc vh"><span class="sc">15</span></div>
+                    <div class="mc ex"><span class="sc">20</span></div>
+                    <div class="mc ex"><span class="sc">25</span></div>
+                    <div class="ax">4</div>
+                    <div class="mc m"><span class="sc">4</span></div>
+                    <div class="mc m"><span class="sc">8</span></div>
+                    <div class="mc h"><span class="sc">12</span><span class="id">HUE-05</span></div>
+                    <div class="mc vh"><span class="sc">16</span></div>
+                    <div class="mc ex"><span class="sc">20</span></div>
+                    <div class="ax">3</div>
+                    <div class="mc l"><span class="sc">3</span></div>
+                    <div class="mc m"><span class="sc">6</span></div>
+                    <div class="mc m"><span class="sc">9</span></div>
+                    <div class="mc h"><span class="sc">12</span><span class="id">HUG-04</span></div>
+                    <div class="mc vh"><span class="sc">15</span></div>
+                    <div class="ax">2</div>
+                    <div class="mc vl"><span class="sc">2</span></div>
+                    <div class="mc l"><span class="sc">4</span></div>
+                    <div class="mc m"><span class="sc">6</span></div>
+                    <div class="mc m"><span class="sc">8</span></div>
+                    <div class="mc h"><span class="sc">10</span><span class="id">HUA-01</span></div>
+                    <div class="ax">1</div>
+                    <div class="mc vl"><span class="sc">1</span></div>
+                    <div class="mc vl"><span class="sc">2</span></div>
+                    <div class="mc l"><span class="sc">3</span></div>
+                    <div class="mc m"><span class="sc">4</span></div>
+                    <div class="mc m"><span class="sc">5</span></div>
+                    <div class="ax"></div>
+                    <div class="ax">1</div>
+                    <div class="ax">2</div>
+                    <div class="ax">3</div>
+                    <div class="ax">4</div>
+                    <div class="ax">5</div>
                 </div>
                 <div class="rule">
-                    <div class="box"><div class="k">Rule</div><p>Probability &times; impact on a 1&ndash;3 scale. High risk when the score is <span class="ph">&ge; [6]</span>. <span class="ph">[Confirm scale reused from Software I]</span></p></div>
-                    <div class="box hot"><div class="k">High-risk stories we test first</div>
-                        <div class="row2"><b class="ph">[HU-ID]</b><span class="ph">[why it is high risk]</span></div>
-                        <div class="row2"><b class="ph">[HU-ID]</b><span class="ph">[why it is high risk]</span></div>
-                        <div class="row2"><b class="ph">[HU-ID]</b><span class="ph">[why it is high risk]</span></div>
+                    <div class="box"><div class="k">Rule</div><p>Rows are probability, columns are impact, each from 1 to 5. A score of 10 or more is high priority.</p></div>
+                    <div class="box hot"><div class="k">High-priority stories</div>
+                        <div class="row2"><b>HUG-04</b><span>Warehouse + fire permit</span></div>
+                        <div class="row2"><b>HUA-01</b><span>Permit validation</span></div>
+                        <div class="row2"><b>HUE-05</b><span>Company reservations</span></div>
                     </div>
-                    <div class="box"><div class="k">Medium and low</div><p><span class="ph">[Tested less or deferred, and the reason]</span></p></div>
+                    <div class="box"><div class="k">Medium and low</div><p>16 medium: main flow plus the most likely error. 2 low: a quick check, or later.</p></div>
                 </div>
             </div>
         </div>
@@ -733,20 +781,29 @@ p  { font-size: 32px; line-height: 1.45; }
     </section>
 
     <!-- ============ 11. LIVE CASE 3 (Darwin) ============ -->
-    <section class="slide dark" data-name="Live case 3">
+    <!-- Build step: data-steps="1" means the first "next" key (right arrow) reveals the
+         .post elements (Obtained and Result) instead of leaving the slide. -->
+    <section class="slide dark" data-name="Live case 3" data-steps="1">
         <div class="case">
             <div class="left reveal">
                 <span class="live"><i></i>Live</span>
-                <div class="tc">TC-03</div>
-                <div class="kind"><span class="ph">[Type: valid / invalid / boundary]</span></div>
+                <div class="tc" style="font-size:150px">TC-HUE-<br>04-04</div>
+                <div class="kind">Boundary value &middot; Sprint 2 &middot; medium risk</div>
                 <span class="who" style="position:static;align-self:flex-start"><b>Darwin</b></span>
             </div>
+            <!-- Speaker note: type the 12-digit RUC exactly. Do NOT add a digit: a 13-digit RUC ending in 001 is valid and would create a real company. -->
             <div class="fields reveal">
-                <div class="fld"><i>Story</i><span class="ph">[HU-ID &middot; acceptance criterion]</span></div>
-                <div class="fld"><i>Input</i><span class="ph">[What we type or click]</span></div>
-                <div class="fld"><i>Expected</i><span class="ph">[Expected result]</span></div>
-                <div class="fld"><i>Obtained</i><span class="ph">[Fill in after the live run]</span></div>
-                <div class="fld"><i>Result</i><span class="pill pending lg">Pending</span></div>
+                <div class="fld"><i>Story</i><span>HUE-04 &middot; Organization creation: the RUC must have exactly 13 digits</span></div>
+                <div class="fld"><i>Input</i><span>Create an organization with a 12-digit RUC: <b class="mono">179214673900</b></span></div>
+                <div class="fld"><i>Expected</i><span>The form rejects it with &ldquo;El RUC debe tener 13 d&iacute;gitos&rdquo; and nothing is created</span></div>
+                <div class="fld"><i>Obtained</i>
+                    <span class="pre">Live demo in progress&hellip;</span>
+                    <span class="post">The form says &ldquo;El RUC debe tener 13 d&iacute;gitos&rdquo; and nothing was created</span>
+                </div>
+                <div class="fld"><i>Result</i>
+                    <span class="pill pending lg pre">Pending</span>
+                    <span class="pill pass lg post">Pass</span>
+                </div>
             </div>
         </div>
         <div class="foot"><span>Leodega &middot; Midterm</span><span>11</span></div>
@@ -880,8 +937,8 @@ class SlidePresentation {
     bind() {
         addEventListener('keydown', e => {
             if (e.target.isContentEditable) return;
-            if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.show(this.current + 1); }
-            if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.show(this.current - 1); }
+            if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.next(); }
+            if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.prev(); }
             if (e.key === 'Home') this.show(0);
             if (e.key === 'End') this.show(this.slides.length - 1);
         });
@@ -889,17 +946,31 @@ class SlidePresentation {
         addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
         addEventListener('touchend', e => {
             const dx = e.changedTouches[0].clientX - sx;
-            if (Math.abs(dx) > 50) this.show(this.current + (dx < 0 ? 1 : -1));
+            if (Math.abs(dx) > 50) { dx < 0 ? this.next() : this.prev(); }
         }, { passive: true });
         addEventListener('wheel', e => {
             if (this.wheelLock || Math.abs(e.deltaY) < 30) return;
             this.wheelLock = true; setTimeout(() => this.wheelLock = false, 700);
-            this.show(this.current + (e.deltaY > 0 ? 1 : -1));
+            e.deltaY > 0 ? this.next() : this.prev();
         }, { passive: true });
+    }
+    /* next(): reveal the next build step of the current slide (data-steps), or go to the next slide */
+    next() {
+        const s = this.slides[this.current];
+        if (this.step < (parseInt(s.dataset.steps, 10) || 0)) { this.step++; s.classList.add('revealed'); }
+        else this.show(this.current + 1);
+    }
+    /* prev(): undo one build step, or go to the previous slide */
+    prev() {
+        const s = this.slides[this.current];
+        if (this.step > 0) { this.step--; s.classList.toggle('revealed', this.step > 0); }
+        else this.show(this.current - 1);
     }
     show(i) {
         this.current = Math.max(0, Math.min(i, this.slides.length - 1));
+        this.step = 0;
         this.slides.forEach((s, n) => {
+            s.classList.remove('revealed');
             s.classList.toggle('active', n === this.current);
             s.classList.toggle('visible', n === this.current);
         });
