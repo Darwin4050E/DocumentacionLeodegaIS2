@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="518" failures="0" errors="0" time="84.577273574">
+    <testsuite name="src/App.test.tsx" timestamp="2026-11-20T16:57:48.210Z" hostname="cachyos-x8664" tests="8" failures="0" errors="0" skipped="0" time="0.134362942">
+        <testcase classname="src/App.test.tsx" name="tenant routes auth guard &gt; redirects an unauthenticated visitor from /arrendatario/dashboard to login instead of the page shell" time="0.074077457">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="tenant routes auth guard &gt; redirects an unauthenticated visitor from /arrendatario/mensajes to login instead of the page shell" time="0.012983251">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="tenant routes auth guard &gt; redirects an unauthenticated visitor from /arrendatario/calendario to login instead of the page shell" time="0.009935443">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="tenant routes auth guard &gt; redirects an unauthenticated visitor from /arrendatario/mis-reservas to login instead of the page shell" time="0.010280339">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="tenant routes auth guard &gt; renders /arrendatario/dashboard for an authenticated session" time="0.007034555">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="tenant routes auth guard &gt; renders /arrendatario/mensajes for an authenticated session" time="0.007387156">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="tenant routes auth guard &gt; renders /arrendatario/calendario for an authenticated session" time="0.005460833">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="tenant routes auth guard &gt; renders /arrendatario/mis-reservas for an authenticated session" time="0.004732561">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/securityFeatureKeys.test.ts" timestamp="2026-11-20T16:57:48.214Z" hostname="cachyos-x8664" tests="1" failures="0" errors="0" skipped="0" time="0.053204007">
+        <testcase classname="src/securityFeatureKeys.test.ts" name="security feature keys &gt; no production source under src/ references the legacy `objetos` key" time="0.047079685">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/AvailabilityCalendar.test.tsx" timestamp="2026-11-20T16:57:48.215Z" hostname="cachyos-x8664" tests="12" failures="0" errors="0" skipped="0" time="5.684460962">
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar &gt; shows the loading copy instead of the grid while loading" time="0.162641284">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar &gt; marks every day inside a reserved range as occupied and disabled" time="0.594966286">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar &gt; shows all days as available with no occupied markings when reservedRanges is empty" time="0.155621782">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar &gt; marks days from BOTH a reservation-shaped range and a landlord-block-shaped range identically, since the endpoint unions them" time="0.177222557">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar month navigation (HUC-03 S2, RB-4) &gt; shows a range that lives in the next month only after navigating forward" time="0.420067563">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar month navigation (HUC-03 S2, RB-4) &gt; marks a range two months ahead after navigating twice, and not one month ahead" time="0.427891146">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar month navigation (HUC-03 S2, RB-4) &gt; marks the tail of a range that crosses a month boundary in both months" time="0.287539561">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar month navigation (HUC-03 S2, RB-4) &gt; does not render the previous-month button at the current month, and renders it after going forward" time="0.406550502">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar month navigation (HUC-03 S2, RB-4) &gt; stops offering the next-month button after 24 months ahead" time="2.802437796">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar month navigation (HUC-03 S2, RB-4) &gt; never disables the navigation buttons, even when the visible month is fully occupied" time="0.208870548">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar month navigation (HUC-03 S2, RB-4) &gt; shows the &quot;Ocupada&quot; legend entry" time="0.021569586">
+        </testcase>
+        <testcase classname="src/Components/AvailabilityCalendar.test.tsx" name="AvailabilityCalendar month navigation (HUC-03 S2, RB-4) &gt; renders no navigation or legend while loading" time="0.010907237">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/BookingCheckout.test.tsx" timestamp="2026-11-20T16:57:48.217Z" hostname="cachyos-x8664" tests="12" failures="0" errors="0" skipped="0" time="2.755496877">
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; renders card fields in prototype order: number, holder, then expiry+CVV" time="0.342696372">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; CTA reads &quot;Confirmar y pagar $X&quot; where X equals reservation.total_mount, with no client-side arithmetic" time="0.694528538">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; disables submit until fields pass the readiness check" time="0.200760264">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; shows the decline banner and does NOT call createPayment for a 0000-prefixed card" time="0.238973085">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; calls createPayment exactly once with the exact payload for a valid non-0000 card" time="0.18456698">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; disables the button while paying is true (double-submit guard): rapid double-click calls createPayment at most once" time="0.202478998">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; shows a distinct retryable error (not the decline banner) on a non-401 createPayment rejection, and re-enables the button" time="0.268550282">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; shows the verbatim HUC-05 message on a 409 createPayment rejection for an expired hold" time="0.202646508">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; shows the login-required copy on a 401 createPayment rejection without dropping back to detail" time="0.183488358">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; &quot;← Volver al detalle&quot; calls onBack when not submitting, and is disabled while submitting" time="0.164128902">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; renders the demo disclosure line and the Pago simulado line" time="0.030779449">
+        </testcase>
+        <testcase classname="src/Components/BookingCheckout.test.tsx" name="BookingCheckout &gt; renders the instant-confirmation info callout in the summary panel (fidelity: BookingFlow.jsx:339)" time="0.021364301">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/BookingReceipt.test.tsx" timestamp="2026-11-20T16:57:48.220Z" hostname="cachyos-x8664" tests="9" failures="0" errors="0" skipped="0" time="1.4498102">
+        <testcase classname="src/Components/BookingReceipt.test.tsx" name="BookingReceipt &gt; shows the reservation code derived from reservation.id via formatReservationCode, not Math.random()" time="0.258615176">
+        </testcase>
+        <testcase classname="src/Components/BookingReceipt.test.tsx" name="BookingReceipt &gt; shows &quot;Enviamos el comprobante a tu correo&quot; (REQ-REC-1 corrected — email dispatch really ships)" time="0.043850476">
+        </testcase>
+        <testcase classname="src/Components/BookingReceipt.test.tsx" name="BookingReceipt &gt; renders the &quot;PAGADA&quot; badge unconditionally, with no network call required" time="0.075944655">
+        </testcase>
+        <testcase classname="src/Components/BookingReceipt.test.tsx" name="BookingReceipt &gt; &quot;Monto pagado&quot; equals reservation.total_mount exactly, no client-side addition" time="0.023407365">
+        </testcase>
+        <testcase classname="src/Components/BookingReceipt.test.tsx" name="BookingReceipt &gt; shows the period/duration/gestor grid from reservation dates and the already-loaded landlord name" time="0.031986317">
+        </testcase>
+        <testcase classname="src/Components/BookingReceipt.test.tsx" name="BookingReceipt &gt; &quot;Descargar PDF&quot; downloads the real receipt for the reservation, with no demo toast" time="0.71416074">
+        </testcase>
+        <testcase classname="src/Components/BookingReceipt.test.tsx" name="BookingReceipt &gt; &quot;Descargar PDF&quot; shows the generic error on failure and leaves the screen intact" time="0.15139209">
+        </testcase>
+        <testcase classname="src/Components/BookingReceipt.test.tsx" name="BookingReceipt &gt; &quot;Ver mis reservas&quot; calls onViewReservations" time="0.084041077">
+        </testcase>
+        <testcase classname="src/Components/BookingReceipt.test.tsx" name="BookingReceipt &gt; &quot;Volver al catálogo&quot; calls onBackToCatalog" time="0.061465692">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/BookingStepHeader.test.tsx" timestamp="2026-11-20T16:57:48.221Z" hostname="cachyos-x8664" tests="4" failures="0" errors="0" skipped="0" time="0.6955754">
+        <testcase classname="src/Components/BookingStepHeader.test.tsx" name="BookingStepHeader &gt; shows &quot;Pago&quot; as current and &quot;Detalle&quot; as completed when step is &quot;pago&quot;" time="0.182235098">
+        </testcase>
+        <testcase classname="src/Components/BookingStepHeader.test.tsx" name="BookingStepHeader &gt; shows &quot;Detalle&quot; and &quot;Pago&quot; as completed when step is &quot;comprobante&quot;" time="0.02843669">
+        </testcase>
+        <testcase classname="src/Components/BookingStepHeader.test.tsx" name="BookingStepHeader &gt; shows step 1 as current with no checkmarks when step is &quot;detail&quot;" time="0.018241895">
+        </testcase>
+        <testcase classname="src/Components/BookingStepHeader.test.tsx" name="BookingStepHeader &gt; renders a &quot;Salir&quot; action that calls onClose when clicked" time="0.459693269">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/DetailStatusScreen.test.tsx" timestamp="2026-11-20T16:57:48.222Z" hostname="cachyos-x8664" tests="6" failures="0" errors="0" skipped="0" time="0.840602309">
+        <testcase classname="src/Components/DetailStatusScreen.test.tsx" name="DetailStatusScreen &gt; renders the not-found copy for the not-found variant" time="0.12855997">
+        </testcase>
+        <testcase classname="src/Components/DetailStatusScreen.test.tsx" name="DetailStatusScreen &gt; renders a distinct copy for the error variant" time="0.021396676">
+        </testcase>
+        <testcase classname="src/Components/DetailStatusScreen.test.tsx" name="DetailStatusScreen &gt; labels the not-found back button &quot;← Volver al catálogo&quot; (HUC-02 S3)" time="0.490217362">
+        </testcase>
+        <testcase classname="src/Components/DetailStatusScreen.test.tsx" name="DetailStatusScreen &gt; keeps the generic &quot;← Volver&quot; label for the error variant" time="0.049247099">
+        </testcase>
+        <testcase classname="src/Components/DetailStatusScreen.test.tsx" name="DetailStatusScreen &gt; renders a loading indicator for the loading variant" time="0.013980806">
+        </testcase>
+        <testcase classname="src/Components/DetailStatusScreen.test.tsx" name="DetailStatusScreen &gt; calls onBack when the back link is clicked" time="0.132171963">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/LeodegaUI.test.tsx" timestamp="2026-11-20T16:57:48.223Z" hostname="cachyos-x8664" tests="61" failures="0" errors="0" skipped="0" time="18.315424385">
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI checkout step flow (replaces the dead-end alert()) &gt; on successful createReservation(), never calls alert() and transitions to the pago step carrying the reservation" time="1.67878516">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI checkout step flow (replaces the dead-end alert()) &gt; on successful createPayment() from BookingCheckout, advances to comprobante with the same reservation" time="1.033305114">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI checkout step flow (replaces the dead-end alert()) &gt; calls createReservation exactly once across a payment-failure-then-retry cycle (no duplicate reservation)" time="1.027438302">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI checkout step flow (replaces the dead-end alert()) &gt; renders BookingReceipt at comprobante with the correct storeRoom/reservation and completed step header" time="1.003035969">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI checkout step flow (replaces the dead-end alert()) &gt; clicking &quot;Salir&quot; from BookingStepHeader while at pago returns to detail" time="0.990603671">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability badge &gt; keeps exactly 2 empty-value inputs after the price panel renders (regression guard: a new &lt;input&gt; would shift the date-input indices)" time="0.320201035">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability badge &gt; shows &quot;Actualmente no disponible&quot; while keeping the date picker and Reservar button active, AND still renders the populated inline calendar" time="0.640537512">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability badge &gt; shows no loading message in the modal when the shared fetch already resolved before opening it" time="0.378731097">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability badge &gt; still shows &quot;Cargando disponibilidad...&quot; in the modal when opened before the shared fetch settles" time="0.157618899">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability badge &gt; renders the inline calendar fail-open (all days available) when the reserved-dates fetch rejects" time="0.30792392">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability badge &gt; shows &quot;Disponible ahora&quot; when is_available_now is true" time="0.082290351">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability badge &gt; shows the instant-reservation disclosure line in the reservation panel when available (fidelity: BookingFlow.jsx:229)" time="0.180398332">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability badge &gt; hides the instant-reservation disclosure line when the storeroom is NOT available now" time="0.103891173">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI rating display &gt; renders 4 filled stars and (8) for a 4.2 average" time="0.104320062">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI rating display &gt; renders 0 filled stars and (0) for a zero-rating room" time="0.050570942">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI location &gt; renders the map when coordinates are present" time="0.060628734">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI location &gt; renders no map and shows the address as plain text when coordinates are null" time="0.056075029">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI top gallery &gt; renders a placeholder box and no thumbnail strip when there are zero photos" time="0.057143397">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI top gallery &gt; renders only the main image and no thumbnail strip when there is exactly 1 photo" time="0.100523231">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI top gallery &gt; renders the main image plus 2 thumbnails when there are 3 photos, all 3 visible" time="0.104818338">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI top gallery &gt; renders all 5 thumbnails (none dropped) when there are 6 photos" time="0.095330082">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI top gallery &gt; never renders the deleted &quot;Imágenes adicionales&quot; section, regardless of photo count" time="0.11930256">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI price panel visibility (gated on ownership, not role) &gt; shows the price panel for an unauthenticated visitor" time="0.253117109">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI price panel visibility (gated on ownership, not role) &gt; shows the price panel for a logged-in user who does NOT own the storeroom" time="0.427664946">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI price panel visibility (gated on ownership, not role) &gt; hides the price panel from the storeroom&apos;s own landlord (matching landlord.user_id)" time="0.377867484">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI fabricated content regression guard &gt; never renders the fabricated specs table or business-hours strings, with or without security" time="0.174488354">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI fabricated content regression guard &gt; never renders the fabricated content when security is absent" time="0.101531643">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI Características real data &gt; renders one chip per true security key, plus the size chip, when all four are true" time="0.081178296">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI Características real data &gt; renders no chip for a false security key, only chips for true ones" time="0.082075223">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI Características real data &gt; renders only the size chip, no crash, when security is absent" time="0.078852686">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI Características real data &gt; renders only the size chip, no crash, when security is an empty string" time="0.093530185">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI Características real data &gt; renders only the size chip, no crash, when security is malformed JSON" time="0.095573784">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI renamed headings &gt; renders &quot;Sobre esta bodega&quot; and &quot;Tu gestor&quot;, not the old headings" time="0.130311418">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI &quot;Tu gestor&quot; card &gt; renders &quot;Miembro desde &lt;month year&gt;&quot; in Spanish when start_date is present" time="0.063684029">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI &quot;Tu gestor&quot; card &gt; renders no &quot;Miembro desde&quot; line when start_date is null/absent, and the card still renders" time="0.2353209">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI &quot;Tu gestor&quot; card &gt; never renders &quot;Verificado&quot; or &quot;Responde en&quot;, with or without start_date (no real source for either)" time="0.096574709">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI not-found and error states &gt; renders the not-found copy on a 404 response" time="0.03661428">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI not-found and error states &gt; renders a distinct copy for a non-404 failure" time="0.022484169">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI not-found and error states &gt; sends a landlord to the catalog (/storage) from the not-found screen" time="0.039263618">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI not-found and error states &gt; sends a tenant to the catalog (/storage) from the not-found screen" time="0.038999274">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI not-found and error states &gt; sends a visitor to the catalog (/storage), never to /login, from the not-found screen" time="0.028713469">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI not-found and error states &gt; sends a landlord back to /arrendador/bodegas from the generic error screen" time="0.025404447">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI not-found and error states &gt; sends a visitor to /storage, never to /login, from the generic error screen" time="0.042637027">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI reserve button for visitors (RB-5) &gt; sends a visitor to /login with the room path and reserve reason, without opening the modal" time="0.280981091">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI reserve button for visitors (RB-5) &gt; opens the booking modal for a logged-in tenant instead of navigating to /login" time="0.351251964">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI reserve button for visitors (RB-5) &gt; sends the user to /login with the same state when the submit comes back 401" time="0.514204238">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI overlap message and server errors (RB-4) &gt; shows the ERS overlap message once, in the modal, as soon as the range crosses an occupied period" time="0.231997238">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI overlap message and server errors (RB-4) &gt; shows the same ERS message when only the start date falls inside an occupied period" time="0.301326537">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI overlap message and server errors (RB-4) &gt; on confirm with an overlapping range, creates nothing and keeps the form open with the ERS message" time="0.682673599">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI overlap message and server errors (RB-4) &gt; shows no overlap message and submits when the range sits right after the occupied period" time="0.51743042">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI overlap message and server errors (RB-4) &gt; maps a server 409 to the ERS constant and ignores the server message text" time="1.067925033">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI overlap message and server errors (RB-4) &gt; shows the past-start copy when the server answers 422 with an error on start_date" time="0.540811482">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI overlap message and server errors (RB-4) &gt; keeps the generic copy for a 422 that is not about start_date" time="0.340709992">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI occupied periods hint in the modal (D6) &gt; lists the next 3 upcoming occupied periods, soonest first, and skips past ones" time="0.205027696">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI occupied periods hint in the modal (D6) &gt; shows no hint when there are no upcoming occupied periods" time="0.425571173">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability label vs calendar (SRD-2) &gt; occupied now: shows the label and the future-dates subtext while Reservar stays enabled" time="0.363645403">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability label vs calendar (SRD-2) &gt; free now: shows &quot;Disponible ahora&quot; and neither the unavailable label nor its subtext" time="0.074689944">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI availability label vs calendar (SRD-2) &gt; hold-only today: the label says available while the calendar still marks the held range (visitor)" time="0.292893987">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI single reserve control and back label (RB-6, SRD-3) &gt; exposes exactly one &quot;Reservar&quot; button and never the old labels" time="0.235528884">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI single reserve control and back label (RB-6, SRD-3) &gt; labels the top-bar back button &quot;← Volver al catálogo&quot; for a tenant and goes to /storage" time="0.247803055">
+        </testcase>
+        <testcase classname="src/Components/LeodegaUI.test.tsx" name="LeodegaUI single reserve control and back label (RB-6, SRD-3) &gt; labels the top-bar back button &quot;← Volver a mis bodegas&quot; for a landlord and goes to /arrendador/bodegas" time="0.427593683">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/PriceBreakdownPanel.test.tsx" timestamp="2026-11-20T16:57:48.234Z" hostname="cachyos-x8664" tests="10" failures="0" errors="0" skipped="0" time="0.586197572">
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownPanel &gt; shows &quot;Calculando...&quot; while the quote request is in flight" time="0.169147194">
+        </testcase>
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownPanel &gt; renders exactly two lines with matching amounts once the quote resolves" time="0.146197776">
+        </testcase>
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownPanel &gt; shows the no-eligible-price copy on a 422 response" time="0.077781478">
+        </testcase>
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownPanel &gt; shows a distinct generic-error copy on a network/5xx failure" time="0.034379535">
+        </testcase>
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownPanel &gt; does not render a deposit row when deposit is zero" time="0.040939451">
+        </testcase>
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownPanel &gt; renders zero &lt;input&gt; elements — the panel is display-only" time="0.034186434">
+        </testcase>
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownPanel &gt; re-fetches the quote when a complete valid date range is provided" time="0.01566878">
+        </testcase>
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownPanel &gt; renders &quot;Garantía&quot; (not &quot;Depósito de garantía&quot;) when the fetched quote has a non-zero deposit" time="0.018813553">
+        </testcase>
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownRows (extracted, no fetch) &gt; renders the same row markup as the container, fed directly by props" time="0.017091144">
+        </testcase>
+        <testcase classname="src/Components/PriceBreakdownPanel.test.tsx" name="PriceBreakdownRows (extracted, no fetch) &gt; renders the &quot;Garantía&quot; label when deposit is non-zero" time="0.017293453">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/RatingStars.test.tsx" timestamp="2026-11-20T16:57:48.236Z" hostname="cachyos-x8664" tests="2" failures="0" errors="0" skipped="0" time="0.172698479">
+        <testcase classname="src/Components/RatingStars.test.tsx" name="RatingStars &gt; renders 4 filled stars and 1 empty star for a 4.2 average, with the count beside them" time="0.155901065">
+        </testcase>
+        <testcase classname="src/Components/RatingStars.test.tsx" name="RatingStars &gt; renders 0 filled stars and (0) for a zero-rating room" time="0.012369279">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/SearchBar.test.tsx" timestamp="2026-11-20T16:57:48.237Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="1.167749488">
+        <testcase classname="src/Components/SearchBar.test.tsx" name="SearchBar &gt; renders a labelled city select with 9 options and no free-text location input" time="0.781683851">
+        </testcase>
+        <testcase classname="src/Components/SearchBar.test.tsx" name="SearchBar &gt; emits an empty city by default" time="0.066358221">
+        </testcase>
+        <testcase classname="src/Components/SearchBar.test.tsx" name="SearchBar &gt; emits the selected city together with the other fields, only on Buscar" time="0.13085515">
+        </testcase>
+        <testcase classname="src/Components/SearchBar.test.tsx" name="SearchBar &gt; shows an error and does not emit when the max price is below the min price" time="0.120647978">
+        </testcase>
+        <testcase classname="src/Components/SearchBar.test.tsx" name="SearchBar &gt; keeps the entered values after searching" time="0.062170591">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Components/login.test.tsx" timestamp="2026-11-20T16:57:48.238Z" hostname="cachyos-x8664" tests="13" failures="0" errors="0" skipped="0" time="2.017234561">
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; returns a tenant to the safe internal path in state.from, replacing the login entry" time="0.817868591">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; returns a different tenant to a different safe path (no hardcoded target)" time="0.128892559">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; ignores an unsafe state.from (absolute https URL) and uses the tenant dashboard" time="0.116598099">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; ignores an unsafe state.from (protocol-relative URL) and uses the tenant dashboard" time="0.170053497">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; ignores an unsafe state.from (javascript scheme) and uses the tenant dashboard" time="0.140985965">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; ignores an unsafe state.from (backslash trick) and uses the tenant dashboard" time="0.099315361">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; ignores a non-string state.from" time="0.08866693">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; uses the tenant dashboard when /login was opened directly (no router state)" time="0.097601351">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; keeps the role redirect for a landlord even with a safe state.from" time="0.102345934">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login return after reserve (RB-5) &gt; keeps the role redirect for an admin even with a safe state.from" time="0.106516796">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login required notice (RB-5) &gt; shows the ERS notice when the visitor was sent here by Reservar" time="0.046931273">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login required notice (RB-5) &gt; shows no notice when /login is opened directly" time="0.066501661">
+        </testcase>
+        <testcase classname="src/Components/login.test.tsx" name="Login required notice (RB-5) &gt; shows no notice for a different reason code" time="0.029856432">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/BodegaCard.test.tsx" timestamp="2026-11-20T16:57:48.240Z" hostname="cachyos-x8664" tests="15" failures="0" errors="0" skipped="0" time="1.937985273">
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard delete action &gt; enables the delete action when active_reservations_count is 0" time="0.64281383">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard delete action &gt; disables the delete action with a padlock tooltip when there are active reservations" time="0.094601873">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard delete action &gt; navigates to the edit route when the Editar action is clicked" time="0.113196074">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard delete action &gt; opens the confirmation modal and sends no request until confirmed" time="0.153050337">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard delete action &gt; dismissing the modal (Cancelar) sends no request" time="0.252488883">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard delete action &gt; confirming deletion calls deleteStoreRoom and notifies onDeleted on 200" time="0.123736783">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard delete action &gt; keeps the storeroom listed and shows the server message on 409" time="0.120095478">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard delete action &gt; shows the server message on 403 without removing the storeroom" time="0.13989301">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard delete action &gt; removes the storeroom from the list on 404 (already deleted)" time="0.127763113">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard publication status &gt; renders the pending status as the &quot;Pendiente&quot; badge" time="0.059596341">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard publication status &gt; renders the approved status as the &quot;Aprobada&quot; badge" time="0.018330726">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard publication status &gt; renders the rejected status as the &quot;Rechazada&quot; badge" time="0.025452033">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard publication status &gt; shows the rejection reason label and the free-text reason for a rejected room" time="0.027705045">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard publication status &gt; shows only the reason label when the free-text reason is null" time="0.015762579">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaCard.test.tsx" name="BodegaCard publication status &gt; shows no rejection reason for a non-rejected room" time="0.017483722">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/BodegaDetalle.test.tsx" timestamp="2026-11-20T16:57:48.243Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="0.576845037">
+        <testcase classname="src/Dashboard/BodegaDetalle.test.tsx" name="BodegaDetalle security contract &gt; renders the storeroom when security arrives as a JSON string" time="0.301187396">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaDetalle.test.tsx" name="BodegaDetalle security contract &gt; lists only the security features flagged true" time="0.1214147">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaDetalle.test.tsx" name="BodegaDetalle security contract &gt; does not list restricted access when `acceso` is false" time="0.049795151">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaDetalle.test.tsx" name="BodegaDetalle security contract &gt; lists restricted access when `acceso` is true" time="0.052836403">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegaDetalle.test.tsx" name="BodegaDetalle security contract &gt; does not crash when security is absent" time="0.041513964">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/BodegasArrendador.test.tsx" timestamp="2026-11-20T16:57:48.245Z" hostname="cachyos-x8664" tests="2" failures="0" errors="0" skipped="0" time="1.521715395">
+        <testcase classname="src/Dashboard/BodegasArrendador.test.tsx" name="BodegasArrendador delete flow &gt; threads active_reservations_count into each BodegaCard so the blocked one is disabled" time="0.955506666">
+        </testcase>
+        <testcase classname="src/Dashboard/BodegasArrendador.test.tsx" name="BodegasArrendador delete flow &gt; removes a storeroom from the list after a confirmed delete (200)" time="0.561586634">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/EditarBodega.test.tsx" timestamp="2026-11-20T16:57:48.245Z" hostname="cachyos-x8664" tests="25" failures="0" errors="0" skipped="0" time="4.640756178">
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega &gt; prefills the form with the current warehouse values" time="0.19644214">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega &gt; blocks the submit and shows a field error when the tarifa is zero (scenario 2)" time="0.701363681">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega &gt; blocks the submit and highlights the title when it is cleared (scenario 2)" time="0.256234692">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega &gt; saves only the changed fields and shows the success message (scenario 1)" time="0.282267887">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega &gt; maps server-side validation errors from a 422 onto the fields" time="0.236193073">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega &gt; renders the informational notice when the response carries one (scenario 3)" time="0.196994501">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega &gt; shows an access message when the prefill request is forbidden" time="0.080423663">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega fire permit replacement &gt; keeps the permit submit disabled until a PDF is chosen" time="0.263677589">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega fire permit replacement &gt; rejects a non-PDF file client-side without calling the API" time="0.121120205">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega fire permit replacement &gt; rejects a PDF over 5 MB client-side" time="0.072306253">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega fire permit replacement &gt; uploads the chosen PDF and shows the server success message" time="0.14702477">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega fire permit replacement &gt; maps a 422 firefighter_permit error under the permit field" time="0.21487342">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega resubmission &gt; does not offer resubmission for a room that is not rejected" time="0.086251213">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega resubmission &gt; resubmits a rejected room, shows the success message and hides the button" time="0.248249897">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega resubmission &gt; shows the server message on 409 and keeps the button" time="0.198181664">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; asks for confirmation before saving a material change on an approved room" time="0.125862218">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; also asks for confirmation when only the description changes" time="0.175708117">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; also asks for confirmation when only the size changes" time="0.110432727">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; also asks for confirmation when only the price changes" time="0.116002193">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; does not save when the gestor declines the confirmation" time="0.104765671">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; skips the confirmation when only the disponibility changes" time="0.101048866">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; skips the confirmation for a pending room" time="0.12804">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; skips the confirmation for a rejected room" time="0.123539122">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; shows the review notice, treats the room as pending and stops asking again" time="0.18869138">
+        </testcase>
+        <testcase classname="src/Dashboard/EditarBodega.test.tsx" name="EditarBodega re-review warning &gt; does not show a review notice when the response does not flag one" time="0.155380014">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Mensajes.test.tsx" timestamp="2026-11-20T16:57:48.250Z" hostname="cachyos-x8664" tests="7" failures="0" errors="0" skipped="0" time="0.684086585">
+        <testcase classname="src/Dashboard/Mensajes.test.tsx" name="Mensajes &gt; opens the conversation once for a valid numeric userId query param" time="0.322572005">
+        </testcase>
+        <testcase classname="src/Dashboard/Mensajes.test.tsx" name="Mensajes &gt; does not call startConversation when userId is missing" time="0.053553465">
+        </testcase>
+        <testcase classname="src/Dashboard/Mensajes.test.tsx" name="Mensajes &gt; does not call startConversation for an invalid userId=abc, and clears the param" time="0.051775526">
+        </testcase>
+        <testcase classname="src/Dashboard/Mensajes.test.tsx" name="Mensajes &gt; does not call startConversation for an invalid userId=0, and clears the param" time="0.069395955">
+        </testcase>
+        <testcase classname="src/Dashboard/Mensajes.test.tsx" name="Mensajes &gt; does not call startConversation for an invalid userId=-5, and clears the param" time="0.04899006">
+        </testcase>
+        <testcase classname="src/Dashboard/Mensajes.test.tsx" name="Mensajes &gt; does not call startConversation for an invalid userId=, and clears the param" time="0.050285405">
+        </testcase>
+        <testcase classname="src/Dashboard/Mensajes.test.tsx" name="Mensajes &gt; still calls startConversation only once under React StrictMode double-invoke" time="0.080957245">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/NotificatiosnDropdown.test.tsx" timestamp="2026-11-20T16:57:48.252Z" hostname="cachyos-x8664" tests="7" failures="0" errors="0" skipped="0" time="1.263101704">
+        <testcase classname="src/Dashboard/NotificatiosnDropdown.test.tsx" name="NotificationsDropdown &gt; renders structured data for a paid-booking notification with full data" time="0.217036665">
+            <system-out>
+Notificaciones: [
+  {
+    id: 1,
+    title: &apos;Bodega reservada y pagada&apos;,
+    body: &apos;Tu bodega fue reservada y el pago quedó confirmado&apos;,
+    type: &apos;reservation_booked_and_paid&apos;,
+    is_read: false,
+    data: {
+      reservation_id: 10,
+      store_room_id: 20,
+      customer_name: &apos;Ana Torres&apos;,
+      store_room_title: &apos;Bodega Norte&apos;,
+      amount: &apos;3000.00&apos;,
+      start_date: &apos;2026-02-01&apos;,
+      end_date: &apos;2026-05-01&apos;
+    }
+  }
+]
+
+            </system-out>
+        </testcase>
+        <testcase classname="src/Dashboard/NotificatiosnDropdown.test.tsx" name="NotificationsDropdown &gt; falls back to the static body for a legacy notification missing structured data" time="0.038015144">
+            <system-out>
+Notificaciones: [
+  {
+    id: 2,
+    title: &apos;Bodega reservada y pagada&apos;,
+    body: &apos;Tu bodega fue reservada y el pago quedó confirmado&apos;,
+    type: &apos;reservation_booked_and_paid&apos;,
+    is_read: true,
+    data: { reservation_id: 11, store_room_id: 21 }
+  }
+]
+
+            </system-out>
+        </testcase>
+        <testcase classname="src/Dashboard/NotificatiosnDropdown.test.tsx" name="NotificationsDropdown &gt; navigates to /arrendador/solicitudes when a paid-booking notification is clicked" time="0.554328396">
+            <system-out>
+Notificaciones: [
+  {
+    id: 1,
+    title: &apos;Bodega reservada y pagada&apos;,
+    body: &apos;Tu bodega fue reservada y el pago quedó confirmado&apos;,
+    type: &apos;reservation_booked_and_paid&apos;,
+    is_read: false,
+    data: {
+      reservation_id: 10,
+      store_room_id: 20,
+      customer_name: &apos;Ana Torres&apos;,
+      store_room_title: &apos;Bodega Norte&apos;,
+      amount: &apos;3000.00&apos;,
+      start_date: &apos;2026-02-01&apos;,
+      end_date: &apos;2026-05-01&apos;
+    }
+  }
+]
+
+            </system-out>
+        </testcase>
+        <testcase classname="src/Dashboard/NotificatiosnDropdown.test.tsx" name="NotificationsDropdown &gt; calls mark-as-read once for an unread notification and not again when already read" time="0.203312443">
+            <system-out>
+Notificaciones: [
+  {
+    id: 1,
+    title: &apos;Bodega reservada y pagada&apos;,
+    body: &apos;Tu bodega fue reservada y el pago quedó confirmado&apos;,
+    type: &apos;reservation_booked_and_paid&apos;,
+    is_read: false,
+    data: {
+      reservation_id: 10,
+      store_room_id: 20,
+      customer_name: &apos;Ana Torres&apos;,
+      store_room_title: &apos;Bodega Norte&apos;,
+      amount: &apos;3000.00&apos;,
+      start_date: &apos;2026-02-01&apos;,
+      end_date: &apos;2026-05-01&apos;
+    }
+  },
+  {
+    id: 2,
+    title: &apos;Bodega reservada y pagada&apos;,
+    body: &apos;Tu bodega fue reservada y el pago quedó confirmado&apos;,
+    type: &apos;reservation_booked_and_paid&apos;,
+    is_read: true,
+    data: { reservation_id: 11, store_room_id: 21 }
+  }
+]
+
+            </system-out>
+        </testcase>
+        <testcase classname="src/Dashboard/NotificatiosnDropdown.test.tsx" name="NotificationsDropdown &gt; renders structured data for an expired-hold notification with full data" time="0.076338222">
+            <system-out>
+Notificaciones: [
+  {
+    id: 3,
+    title: &apos;Reserva expirada&apos;,
+    body: &apos;El cliente no completó el pago a tiempo; la bodega volvió a estar disponible.&apos;,
+    type: &apos;reservation_expired&apos;,
+    is_read: false,
+    data: {
+      reservation_id: 12,
+      store_room_id: 22,
+      customer_name: &apos;Luis Pérez&apos;,
+      store_room_title: &apos;Bodega Sur&apos;,
+      start_date: &apos;2026-03-01&apos;,
+      end_date: &apos;2026-03-10&apos;
+    }
+  }
+]
+
+            </system-out>
+        </testcase>
+        <testcase classname="src/Dashboard/NotificatiosnDropdown.test.tsx" name="NotificationsDropdown &gt; falls back to the static body for an expired-hold notification missing structured data" time="0.020415737">
+            <system-out>
+Notificaciones: [
+  {
+    id: 4,
+    title: &apos;Reserva expirada&apos;,
+    body: &apos;El cliente no completó el pago a tiempo; la bodega volvió a estar disponible.&apos;,
+    type: &apos;reservation_expired&apos;,
+    is_read: true,
+    data: null
+  }
+]
+
+            </system-out>
+        </testcase>
+        <testcase classname="src/Dashboard/NotificatiosnDropdown.test.tsx" name="NotificationsDropdown &gt; navigates to /arrendador/solicitudes when an expired-hold notification is clicked" time="0.148710238">
+            <system-out>
+Notificaciones: [
+  {
+    id: 3,
+    title: &apos;Reserva expirada&apos;,
+    body: &apos;El cliente no completó el pago a tiempo; la bodega volvió a estar disponible.&apos;,
+    type: &apos;reservation_expired&apos;,
+    is_read: false,
+    data: {
+      reservation_id: 12,
+      store_room_id: 22,
+      customer_name: &apos;Luis Pérez&apos;,
+      store_room_title: &apos;Bodega Sur&apos;,
+      start_date: &apos;2026-03-01&apos;,
+      end_date: &apos;2026-03-10&apos;
+    }
+  }
+]
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Reportes.test.tsx" timestamp="2026-11-20T16:57:48.255Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="1.808806463">
+        <testcase classname="src/Dashboard/Reportes.test.tsx" name="Reportes &gt; shows a loading state before the reports arrive" time="0.184291456">
+        </testcase>
+        <testcase classname="src/Dashboard/Reportes.test.tsx" name="Reportes &gt; fetches and renders reports with the mapped estado label" time="0.266406138">
+        </testcase>
+        <testcase classname="src/Dashboard/Reportes.test.tsx" name="Reportes &gt; filters rows by the tipo select" time="1.090128505">
+        </testcase>
+        <testcase classname="src/Dashboard/Reportes.test.tsx" name="Reportes &gt; reiniciar filtros clears an active tipo filter" time="0.184804041">
+        </testcase>
+        <testcase classname="src/Dashboard/Reportes.test.tsx" name="Reportes &gt; logs and stops loading when the fetch fails" time="0.067894636">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/UsuariosAdmin.test.tsx" timestamp="2026-11-20T16:57:48.256Z" hostname="cachyos-x8664" tests="6" failures="0" errors="0" skipped="0" time="4.519417712">
+        <testcase classname="src/Dashboard/UsuariosAdmin.test.tsx" name="UsuariosAdmin &gt; lists users with their state label" time="0.300523659">
+        </testcase>
+        <testcase classname="src/Dashboard/UsuariosAdmin.test.tsx" name="UsuariosAdmin &gt; keeps the block confirm disabled until a non-whitespace reason is typed" time="1.572087445">
+        </testcase>
+        <testcase classname="src/Dashboard/UsuariosAdmin.test.tsx" name="UsuariosAdmin &gt; requires at least 5 characters in the block reason" time="0.437625594">
+        </testcase>
+        <testcase classname="src/Dashboard/UsuariosAdmin.test.tsx" name="UsuariosAdmin &gt; calls blockUser with the typed reason on confirm" time="0.811372769">
+        </testcase>
+        <testcase classname="src/Dashboard/UsuariosAdmin.test.tsx" name="UsuariosAdmin &gt; calls reactivateUser for a blocked user" time="0.493465693">
+        </testcase>
+        <testcase classname="src/Dashboard/UsuariosAdmin.test.tsx" name="UsuariosAdmin &gt; shows a notice when block returns HTTP 409" time="0.864531827">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Routes/Role.test.tsx" timestamp="2026-11-20T16:57:48.257Z" hostname="cachyos-x8664" tests="3" failures="0" errors="0" skipped="0" time="0.187957152">
+        <testcase classname="src/Routes/Role.test.tsx" name="Role guard &gt; renders nothing when there is no authenticated session" time="0.132894703">
+        </testcase>
+        <testcase classname="src/Routes/Role.test.tsx" name="Role guard &gt; keeps a non-admin user out of the guarded content" time="0.033263701">
+        </testcase>
+        <testcase classname="src/Routes/Role.test.tsx" name="Role guard &gt; renders the guarded content for an admin user" time="0.017343772">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/api/errors.test.ts" timestamp="2026-11-20T16:57:48.257Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="0.022237481">
+        <testcase classname="src/api/errors.test.ts" name="asApiError &gt; returns the same object reference for a typical axios error" time="0.006641916">
+        </testcase>
+        <testcase classname="src/api/errors.test.ts" name="asApiError &gt; exposes nested response.data fields via optional chaining" time="0.001404468">
+        </testcase>
+        <testcase classname="src/api/errors.test.ts" name="asApiError &gt; falls back to an empty object for null" time="0.004254764">
+        </testcase>
+        <testcase classname="src/api/errors.test.ts" name="asApiError &gt; falls back to an empty object for undefined" time="0.003214481">
+        </testcase>
+        <testcase classname="src/api/errors.test.ts" name="asApiError &gt; leaves a plain Error object accessible without throwing" time="0.001565037">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/context/AuthContext.test.tsx" timestamp="2026-11-20T16:57:48.258Z" hostname="cachyos-x8664" tests="6" failures="0" errors="0" skipped="0" time="0.418106863">
+        <testcase classname="src/context/AuthContext.test.tsx" name="AuthProvider / useAuth &gt; starts with token/user null when localStorage is empty" time="0.061342931">
+        </testcase>
+        <testcase classname="src/context/AuthContext.test.tsx" name="AuthProvider / useAuth &gt; hydrates initial state from localStorage" time="0.021668246">
+        </testcase>
+        <testcase classname="src/context/AuthContext.test.tsx" name="AuthProvider / useAuth &gt; falls back to null user when auth_user is corrupted JSON" time="0.09512901">
+        </testcase>
+        <testcase classname="src/context/AuthContext.test.tsx" name="AuthProvider / useAuth &gt; login stores token/user in localStorage and updates state" time="0.084260268">
+        </testcase>
+        <testcase classname="src/context/AuthContext.test.tsx" name="AuthProvider / useAuth &gt; logout clears token/user from state and localStorage" time="0.045783014">
+        </testcase>
+        <testcase classname="src/context/AuthContext.test.tsx" name="AuthProvider / useAuth &gt; useAuth throws when used outside AuthProvider" time="0.104456853">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/context/WizardContext.test.tsx" timestamp="2026-11-20T16:57:48.259Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="0.151193148">
+        <testcase classname="src/context/WizardContext.test.tsx" name="WizardProvider / useWizard &gt; starts with empty photos and null permit" time="0.062970237">
+        </testcase>
+        <testcase classname="src/context/WizardContext.test.tsx" name="WizardProvider / useWizard &gt; setPhotos updates the photos state" time="0.031005348">
+        </testcase>
+        <testcase classname="src/context/WizardContext.test.tsx" name="WizardProvider / useWizard &gt; setPermit updates the permit state" time="0.015442651">
+        </testcase>
+        <testcase classname="src/context/WizardContext.test.tsx" name="WizardProvider / useWizard &gt; reset clears photos to [] and permit to null" time="0.015369947">
+        </testcase>
+        <testcase classname="src/context/WizardContext.test.tsx" name="WizardProvider / useWizard &gt; useWizard throws when used outside WizardProvider" time="0.018929295">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/dashboard.test.ts" timestamp="2026-11-20T16:57:48.261Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="0.041153851">
+        <testcase classname="src/services/dashboard.test.ts" name="dashboard service &gt; getDashboardSummary calls GET /dashboard/summary" time="0.020443972">
+        </testcase>
+        <testcase classname="src/services/dashboard.test.ts" name="dashboard service &gt; getDashboardSummary propagates the rejection shape from asApiError" time="0.008936676">
+        </testcase>
+        <testcase classname="src/services/dashboard.test.ts" name="dashboard service &gt; getRecentActivity calls GET /dashboard/activity with the default limit" time="0.003671794">
+        </testcase>
+        <testcase classname="src/services/dashboard.test.ts" name="dashboard service &gt; getRecentActivity forwards a custom limit" time="0.001716988">
+        </testcase>
+        <testcase classname="src/services/dashboard.test.ts" name="dashboard service &gt; getRecentActivity propagates the rejection shape from asApiError" time="0.001397795">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/notifications.test.ts" timestamp="2026-11-20T16:57:48.263Z" hostname="cachyos-x8664" tests="14" failures="0" errors="0" skipped="0" time="0.042473813">
+        <testcase classname="src/services/notifications.test.ts" name="notifications service &gt; getNotifications calls GET /notifications" time="0.016072983">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="notifications service &gt; markNotificationRead posts to /notifications/:id/read" time="0.001558078">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="notifications service &gt; getUnreadNotificationsCount calls GET /notifications-unread-count" time="0.001833288">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasPaidReservationData &gt; returns true when type matches and every required field has the right runtime type" time="0.001812233">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasPaidReservationData &gt; returns true when amount is a number instead of a string" time="0.000852447">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasPaidReservationData &gt; returns false when data is absent (legacy notification row)" time="0.001671891">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasPaidReservationData &gt; returns false when data is missing a required field" time="0.001880068">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasPaidReservationData &gt; returns false when a required field has the wrong runtime type" time="0.003307694">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasPaidReservationData &gt; returns false when the notification type does not match, even with full data" time="0.000703765">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasExpiredReservationData &gt; returns true when type matches and every required field has the right runtime type" time="0.000887094">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasExpiredReservationData &gt; returns false when data is absent" time="0.003803401">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasExpiredReservationData &gt; returns false when data is missing a required field" time="0.00127743">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasExpiredReservationData &gt; returns false when a required field has the wrong runtime type" time="0.000552726">
+        </testcase>
+        <testcase classname="src/services/notifications.test.ts" name="hasExpiredReservationData &gt; returns false when the notification type does not match, even with full data" time="0.000475931">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/reports.test.ts" timestamp="2026-11-20T16:57:48.265Z" hostname="cachyos-x8664" tests="4" failures="0" errors="0" skipped="0" time="0.035276216">
+        <testcase classname="src/services/reports.test.ts" name="reports service &gt; getReports calls GET /reports" time="0.016332907">
+        </testcase>
+        <testcase classname="src/services/reports.test.ts" name="reports service &gt; getReport calls GET /reports/:id" time="0.001568041">
+        </testcase>
+        <testcase classname="src/services/reports.test.ts" name="reports service &gt; createReport posts FormData with multipart headers" time="0.010319975">
+        </testcase>
+        <testcase classname="src/services/reports.test.ts" name="reports service &gt; updateReportStatus patches the given report id with the payload" time="0.001922034">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/reservations.test.ts" timestamp="2026-11-20T16:57:48.266Z" hostname="cachyos-x8664" tests="19" failures="0" errors="0" skipped="0" time="0.033009673">
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getLandlordReservations calls GET /landlord/reservations" time="0.006467983">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getReservedDates calls GET /storeRooms/:id/reserved-dates" time="0.000955194">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; createReservation posts the payload without total_mount to /reservations" time="0.003331496">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; cancelReservation patches the given reservation id with the reason" time="0.001655269">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; cancelReservation resolves on success (200)" time="0.001772423">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; cancelReservation rejects on 409/403/404 the same way axios does" time="0.001131465">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getCancellationRate calls GET /landlord/reservations/cancellation-rate" time="0.000669311">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getCancellationRate rejects when the request fails" time="0.00056834">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; createPayment posts exactly the payment shape to /payments, no card fields" time="0.002331889">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; createPayment resolves with the backend payment shape" time="0.000952921">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getTenantReservations calls GET /tenant/reservations" time="0.000587546">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getTenantReservations resolves with the tenant reservation shape" time="0.000620459">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getCancellationPreview calls GET /tenant/reservations/:id/cancellation-preview" time="0.000512367">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getCancellationPreview resolves with can_be_cancelled and refund_amount" time="0.000569893">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getCancellationPreview rejects with a 409 when the reservation is no longer cancellable" time="0.000826662">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; cancelReservationAsTenant patches /tenant/reservations/:id/cancel with no body" time="0.002416031">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; cancelReservationAsTenant resolves on success (200)" time="0.000804357">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; cancelReservationAsTenant rejects on 409/403/404 the same way axios does" time="0.000882118">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="reservations service &gt; getReservationReceiptPdf GETs the receipt as a blob and returns it" time="0.001387051">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/storeRooms.test.ts" timestamp="2026-11-20T16:57:48.269Z" hostname="cachyos-x8664" tests="21" failures="0" errors="0" skipped="0" time="0.036152971">
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; getStoreRooms calls GET /storeRooms with no params when called without filters" time="0.00748056">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; getStoreRooms passes filters as query params" time="0.001023784">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; getStoreRoomDetail calls GET /store-rooms/:id/detail" time="0.000612709">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; createStoreRoom posts FormData with multipart headers to /storeRooms" time="0.006465013">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; updateStoreRoom puts the payload to /storeRooms/:id" time="0.000579644">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; updateStoreRoom passes through the 200 body including a scenario-3 notice" time="0.000640938">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; updateStoreRoom rejects on 400 (validation error) with the errors map intact" time="0.001427826">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; getStoreRoomsByLandlord calls GET landlords/:id/storeRooms (no leading slash, matches current behavior)" time="0.000595625">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; uploadStoreRoomPhotos posts FormData with multipart headers" time="0.002415852">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; deleteStoreRoom calls DELETE /storeRooms/:id" time="0.000571119">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; deleteStoreRoom resolves on 200" time="0.000722254">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; deleteStoreRoom rejects on 409 (active reservations)" time="0.000347406">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; deleteStoreRoom rejects on 403 (not the owner)" time="0.000279684">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; deleteStoreRoom rejects on 404 (already deleted)" time="0.000239531">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; getPendingStoreRooms calls GET /store-rooms/pending and returns the full dossier shape" time="0.000449526">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; downloadStoreRoomPermit calls GET /store-rooms/:id/permit/download with responseType blob" time="0.000369981">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; StoreRoomDetail types latitude/longitude as nullable and rating/availability as always-present" time="0.000290554">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; replaceStoreRoomPermit posts the PDF as firefighter_permit with multipart headers" time="0.006772603">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; replaceStoreRoomPermit rejects on 422 with the firefighter_permit errors intact" time="0.000883672">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; resubmitStoreRoom posts an empty body to /storeRooms/:id/resubmit" time="0.000523822">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="storeRooms service &gt; resubmitStoreRoom rejects on 409 (room is not rejected)" time="0.000501749">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/users.test.ts" timestamp="2026-11-20T16:57:48.272Z" hostname="cachyos-x8664" tests="4" failures="0" errors="0" skipped="0" time="0.028628213">
+        <testcase classname="src/services/users.test.ts" name="users service &gt; getUsers calls GET /user" time="0.01298837">
+        </testcase>
+        <testcase classname="src/services/users.test.ts" name="users service &gt; registerUser posts to /user with the payload" time="0.002204946">
+        </testcase>
+        <testcase classname="src/services/users.test.ts" name="users service &gt; blockUser patches /user/:id/block with the reason in the body" time="0.002125453">
+        </testcase>
+        <testcase classname="src/services/users.test.ts" name="users service &gt; reactivateUser patches /user/:id/reactivate with no body" time="0.005121777">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/cities.test.ts" timestamp="2026-11-20T16:57:48.273Z" hostname="cachyos-x8664" tests="3" failures="0" errors="0" skipped="0" time="0.036163036">
+        <testcase classname="src/utils/cities.test.ts" name="cities &gt; lists the 8 supported cities in catalog order" time="0.018840175">
+        </testcase>
+        <testcase classname="src/utils/cities.test.ts" name="cities &gt; keeps every city center inside Ecuador" time="0.007805833">
+        </testcase>
+        <testcase classname="src/utils/cities.test.ts" name="cities &gt; findCity returns the matching option, and undefined for unknown or empty names" time="0.004156741">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/dates.test.ts" timestamp="2026-11-20T16:57:48.273Z" hostname="cachyos-x8664" tests="7" failures="0" errors="0" skipped="0" time="0.023451079">
+        <testcase classname="src/utils/dates.test.ts" name="toDateOnlyISO &gt; formats a date as YYYY-MM-DD" time="0.013451795">
+        </testcase>
+        <testcase classname="src/utils/dates.test.ts" name="toDateOnlyISO &gt; pads single-digit month and day" time="0.000963176">
+        </testcase>
+        <testcase classname="src/utils/dates.test.ts" name="isDateBetween &gt; returns true when target is inside the range (inclusive bounds)" time="0.001079272">
+        </testcase>
+        <testcase classname="src/utils/dates.test.ts" name="isDateBetween &gt; returns false when target is outside the range" time="0.000867717">
+        </testcase>
+        <testcase classname="src/utils/dates.test.ts" name="monthsBetween &gt; rounds total days between two dates divided by 30" time="0.000912512">
+        </testcase>
+        <testcase classname="src/utils/dates.test.ts" name="monthsBetween &gt; floors to at least 1 month for a range shorter than half a month" time="0.000677259">
+        </testcase>
+        <testcase classname="src/utils/dates.test.ts" name="monthsBetween &gt; rounds to the nearest month, not always down" time="0.000866124">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/money.test.ts" timestamp="2026-11-20T16:57:48.275Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="0.033338762">
+        <testcase classname="src/utils/money.test.ts" name="formatUSD &gt; formats with comma thousands separators (en-US), not periods (es-EC)" time="0.028282116">
+        </testcase>
+        <testcase classname="src/utils/money.test.ts" name="formatUSD &gt; accepts a numeric string" time="0.000699213">
+        </testcase>
+        <testcase classname="src/utils/money.test.ts" name="formatUSD &gt; appends &quot; USD&quot; only when suffix is requested" time="0.000780502">
+        </testcase>
+        <testcase classname="src/utils/money.test.ts" name="formatUSD &gt; falls back to $0 for non-numeric input instead of throwing or showing NaN" time="0.000584366">
+        </testcase>
+        <testcase classname="src/utils/money.test.ts" name="formatUSD &gt; formats large amounts with multiple thousand separators" time="0.000613303">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/permitFile.test.ts" timestamp="2026-11-20T16:57:48.276Z" hostname="cachyos-x8664" tests="3" failures="0" errors="0" skipped="0" time="0.029458391">
+        <testcase classname="src/utils/permitFile.test.ts" name="validatePermitFile &gt; accepts a PDF up to the 5 MB limit" time="0.012357555">
+        </testcase>
+        <testcase classname="src/utils/permitFile.test.ts" name="validatePermitFile &gt; rejects a non-PDF file" time="0.00392413">
+        </testcase>
+        <testcase classname="src/utils/permitFile.test.ts" name="validatePermitFile &gt; rejects a PDF over 5 MB" time="0.00375247">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/receiptDownload.test.ts" timestamp="2026-11-20T16:57:48.277Z" hostname="cachyos-x8664" tests="9" failures="0" errors="0" skipped="0" time="0.179017892">
+        <testcase classname="src/utils/receiptDownload.test.ts" name="receiptDownload &gt; receiptFilename builds the filename from the zero-padded reservation code" time="0.021720306">
+        </testcase>
+        <testcase classname="src/utils/receiptDownload.test.ts" name="receiptDownload &gt; saveBlob clicks a download anchor for the object URL and defers the revoke" time="0.100742164">
+        </testcase>
+        <testcase classname="src/utils/receiptDownload.test.ts" name="receiptDownload &gt; downloadReservationReceipt fetches the PDF and saves it under the reservation filename" time="0.011608736">
+        </testcase>
+        <testcase classname="src/utils/receiptDownload.test.ts" name="receiptDownload &gt; downloadReservationReceipt throws the single generic message on 403" time="0.008217047">
+        </testcase>
+        <testcase classname="src/utils/receiptDownload.test.ts" name="receiptDownload &gt; downloadReservationReceipt throws the single generic message on 404" time="0.007241573">
+        </testcase>
+        <testcase classname="src/utils/receiptDownload.test.ts" name="receiptDownload &gt; downloadReservationReceipt throws the single generic message on 409" time="0.003062962">
+        </testcase>
+        <testcase classname="src/utils/receiptDownload.test.ts" name="receiptDownload &gt; downloadReservationReceipt throws the single generic message on 500" time="0.002668388">
+        </testcase>
+        <testcase classname="src/utils/receiptDownload.test.ts" name="receiptDownload &gt; downloadReservationReceipt throws the single generic message on network" time="0.008276781">
+        </testcase>
+        <testcase classname="src/utils/receiptDownload.test.ts" name="receiptDownload &gt; downloadReservationReceipt throws the generic message when saving the file fails" time="0.005555633">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/reservationCode.test.ts" timestamp="2026-11-20T16:57:48.279Z" hostname="cachyos-x8664" tests="3" failures="0" errors="0" skipped="0" time="0.014844836">
+        <testcase classname="src/utils/reservationCode.test.ts" name="formatReservationCode &gt; formats id 42 as LEO-000042" time="0.005363257">
+        </testcase>
+        <testcase classname="src/utils/reservationCode.test.ts" name="formatReservationCode &gt; formats id 204815 as LEO-204815" time="0.002256516">
+        </testcase>
+        <testcase classname="src/utils/reservationCode.test.ts" name="formatReservationCode &gt; formats id 1 as LEO-000001" time="0.002975776">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/reservationEligibility.test.ts" timestamp="2026-11-20T16:57:48.279Z" hostname="cachyos-x8664" tests="16" failures="0" errors="0" skipped="0" time="0.042511112">
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="deriveVigencia &gt; is &quot;activa&quot; when start_date === today (boundary)" time="0.012972662">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="deriveVigencia &gt; is &quot;activa&quot; when end_date === today (boundary)" time="0.002634553">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="deriveVigencia &gt; is &quot;finalizada&quot; when end_date &lt; today" time="0.002050879">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="deriveVigencia &gt; is &quot;futura&quot; when start_date &gt; today" time="0.001202243">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="deriveVigencia &gt; compares lexicographically as strings, never via new Date (no timezone drift)" time="0.006974901">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="isCancellableByGestor &gt; matches the exact server rule: confirmed + paid + strictly future" time="0.002124589">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="isCancellableByGestor &gt; is false when start_date === today (server requires STRICTLY future)" time="0.001110872">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="isCancellableByGestor &gt; is false when not confirmed" time="0.000796867">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="isCancellableByGestor &gt; is false when rent_subtotal is null (unpaid)" time="0.000807717">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="isCancellableByGestor &gt; is false once the reservation already started" time="0.001028325">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="isCancellableByGestor &gt; obeys the server flag when it disagrees with the local derivation" time="0.000780684">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="isCancellableByGestor &gt; falls back to the local rule when the payload carries no server flag" time="0.000795234">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="derivePagoEstado &gt; confirmed -&gt; PAGADO" time="0.00079811">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="derivePagoEstado &gt; pending -&gt; PENDIENTE" time="0.000536758">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="derivePagoEstado &gt; canceled WITH a refund obligation -&gt; REEMBOLSADO" time="0.000492245">
+        </testcase>
+        <testcase classname="src/utils/reservationEligibility.test.ts" name="derivePagoEstado &gt; canceled WITHOUT a refund obligation (auto-blocked, never paid) -&gt; &quot;Sin cobro&quot;" time="0.000394148">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/reservationFlow.test.ts" timestamp="2026-11-20T16:57:48.282Z" hostname="cachyos-x8664" tests="21" failures="0" errors="0" skipped="0" time="0.096308623">
+        <testcase classname="src/utils/reservationFlow.test.ts" name="reservationFlow messages &gt; exposes the exact ERS copy for the overlap and login-required messages" time="0.03067384">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; accepts the internal path /leodega/7" time="0.001310942">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; accepts the internal path /storage" time="0.00105578">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; accepts the internal path /leodega/7?tab=1#cal" time="0.001110272">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects protocol-relative" time="0.001095771">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects absolute https" time="0.000617366">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects javascript scheme" time="0.000680905">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects slash-backslash" time="0.004980889">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects backslash inside" time="0.001928564">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects control character" time="0.003741741">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects tab character" time="0.000753424">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects relative without slash" time="0.00156525">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects empty string" time="0.000787505">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects a non-string value (undefined)" time="0.000492121">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects a non-string value (null)" time="0.002811705">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects a non-string value (number)" time="0.003215894">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="safeReturnPath &gt; rejects a non-string value (object)" time="0.001518577">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="upcomingOccupiedRanges &gt; drops ranges that ended before today and keeps one ending today" time="0.017815672">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="upcomingOccupiedRanges &gt; sorts by start date and returns at most 3 by default" time="0.001086397">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="upcomingOccupiedRanges &gt; honors an explicit limit and does not mutate its input" time="0.000987119">
+        </testcase>
+        <testcase classname="src/utils/reservationFlow.test.ts" name="upcomingOccupiedRanges &gt; returns an empty list when every range is in the past" time="0.00077187">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/reservationVigencia.test.ts" timestamp="2026-11-20T16:57:48.285Z" hostname="cachyos-x8664" tests="4" failures="0" errors="0" skipped="0" time="0.022618622">
+        <testcase classname="src/utils/reservationVigencia.test.ts" name="deriveTenantTab &gt; a canceled reservation is always cancelada, regardless of dates" time="0.006694456">
+        </testcase>
+        <testcase classname="src/utils/reservationVigencia.test.ts" name="deriveTenantTab &gt; a confirmed reservation whose end_date already passed is finalizada" time="0.001058727">
+        </testcase>
+        <testcase classname="src/utils/reservationVigencia.test.ts" name="deriveTenantTab &gt; a confirmed reservation whose end_date is today or later is activa" time="0.001224015">
+        </testcase>
+        <testcase classname="src/utils/reservationVigencia.test.ts" name="deriveTenantTab &gt; a pending reservation is always activa, even if end_date is in the past" time="0.001373625">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/security.test.ts" timestamp="2026-11-20T16:57:48.285Z" hostname="cachyos-x8664" tests="9" failures="0" errors="0" skipped="0" time="0.171389758">
+        <testcase classname="src/utils/security.test.ts" name="parseSecurityFeatures &gt; resolves all four keys to true when the JSON has all of them true" time="0.022091951">
+        </testcase>
+        <testcase classname="src/utils/security.test.ts" name="parseSecurityFeatures &gt; resolves a mix of true/false keys individually" time="0.028967218">
+        </testcase>
+        <testcase classname="src/utils/security.test.ts" name="parseSecurityFeatures &gt; resolves all false when the raw value is undefined" time="0.010654864">
+        </testcase>
+        <testcase classname="src/utils/security.test.ts" name="parseSecurityFeatures &gt; resolves all false when the raw value is null" time="0.003028034">
+        </testcase>
+        <testcase classname="src/utils/security.test.ts" name="parseSecurityFeatures &gt; resolves all false when the raw value is an empty string" time="0.033216376">
+        </testcase>
+        <testcase classname="src/utils/security.test.ts" name="parseSecurityFeatures &gt; resolves all false without throwing when the raw value is malformed JSON" time="0.034258609">
+        </testcase>
+        <testcase classname="src/utils/security.test.ts" name="parseSecurityFeatures &gt; resolves all false when the raw value parses to a non-object shape" time="0.002058647">
+        </testcase>
+        <testcase classname="src/utils/security.test.ts" name="parseSecurityFeatures &gt; never uses the legacy `objetos` key" time="0.00802539">
+        </testcase>
+        <testcase classname="src/utils/security.test.ts" name="parseSecurityFeatures &gt; labels acceso as restricted access" time="0.008095917">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/utils/storeRoomLabels.test.ts" timestamp="2026-11-20T16:57:48.287Z" hostname="cachyos-x8664" tests="2" failures="0" errors="0" skipped="0" time="0.006228368">
+        <testcase classname="src/utils/storeRoomLabels.test.ts" name="storeRoomLabels &gt; labels every publication status in Spanish" time="0.003518503">
+        </testcase>
+        <testcase classname="src/utils/storeRoomLabels.test.ts" name="storeRoomLabels &gt; labels every rejection reason code with the moderation copy" time="0.000660508">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" timestamp="2026-11-20T16:57:48.287Z" hostname="cachyos-x8664" tests="10" failures="0" errors="0" skipped="0" time="2.037673001">
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; computes the penalty from the fetched rate and shows the cost breakdown" time="0.214292362">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; blocks confirmation and shows no fabricated number when the rate fetch fails" time="0.402065833">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; highlights the reason field and does not submit when the reason is under 10 characters" time="0.243244062">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; highlights the acceptance checkbox and does not submit when it is unchecked" time="0.13727874">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; clears the acceptance checkbox highlight once it is checked" time="0.187253226">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; clears the reason field highlight once a valid reason is entered" time="0.148282114">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; on success calls onCancelled with the updated reservation and closes" time="0.261056332">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; shows the server message on 409 without closing or mutating local state" time="0.131048864">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; shows the server message on 403 without closing or mutating local state" time="0.196422861">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/CancelarReservaModal.test.tsx" name="CancelarReservaModal &gt; shows the server message on 404 without closing or mutating local state" time="0.111935526">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/GestorReservas/GestorReservas.test.tsx" timestamp="2026-11-20T16:57:48.289Z" hostname="cachyos-x8664" tests="12" failures="0" errors="0" skipped="0" time="3.08759674">
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; renders all four PAGO labels" time="0.469203769">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; shows the store room name from the API `store_rooms` relation, not the &quot;Bodega&quot; fallback" time="0.729979216">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; computes KPI tiles (Reservas/Activas/Futuras/Cobrado) excluding cancelled from Cobrado" time="0.138247129">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; &quot;↺ Reiniciar&quot; clears every filter and restores the full list" time="0.235133171">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; swaps to an in-page detail view on row click, no route change" time="0.180439081">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; &quot;Mensaje al cliente&quot; navigates to the tenant conversation when tenants.user.id is present" time="0.225533039">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; &quot;Mensaje al cliente&quot; is disabled and does not navigate when tenants.user.id is absent" time="0.116337177">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; shows &quot;Descargar comprobante&quot; only for reservations that were actually paid" time="0.123654841">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; opens the payment receipt with the reservation and client data" time="0.185001207">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; shows the cancel button only for the eligible reservation (confirmed, paid, strictly future)" time="0.219717531">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; hides the cancel button when the server says the reservation is not cancellable" time="0.142868708">
+        </testcase>
+        <testcase classname="src/Dashboard/GestorReservas/GestorReservas.test.tsx" name="GestorReservas &gt; removes the cancel button once the reservation has been cancelled" time="0.310140094">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Moderacion/MiniMap.test.tsx" timestamp="2026-11-20T16:57:48.291Z" hostname="cachyos-x8664" tests="4" failures="0" errors="0" skipped="0" time="0.199397344">
+        <testcase classname="src/Dashboard/Moderacion/MiniMap.test.tsx" name="MiniMap &gt; renders the map when both coordinates are present" time="0.163557562">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/MiniMap.test.tsx" name="MiniMap &gt; renders nothing when latitude is null" time="0.005294753">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/MiniMap.test.tsx" name="MiniMap &gt; renders nothing when longitude is null" time="0.01323384">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/MiniMap.test.tsx" name="MiniMap &gt; renders nothing when both coordinates are null" time="0.009617115">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" timestamp="2026-11-20T16:57:48.291Z" hostname="cachyos-x8664" tests="17" failures="0" errors="0" skipped="0" time="4.789340211">
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin &gt; shows a loading state, then every dossier expanded from the single queue response" time="1.078380135">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin &gt; renders the empty state on a bare 200 [] response, not an error" time="0.02798972">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin &gt; renders an error state with retry when the queue fetch fails" time="0.08925931">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin &gt; renders declared and not-declared security features, room_type, storage_type and history" time="0.189662392">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin &gt; hides the map and falls back to direction/city text when coordinates are null" time="0.09875234">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin &gt; opens the permit download when clicked" time="0.129508279">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin &gt; states plainly when no permit is attached, with no download control" time="0.135571312">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — decision flows &gt; sends publication_status approved with no waiver field when the permit is attached" time="0.399935271">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — decision flows &gt; keeps confirm disabled without the permit until the waiver is checked, then sends the flag" time="0.395452929">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — decision flows &gt; keeps the reject confirm disabled for otro without a comment, enabled once typed" time="0.348049454">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — decision flows &gt; sends a non-otro reason with no comment required" time="0.423503787">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — decision flows &gt; keeps the dialog open with an inline error on a 422, without dropping the listing" time="0.445997421">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — decision flows &gt; refetches the queue exactly once after a successful decision" time="0.343803779">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — photo minimum &gt; warns but keeps approve enabled with two photos" time="0.164902509">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — photo minimum &gt; warns but keeps approve enabled with no photos" time="0.118676708">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — photo minimum &gt; shows no warning with three photos" time="0.081020409">
+        </testcase>
+        <testcase classname="src/Dashboard/Moderacion/ModeracionAdmin.test.tsx" name="ModeracionAdmin — photo minimum &gt; surfaces the server message when approval is refused for missing photos" time="0.310986854">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Resumen/ResumenAdmin.test.tsx" timestamp="2026-11-20T16:57:48.299Z" hostname="cachyos-x8664" tests="7" failures="0" errors="0" skipped="0" time="0.555716309">
+        <testcase classname="src/Dashboard/Resumen/ResumenAdmin.test.tsx" name="ResumenAdmin &gt; shows a loading indicator while the summary request is in flight" time="0.132805861">
+        </testcase>
+        <testcase classname="src/Dashboard/Resumen/ResumenAdmin.test.tsx" name="ResumenAdmin &gt; renders the five metric cards with correct values, including accounts total+blocked" time="0.115138972">
+        </testcase>
+        <testcase classname="src/Dashboard/Resumen/ResumenAdmin.test.tsx" name="ResumenAdmin &gt; renders all-zero metrics normally, not as an error" time="0.042983426">
+        </testcase>
+        <testcase classname="src/Dashboard/Resumen/ResumenAdmin.test.tsx" name="ResumenAdmin &gt; shows an error message with retry on summary fetch failure, and retry re-issues the request" time="0.094275609">
+        </testcase>
+        <testcase classname="src/Dashboard/Resumen/ResumenAdmin.test.tsx" name="ResumenAdmin &gt; renders the activity list in order" time="0.044709883">
+        </testcase>
+        <testcase classname="src/Dashboard/Resumen/ResumenAdmin.test.tsx" name="ResumenAdmin &gt; shows an empty-state message when activity is empty" time="0.049326312">
+        </testcase>
+        <testcase classname="src/Dashboard/Resumen/ResumenAdmin.test.tsx" name="ResumenAdmin &gt; does not blank the metric cards when the activity fetch fails" time="0.065024063">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Pages/Components/PreguntaInicio3.test.tsx" timestamp="2026-11-20T16:57:48.300Z" hostname="cachyos-x8664" tests="3" failures="0" errors="0" skipped="0" time="1.516601393">
+        <testcase classname="src/Pages/Components/PreguntaInicio3.test.tsx" name="PreguntaInicio3 &gt; renders the photos step" time="0.244832309">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio3.test.tsx" name="PreguntaInicio3 &gt; gates &quot;Siguiente&quot; until at least three photos are added" time="1.05775596">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio3.test.tsx" name="PreguntaInicio3 &gt; clicking next stores File[] in context without writing base64 to localStorage" time="0.207094145">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Pages/Components/PreguntaInicio4.test.tsx" timestamp="2026-11-20T16:57:48.301Z" hostname="cachyos-x8664" tests="1" failures="0" errors="0" skipped="0" time="0.214437135">
+        <testcase classname="src/Pages/Components/PreguntaInicio4.test.tsx" name="PreguntaInicio4 — geographical_zone absent from saved location &gt; saves location data WITHOUT a geographical_zone key" time="0.206541702">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Pages/Components/PreguntaInicio6.test.tsx" timestamp="2026-11-20T16:57:48.302Z" hostname="cachyos-x8664" tests="5" failures="0" errors="0" skipped="0" time="0.333626936">
+        <testcase classname="src/Pages/Components/PreguntaInicio6.test.tsx" name="PreguntaInicio6 — price and size gate &gt; enables Next when both price and size are positive" time="0.181783358">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio6.test.tsx" name="PreguntaInicio6 — price and size gate &gt; keeps Next disabled while both fields are empty" time="0.021592265">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio6.test.tsx" name="PreguntaInicio6 — price and size gate &gt; keeps Next disabled when the size is zero" time="0.061548906">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio6.test.tsx" name="PreguntaInicio6 — price and size gate &gt; keeps Next disabled when the price is zero" time="0.035542484">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio6.test.tsx" name="PreguntaInicio6 — price and size gate &gt; keeps Next disabled when the price is only filled and the size is empty" time="0.02898691">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Pages/Components/PreguntaInicio7.test.tsx" timestamp="2026-11-20T16:57:48.303Z" hostname="cachyos-x8664" tests="20" failures="0" errors="0" skipped="0" time="5.115921263">
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — submit gate and permit requirement &gt; submit is DISABLED when permit is null (no policy selected either)" time="0.134258414">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — submit gate and permit requirement &gt; submit is DISABLED when permit is null even if policy is selected" time="0.550567082">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — submit gate and permit requirement &gt; submit is DISABLED when permit is set but no policy is selected" time="0.046588808">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — submit gate and permit requirement &gt; submit is ENABLED when both permit and policy are provided" time="0.085020911">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — submit gate and permit requirement &gt; rejects a non-PDF permit and never stores it in the wizard" time="0.070727573">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — submit gate and permit requirement &gt; rejects a permit larger than 5 MB" time="0.071936494">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — submit gate and permit requirement &gt; submit sends ONE multipart registration request (with the permit) then uploads photos separately" time="0.289577219">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — no zero fallbacks for size and price &gt; alerts and sends no request when size is zero" time="0.138083924">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — no zero fallbacks for size and price &gt; alerts and sends no request when price is zero" time="0.099860413">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — no zero fallbacks for size and price &gt; alerts and sends no request when size is an empty string" time="0.111940785">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — no zero fallbacks for size and price &gt; alerts and sends no request when price is an empty string" time="0.181436306">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — no zero fallbacks for size and price &gt; alerts and sends no request when the price step data is missing" time="0.138412349">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — no zero fallbacks for size and price &gt; sends the entered size and price without any fallback" time="0.145842634">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — security features payload &gt; renders the fourth security feature as restricted 24/7 access" time="0.033247854">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — security features payload &gt; writes the fourth feature under the `acceso` key, never the legacy `objetos` key" time="0.223011305">
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — photo upload failure and retry &gt; keeps the wizard and offers retry when the photo upload fails" time="0.275459618">
+            <system-err>
+Error subiendo fotos Error: network
+    at submitWithPhotoFailure (/tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:368:44)
+    at /tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:395:33
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithCancel (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithTimeout (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — photo upload failure and retry &gt; retries only the photo upload against the created room and then finishes" time="1.799782459">
+            <system-err>
+Error subiendo fotos Error: network
+    at submitWithPhotoFailure (/tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:368:44)
+    at /tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:406:39
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithCancel (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithTimeout (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — photo upload failure and retry &gt; keeps offering retry when the retry fails again" time="0.341902764">
+            <system-err>
+Error subiendo fotos Error: network
+    at submitWithPhotoFailure (/tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:368:44)
+    at /tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:422:39
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithCancel (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithTimeout (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)
+
+Error subiendo fotos Error: still down
+    at /tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:423:44
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — photo upload failure and retry &gt; sends the gestor back to their rooms from the failure notice" time="0.202056959">
+            <system-err>
+Error subiendo fotos Error: network
+    at submitWithPhotoFailure (/tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:368:44)
+    at /tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:438:28
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithCancel (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithTimeout (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/Pages/Components/PreguntaInicio7.test.tsx" name="PreguntaInicio7 — photo upload failure and retry &gt; never creates a second room when Enviar is pressed again after the failure" time="0.169563237">
+            <system-err>
+Error subiendo fotos Error: network
+    at submitWithPhotoFailure (/tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:368:44)
+    at /tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/src/Pages/Components/PreguntaInicio7.test.tsx:446:28
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithCancel (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)
+    at file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20
+    at new Promise (&lt;anonymous&gt;)
+    at runWithTimeout (file:///tmp/claude-1000/-home-geovanny-Projects-DocumentoLeodega-DocumentacionLeodegaIS2/a66237a6-56f0-4de3-ac07-5aa4453bb01d/scratchpad/s1/repo/frontend/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)
+
+            </system-err>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Tendant/CancelarReservaTenantModal.test.tsx" timestamp="2026-11-20T16:57:48.307Z" hostname="cachyos-x8664" tests="8" failures="0" errors="0" skipped="0" time="1.556867768">
+        <testcase classname="src/Dashboard/Tendant/CancelarReservaTenantModal.test.tsx" name="CancelarReservaTenantModal &gt; shows the verbatim prototype copy: title, body with title/code, and both buttons" time="0.713361996">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/CancelarReservaTenantModal.test.tsx" name="CancelarReservaTenantModal &gt; fetches the refund preview on mount and shows the amount, enabling confirm" time="0.085109474">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/CancelarReservaTenantModal.test.tsx" name="CancelarReservaTenantModal &gt; shows an inline error and keeps confirm disabled when the preview call fails generically" time="0.101468396">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/CancelarReservaTenantModal.test.tsx" name="CancelarReservaTenantModal &gt; shows a stale-reservation message and does not enable confirm when preview returns 409" time="0.14380645">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/CancelarReservaTenantModal.test.tsx" name="CancelarReservaTenantModal &gt; confirm success calls onCancelled with the recorded refund amount and closes" time="0.133857042">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/CancelarReservaTenantModal.test.tsx" name="CancelarReservaTenantModal &gt; confirm 409 shows the stale message and offers Actualizar, no blind retry" time="0.174929687">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/CancelarReservaTenantModal.test.tsx" name="CancelarReservaTenantModal &gt; confirm 403 shows a generic error and keeps the modal open" time="0.10908989">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/CancelarReservaTenantModal.test.tsx" name="CancelarReservaTenantModal &gt; confirm 404 closes the modal and triggers a refresh, without a blind retry" time="0.087416975">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Tendant/ComprobanteReservaModal.test.tsx" timestamp="2026-11-20T16:57:48.308Z" hostname="cachyos-x8664" tests="8" failures="0" errors="0" skipped="0" time="1.620638122">
+        <testcase classname="src/Dashboard/Tendant/ComprobanteReservaModal.test.tsx" name="ComprobanteReservaModal &gt; renders every receipt field, printing paid_at_label verbatim" time="0.950015277">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ComprobanteReservaModal.test.tsx" name="ComprobanteReservaModal &gt; does not reformat the label from the raw timestamp" time="0.036090302">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ComprobanteReservaModal.test.tsx" name="ComprobanteReservaModal &gt; shows an em dash when the gestor is unknown" time="0.032528691">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ComprobanteReservaModal.test.tsx" name="ComprobanteReservaModal &gt; omits the payment method row when there is no method" time="0.034269836">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ComprobanteReservaModal.test.tsx" name="ComprobanteReservaModal &gt; renders nothing when the reservation has no receipt" time="0.011438505">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ComprobanteReservaModal.test.tsx" name="ComprobanteReservaModal &gt; downloads the PDF for the reservation id, with a disabled in-flight state and no toast" time="0.324097124">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ComprobanteReservaModal.test.tsx" name="ComprobanteReservaModal &gt; shows the generic error on failure, stays open, and allows a retry" time="0.190211157">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ComprobanteReservaModal.test.tsx" name="ComprobanteReservaModal &gt; Cerrar calls onClose" time="0.036728901">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Tendant/MisReservas.test.tsx" timestamp="2026-11-20T16:57:48.309Z" hostname="cachyos-x8664" tests="7" failures="0" errors="0" skipped="0" time="2.168192535">
+        <testcase classname="src/Dashboard/Tendant/MisReservas.test.tsx" name="MisReservas &gt; shows a loading state while the list request is in flight" time="0.137326052">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/MisReservas.test.tsx" name="MisReservas &gt; shows an error with a retry action when the list fetch fails, without rendering stale/partial data" time="0.76192194">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/MisReservas.test.tsx" name="MisReservas &gt; renders three tabs with count badges and filters the list" time="0.41938454">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/MisReservas.test.tsx" name="MisReservas &gt; shows the empty-tab state when a tab has zero reservations" time="0.110825732">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/MisReservas.test.tsx" name="MisReservas &gt; opens the cancel modal when a card cancel button is clicked" time="0.136841182">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/MisReservas.test.tsx" name="MisReservas &gt; opens the receipt modal for the clicked reservation and closes it" time="0.468743083">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/MisReservas.test.tsx" name="MisReservas &gt; keeps the cancel flow working on a card that also has a receipt" time="0.128709303">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Tendant/ReservationCard.test.tsx" timestamp="2026-11-20T16:57:48.311Z" hostname="cachyos-x8664" tests="16" failures="0" errors="0" skipped="0" time="1.668663087">
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; renders thumbnail, title, direction/city/size line, and stat row" time="0.647679604">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; does not render a cancel button when can_be_cancelled is false" time="0.039490046">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; renders a &quot;Cancelar reserva&quot; button when can_be_cancelled is true" time="0.09286587">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; renders the status badge for each state" time="0.080025533">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; shows the recorded refund amount for a canceled reservation" time="0.026324415">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; does not show a refund row for a non-canceled reservation" time="0.035291018">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; renders a map pin icon on the direction/city/size line" time="0.112358982">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; renders a close icon on the cancel button when can_be_cancelled is true" time="0.165501198">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; renders a placeholder thumbnail when photo_url is absent" time="0.048275373">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; renders the real thumbnail and no placeholder when photo_url is present" time="0.063663808">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; receipt button &gt; shows &quot;Ver comprobante&quot; on an active card with a receipt and passes the reservation on click" time="0.056866647">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; receipt button &gt; shows &quot;Ver comprobante&quot; on a finished card with a receipt" time="0.127917974">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; receipt button &gt; hides &quot;Ver comprobante&quot; for a pending reservation" time="0.022808509">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; receipt button &gt; hides &quot;Ver comprobante&quot; for a canceled after paying reservation" time="0.028406809">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; receipt button &gt; hides &quot;Ver comprobante&quot; for a without the field reservation" time="0.020442902">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/ReservationCard.test.tsx" name="ReservationCard &gt; receipt button &gt; keeps the cancel button independent of the receipt button" time="0.093962588">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/Dashboard/Tendant/Storage.test.tsx" timestamp="2026-11-20T16:57:48.313Z" hostname="cachyos-x8664" tests="17" failures="0" errors="0" skipped="0" time="7.235550341">
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; AC-1: applies min-size/price filters and renders name, monthly price (not store_prices[0]), size, distance and a detail button" time="1.470969717">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; AC-2: a zero-match search shows the empty-state message and a working clear-filters action" time="0.447058417">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; AC-3: the map view renders a marker only for the room with coordinates, with name, monthly price and a detail link" time="0.291436667">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S15: changing the select does not fetch; Buscar fetches exactly once" time="0.358288624">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S16/S20: a city search sends the city with its center and shows the estimated distance" time="0.449374612">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S17/S21: &quot;Todas las ciudades&quot; sends no city, lat or lng and shows no distance" time="0.331554816">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S18: city composes with size and price filters" time="0.583749361">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S23: the initial load shows the search bar and the loading indicator together" time="0.134347396">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S22: the search bar stays mounted and keeps the applied values while searching" time="0.6220648">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S24: a city with no rooms shows the empty-state message and a clear-filters action" time="0.217698098">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S25: a city plus an unmatched price shows the same empty state" time="0.233407349">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S26: clearing resets the select and inputs and refetches without params" time="0.763584222">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S27: with no filters applied, an empty catalog shows the message without a clear action" time="0.141368287">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; F7: a slower earlier response never overwrites the latest search result" time="0.488547988">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; F7: a stale response does not clear the loading state of the newer request" time="0.309967591">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; city filter &gt; S28: only approved rooms render, each with title, monthly price, size and a detail button" time="0.153713084">
+        </testcase>
+        <testcase classname="src/Dashboard/Tendant/Storage.test.tsx" name="Storage (catalog container) &gt; keeps the existing rating widget and &quot;Ver bodega&quot; navigation intact and additive" time="0.218661642">
+        </testcase>
+    </testsuite>
+</testsuites>
