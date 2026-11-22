@@ -1,0 +1,70 @@
+% Component diagram, drawn from the code at tag sprint2-deploy (9b8427d).
+\begin{tikzpicture}[
+    font=\scriptsize,
+    comp/.style={draw=blue!50!black, fill=blue!6, rounded corners=2pt, align=center,
+                 minimum height=0.95cm, inner sep=3pt},
+    store/.style={draw=gray!60!black, fill=gray!10, align=center, inner sep=3pt},
+    pkg/.style={draw=gray!70, dashed, rounded corners=4pt, inner sep=7pt},
+    pkglabel/.style={font=\scriptsize\bfseries, anchor=south west, inner sep=1pt},
+    arr/.style={-{Stealth[length=2mm]}, thick, gray!60!black},
+    use/.style={-{Stealth[length=2mm]}, dashed, gray!60!black},
+  ]
+
+  % ---- Web client ----
+  \node[comp, text width=3.0cm] (wui)  at (-6.0, 0.0) {UI pages and role dashboards\\\texttt{Pages/}, \texttt{Dashboard/}};
+  \node[comp, text width=3.0cm] (wctx) at (-2.4, 0.0) {Auth and active-context providers\\\texttt{context/}};
+  \node[comp, text width=3.0cm] (wgrd) at (-6.0,-1.3) {Route guards\\\texttt{Routes/}};
+  \node[comp, text width=3.0cm] (wapi) at (-2.4,-1.3) {API client\\\texttt{api/axios.ts}, \texttt{services/}};
+  \node[pkg, fit=(wui)(wctx)(wgrd)(wapi)] (web) {};
+  \node[pkglabel] at (web.north west) {Leodega web app (\texttt{frontend/}): React 19, TS, Vite};
+
+  % ---- Leodeguita ----
+  \node[comp, text width=3.0cm] (mui)  at ( 2.4, 0.0) {Mobile screens\\\texttt{screens/}};
+  \node[comp, text width=3.0cm] (mctx) at ( 6.0, 0.0) {Auth and active-organization providers};
+  \node[comp, text width=3.0cm] (mgrd) at ( 2.4,-1.3) {Routes and role guards\\\texttt{routes/}};
+  \node[comp, text width=3.0cm] (mapi) at ( 6.0,-1.3) {API client\\\texttt{api/}, \texttt{services/}};
+  \node[pkg, fit=(mui)(mctx)(mgrd)(mapi)] (mob) {};
+  \node[pkglabel] at (mob.north west) {Leodeguita (\texttt{leodeguita/}): installable PWA};
+
+  % ---- REST interface ----
+  \node[circle, draw, thick, fill=white, minimum size=0.32cm, inner sep=0] (rest) at (0,-2.55) {};
+  \node[right=0.15cm of rest, align=left] {\textbf{REST API} \texttt{/api}\\JSON over HTTPS, Sanctum Bearer token};
+  \draw[use] (wapi.south) |- (rest.west);
+  \draw[use] (mapi.south) |- (rest.east);
+
+  % ---- Backend ----
+  \node[comp, text width=4.0cm] (route) at (-5.4,-4.45) {Routing\\\texttt{routes/api.php}};
+  \node[comp, text width=4.0cm] (mw)    at ( 0.0,-4.45) {Middleware\\\texttt{ApiAuthenticate}, \texttt{EnsureUserHasRole}, \texttt{ResolveActiveOrganization}, \texttt{SetLocale}, CORS};
+  \node[comp, text width=4.0cm] (ctrl)  at ( 5.4,-4.45) {32 controllers (\texttt{ApiController} base)\\Form Requests and Policies};
+  \node[comp, text width=15.0cm, minimum height=1.25cm] (svc) at (0,-6.0)
+    {\textbf{Application services} (\texttt{app/Services}, 23 classes)\\
+     Warehouses, fire permits and moderation \textperiodcentered{}
+     Reservations, pricing and simulated payment \textperiodcentered{}
+     Organizations, invitations, panel, history and wallet\\
+     Account moderation \textperiodcentered{} Dashboard \textperiodcentered{}
+     Notifications, reports and ratings};
+  \node[comp, text width=4.0cm] (model) at (-5.4,-7.75) {Eloquent models (25)\\\texttt{app/Models}};
+  \node[comp, text width=4.0cm] (notif) at ( 0.0,-7.75) {Mail notifications and PDF receipts (DomPDF)};
+  \node[comp, text width=4.0cm] (fsad)  at ( 5.4,-7.75) {Storage adapter\\(\texttt{Storage} facade)};
+  \node[pkg, fit=(route)(mw)(ctrl)(svc)(model)(notif)(fsad)] (be) {};
+  \node[pkglabel, anchor=south east] at (be.north east) {Backend API (\texttt{backend/}) -- Laravel 12, PHP 8.2};
+
+  \draw[arr] (rest.south) -- ++(0,-0.3) -| (route.north);
+  \draw[arr] (route) -- (mw);
+  \draw[arr] (mw) -- (ctrl);
+  \draw[arr] (ctrl.south) -- (ctrl.south |- svc.north);
+  \draw[arr] (model.north |- svc.south) -- (model.north);
+  \draw[arr] (notif.north |- svc.south) -- (notif.north);
+  \draw[arr] (fsad.north |- svc.south) -- (fsad.north);
+
+  % ---- Data stores ----
+  \node[store, cylinder, shape border rotate=90, aspect=0.18, minimum height=1.1cm, text width=3.6cm] (db) at (-5.4,-9.85)
+    {Relational database\\PostgreSQL (production)\\SQLite (local and CI)};
+  \node[store, text width=3.6cm, minimum height=1.0cm] (fs) at (5.4,-9.85)
+    {File storage (\texttt{storage/app})\\photos and fire permits};
+  \node[store, text width=3.6cm, minimum height=1.0cm] (mail) at (0,-9.85)
+    {Laravel Mail\\(\texttt{log} driver in this phase)};
+  \draw[arr] (model) -- (db);
+  \draw[arr] (fsad) -- (fs);
+  \draw[arr] (notif) -- (mail);
+\end{tikzpicture}

@@ -1,0 +1,54 @@
+% Deployment diagram, drawn from the deploy/sprint2 branch (tag sprint2-deploy, 9b8427d)
+% and Annex B.
+\begin{tikzpicture}[
+    font=\scriptsize,
+    dev/.style={draw=black!70, fill=yellow!8, align=center, inner sep=4pt, minimum height=1.25cm, text width=3.3cm},
+    art/.style={draw=blue!50!black, fill=blue!6, rounded corners=2pt, align=center, inner sep=3pt, minimum height=1.1cm, text width=3.1cm},
+    region/.style={draw=gray!70, thick, rounded corners=6pt, inner sep=8pt},
+    rlabel/.style={font=\scriptsize\bfseries, anchor=south west, inner sep=1pt},
+    link/.style={-{Stealth[length=2mm]}, thick, gray!60!black},
+    dep/.style={-{Stealth[length=2mm]}, dashed, gray!60!black},
+    lbl/.style={fill=white, inner sep=1pt, font=\tiny, align=center},
+  ]
+
+  % ---- Vercel (left) ----
+  \node[art] (vfe) at (-5.2, 0.0)
+    {\guillemotleft static site\guillemotright\\Project \texttt{frontend}\\Vite build, \texttt{vercel.json}};
+  \node[art] (vmo) at (-5.2,-2.8)
+    {\guillemotleft static site\guillemotright\\Project \texttt{leodeguita}\\Vite build, service worker};
+  \node[region, fit=(vfe)(vmo)] (vercel) {};
+  \node[rlabel] at (vercel.north west) {\guillemotleft cloud\guillemotright{} Vercel (CDN)};
+
+  % ---- User devices (middle) ----
+  \node[dev] (pc) at (-0.4, 0.0)
+    {\guillemotleft device\guillemotright\\\textbf{Desktop browser}\\Leodega web SPA};
+  \node[dev] (phone) at (-0.4,-2.8)
+    {\guillemotleft device\guillemotright\\\textbf{Mobile phone}\\Leodeguita PWA (installable)};
+
+  % ---- Railway (right) ----
+  \node[art] (api) at (5.0,-1.4)
+    {\guillemotleft container\guillemotright\\\textbf{API service}\\\texttt{Dockerfile} (\texttt{php:8.2-cli})\\\texttt{php artisan serve}, port 8080\\health check \texttt{/up}};
+  \node[art] (vol) at (8.8,-1.4)
+    {\guillemotleft volume\guillemotright\\\texttt{/app/storage/app}\\photos and fire permits};
+  \node[art, cylinder, shape border rotate=90, aspect=0.15, minimum height=1.3cm] (pg) at (5.0,-4.3)
+    {\guillemotleft database service\guillemotright\\\textbf{PostgreSQL}};
+  \node[art] (pre) at (8.8,-4.3)
+    {Pre-deploy command\\\texttt{php artisan migrate -{}-force}};
+  \node[region, fit=(api)(vol)(pg)(pre)] (railway) {};
+  \node[rlabel] at (railway.north west) {\guillemotleft cloud\guillemotright{} Railway project};
+
+  % ---- GitHub (bottom) ----
+  \node[dev, fill=gray!8] (gh) at (-0.4,-6.4)
+    {\guillemotleft repository\guillemotright\\\textbf{GitHub} \texttt{Darwin4050E/Leodega}\\branches \texttt{deploy/sprint1}, \texttt{deploy/sprint2}};
+
+  % ---- Links ----
+  \draw[link] (pc) -- node[lbl, above=1pt] {HTTPS:\\static files} (vfe);
+  \draw[link] (phone) -- node[lbl, above=1pt] {HTTPS:\\static files} (vmo);
+  \draw[link] (pc.east) -- (api.west);
+  \draw[link] (phone.east) -- (api.west);
+  \node[lbl, font=\scriptsize] at (1.95,-1.4) {REST/JSON over HTTPS\\Sanctum Bearer token};
+  \draw[link] (api) -- node[lbl, right=2pt] {SQL over TCP\\(\texttt{DB\_URL})} (pg);
+  \draw[link] (api) -- node[lbl, above=1pt] {mount} (vol);
+  \draw[dep] (gh.west) -| node[lbl, pos=0.25, above=1pt] {builds on push} (vercel.south);
+  \draw[dep] (gh.east) -| node[lbl, pos=0.25, above=1pt] {builds on push} (railway.south);
+\end{tikzpicture}

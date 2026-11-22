@@ -3,24 +3,59 @@
 
 \subsection{Client and Problem}
 
+The client is \ClientName{}, who acts as the Product Owner.
+In Guayaquil, people and businesses that need to store goods or inventory find storage space through informal deals.
+They get no guarantee about the safety of the place or its legal compliance.
+At the same time, owners of warehouses with idle space have no formal channel to offer and manage it.
+Leodega is a two-sided marketplace that connects both groups: managers publish warehouses, an administrator verifies them, and clients search for them and book them.
+The agreed scope is recorded in the Project Scope Document, signed on 2026-10-04 (Section~\ref{sec:client}).
+
 \subsection{System Scope}
+
+The system has one backend and two clients: the Leodega web app and Leodeguita, its mobile companion.
+Both clients use the same accounts, data and business rules.
+The MVP covers:
+\begin{itemize}
+  \item warehouse registration with a fire department permit, plus editing and deletion;
+  \item administrator review of each warehouse before it is published;
+  \item catalog search with filters and a map, and booking with date conflict detection;
+  \item organizations with members, invitations, a personal/organization context selector and bookings made for the organization;
+  \item later sprints: chat, incident reports, ratings, external inventory integration and an administrator dashboard.
+\end{itemize}
+Payment is simulated.
+The client first named the Paganini gateway, but another course team builds it and it is not ready, so that integration is postponed to a later phase.
 
 \subsection{User Roles}
 
+\begin{itemize}
+  \item \textbf{Administrator}: approves or rejects warehouses and their fire permits, blocks or reactivates accounts, and resolves reports.
+  \item \textbf{Storage Manager} (\textit{gestor}): publishes and manages warehouses and the bookings made on them.
+  \item \textbf{Client} (\textit{tenant}): searches, books and pays for warehouses. A client can create an organization and act as its \textbf{Organization Administrator}, or join one as a \textbf{member}.
+\end{itemize}
+
 \subsection{Sprint Plan}
+
+Table~\ref{tab:sprint-plan} shows the Sprint Planning for the project.
+Each sprint was planned and tracked in the Jira project \texttt{ES2-1-Leodega}.
+The team works in two pairs, and each pair implements two sprints (Section~\ref{sec:contributions}).
 
 \begin{table}[H]
   \centering
-  \begin{tabularx}{\linewidth}{lllY}
+  \begin{tabularx}{\linewidth}{lllL{2.3cm}Y}
     \toprule
-    Sprint & Start & End & Goal \\
+    Sprint & Start & End & Implemented by & Goal \\
     \midrule
-    1 & & & \\
-    2 & & & \\
-    3 & & & \\
-    4 & & & \\
+    1 & 2026-10-01 & 2026-10-21 & Darwin Díaz, Geovanny Díaz & Shared web/mobile login (Leodeguita); register, edit, delete and moderate warehouses; catalog search and booking with simulated payment; booking management by the manager. \\
+    2 & 2026-10-22 & 2026-11-13 & Darwin Díaz, Geovanny Díaz & Multi-company operation: create organizations, invite members, switch contexts and book on behalf of the organization. \\
+    3 & 2026-11-23 & 2026-12-13 & Carla Gutierrez, Joao Dorado & Client--manager communication (pre-booking questions and active booking chat), incident reports and ratings. \\
+    4 & 2026-12-14 & 2027-01-08 & Carla Gutierrez, Joao Dorado & External inventory integration (connection, mapping and display), Excel import and administrator metrics dashboard. \\
     \bottomrule
   \end{tabularx}
   \caption{Four-sprint plan. This report covers Sprints 1 and 2.}
   \label{tab:sprint-plan}
 \end{table}
+
+The repository history does not follow these dates exactly.
+The code delivered as Sprint~1 (tag \texttt{sprint1-deploy}) is built on commit \sha{ca1799a} of 2026-10-04, and its feature commits start on 2026-09-01.
+The Sprint~2 commits date from 2026-10-05 to 2026-11-04.
+For this reason, this report identifies the delivered version of each sprint by its tag and commit SHA, not by calendar dates (Table~\ref{tab:deployed-versions}).
