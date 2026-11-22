@@ -10,6 +10,9 @@
 \newcommand{\sha}[1]{\texttt{#1}}
 \newcommand{\evid}[1]{\texttt{#1}}
 \newcommand{\story}[1]{\texttt{#1}}
+% Name of an automated test method; allows line breaks at underscores.
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\_}
+\newcommand{\testref}[1]{{\small\nolinkurl{#1}}}
 
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}

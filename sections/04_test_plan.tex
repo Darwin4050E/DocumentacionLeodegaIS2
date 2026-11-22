@@ -1,53 +1,477 @@
 \section{Risk-Based Test Plan}
 \label{sec:test-plan}
 
-\subsection{Risk Matrix}
+Testing effort in Sprints 1 and 2 was distributed according to product risk rather than evenly
+across user stories. The starting point is the risk matrix produced in Software Engineering I,
+which was reviewed against the stories actually planned for these sprints. This section defines
+the risk scale, the rule used to prioritize testing, the scope, the test levels and tools, the
+traceability from each story to its test cases, and the metrics and stopping criterion used to
+decide when testing was sufficient. Execution results are reported in
+Section~\ref{sec:test-execution}.
+
+The plan covers the 24 user stories committed in the Sprint Planning: 16 in Sprint 1
+(1--21 October 2026), whose goal was shared web/mobile login and the basic warehouse,
+moderation, search, booking and simulated payment flows, and 8 in Sprint 2
+(22 October -- 13 November 2026), whose goal was multi-company operation: organizations,
+member invitations, context switching and reservations on behalf of an organization.
+
+\subsection{Risk Scale}
+
+The scale is the one defined in the Software I risk management plan and is reused without
+changes. Each user story is rated on two dimensions, each on a five-point scale:
+
+\begin{itemize}[nosep]
+  \item \textbf{Probability} that the story fails or is implemented incorrectly:
+        1 Rare (1--20\%), 2 Unlikely (20--40\%), 3 Moderate (40--60\%), 4 Likely (60--80\%),
+        5 Almost certain (80--100\%).
+  \item \textbf{Impact} on the client if the story fails in production:
+        1 Insignificant (minimal effect),
+        2 Minor (may not affect client satisfaction, budget, schedule or system performance),
+        3 Significant (potential client dissatisfaction, budget overrun, delay or degraded system),
+        4 Major (significant effect on the client, schedule, budget or performance),
+        5 Severe (severe client dissatisfaction, budget or schedule overrun, or serious
+        degradation of the system).
+\end{itemize}
+
+The \textbf{risk score} is probability $\times$ impact, from 1 to 25. The risk level is read from
+the cell of the $5\times5$ heat map in Table~\ref{tab:risk-heatmap}, not from the score alone:
+for example, a score of 4 is Low when it comes from $2\times2$ but Medium when it comes from
+$4\times1$ or $1\times4$.
 
 \begin{table}[H]
   \centering
-  \begin{tabularx}{\linewidth}{L{2.2cm}L{4cm}L{2.2cm}Y}
+  \small
+  \begin{tabular}{@{}lccccc@{}}
     \toprule
-    Story ID & Risk description & Probability $\times$ impact & Level \\
+    Probability $\downarrow$ / Impact $\rightarrow$
+      & 1 Insignif. & 2 Minor & 3 Signif. & 4 Major & 5 Severe \\
     \midrule
-    & & & \\
+    5 Almost certain & Medium 5   & High 10    & Very high 15 & Extreme 20   & Extreme 25 \\
+    4 Likely         & Medium 4   & Medium 8   & High 12      & Very high 16 & Extreme 20 \\
+    3 Moderate       & Low 3      & Medium 6   & Medium 9     & High 12      & Very high 15 \\
+    2 Unlikely       & Very low 2 & Low 4      & Medium 6     & Medium 8     & High 10 \\
+    1 Rare           & Very low 1 & Very low 2 & Low 3        & Medium 4     & Medium 5 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Risk heat map ($5\times5$), taken from the Software I risk management plan.}
+  \label{tab:risk-heatmap}
+\end{table}
+
+The risk level of a story is its \textbf{test priority}:
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\linewidth}{L{2.4cm}L{5.2cm}Y}
+    \toprule
+    Test priority & Risk level (Table~\ref{tab:risk-heatmap}) & Testing depth \\
+    \midrule
+    High   & High, Very high or Extreme (score $\geq 10$) & Tested in depth at every applicable level. \\
+    Medium & Medium                                        & Main flow plus the most likely negative case. \\
+    Low    & Low or Very low                               & Smoke-tested or deferred. \\
     \bottomrule
   \end{tabularx}
-  \caption{Risk matrix.}
-  \label{tab:risk-matrix}
+  \caption{From risk level to test priority.}
+  \label{tab:risk-scale}
 \end{table}
+
+\subsection{Risk Matrix}
+
+Table~\ref{tab:risk-matrix} lists the stories of Sprints 1 and 2 with the probability and impact
+recorded for them in the Software I risk register (workbook \emph{Gestión de Riesgos --
+Leodega}, sheet \emph{Resumen}). Jira keys refer to the team backlog (project ES2-1-Leodega).
+
+\begin{longtable}{@{}L{1.5cm}L{1.1cm}L{7.0cm}L{0.4cm}L{0.4cm}L{1.0cm}L{1.6cm}@{}}
+  \caption{Risk matrix for Sprints 1 and 2 (P = probability, I = impact).}
+  \label{tab:risk-matrix} \\
+  \toprule
+  Story & Jira & Title & P & I & Score & Level \\
+  \midrule
+  \endfirsthead
+  \toprule
+  Story & Jira & Title & P & I & Score & Level \\
+  \midrule
+  \endhead
+  \multicolumn{7}{@{}l}{\textit{Sprint 1}} \\
+  HUG-04 & ESL-1  & Warehouse registration with fire department permit & 3 & 4 & 12 & High \\
+  HUG-07 & ESL-2  & Storage unit deletion (no active or future reservations) & 2 & 4 & 8 & Medium \\
+  HUG-08 & ESL-3  & Editing warehouse information & 3 & 3 & 9 & Medium \\
+  HUA-01 & ESL-4  & Fire department permit validation & 2 & 5 & 10 & High \\
+  HUA-03 & ESL-5  & User account blocking and reactivation & 2 & 4 & 8 & Medium \\
+  HUL-01 & ESL-6  & Mobile login to Leodeguita with Leodega credentials & 4 & 1 & 4 & Medium \\
+  HUL-03 & ESL-7  & Mobile warehouse publication for review & 4 & 2 & 8 & Medium \\
+  HUL-04 & ESL-8  & List of published warehouses (mobile) & 3 & 1 & 3 & Low \\
+  HUC-01 & ESL-9  & Search, filtering and map view of warehouses & 2 & 3 & 6 & Medium \\
+  HUC-02 & ESL-10 & Warehouse detail view & 2 & 2 & 4 & Low \\
+  HUC-03 & ESL-11 & Warehouse reservation with date conflict detection & 3 & 3 & 9 & Medium \\
+  HUC-05 & ESL-12 & Simulated payment confirmation & 3 & 3 & 9 & Medium \\
+  HUG-02 & ESL-13 & Payment confirmation notification and contract activation & 2 & 3 & 6 & Medium \\
+  HUG-05 & ESL-14 & Reservation list view, filtering and detail & 2 & 2 & 4 & Low \\
+  HUG-06 & ESL-15 & Cancellation of future paid reservations & 2 & 3 & 6 & Medium \\
+  HUL-06 & ESL-16 & Mobile warehouse detail view & 3 & 2 & 6 & Medium \\
+  \midrule
+  \multicolumn{7}{@{}l}{\textit{Sprint 2}} \\
+  HUE-04 & ESL-17 & Organization creation & 2 & 3 & 6 & Medium \\
+  HUE-02 & ESL-18 & Switching between personal / organization context & 3 & 2 & 6 & Medium \\
+  HUE-05 & ESL-19 & Enterprise-level reservation & 4 & 3 & 12 & High \\
+  HUE-06 & ESL-20 & Control over enterprise reservation deletion & 2 & 4 & 8 & Medium \\
+  HUE-01 & ESL-21 & Member invitation to organization & 3 & 2 & 6 & Medium \\
+  HUC-14 & ESL-22 & Acceptance or rejection of organization invitation & 3 & 2 & 6 & Medium \\
+  HUL-02 & ESL-23 & Company selection in Leodeguita & 3 & 1 & 3 & Low \\
+  HUE-03 & ESL-24 & Enterprise management dashboard & 3 & 2 & 6 & Medium \\
+  \bottomrule
+\end{longtable}
+
+Three stories are High priority (HUG-04, HUA-01 and HUE-05), seventeen are Medium and four are
+Low (HUL-04, HUC-02, HUG-05 and HUL-02).
+Notes on the transfer from Software I\@:
+
+\begin{itemize}
+  \item Software I registered two risks for HUG-04 (12 and 8), HUC-03 (9 and 3) and HUL-03
+        (8 and 6); the table uses the higher of the two.
+  \item HUC-01, HUC-02 and HUG-05 have no entry in the Software I risk register; Software I
+        classifies all three as features inherited from the previous platform. They were rated
+        for this plan. Probability is 2 (Unlikely) because their code already existed before
+        Sprint 1. Impact is 3 for HUC-01, because search is the client's way into every
+        reservation, and 2 for HUC-02 and HUG-05, which are read-only views, like the mobile
+        detail view HUL-06 that Software I rated with impact 2.
+\end{itemize}
 
 \subsection{Prioritization Rule}
 
+Testing effort is assigned by test priority (Table~\ref{tab:risk-scale}):
+
+\begin{itemize}
+  \item \textbf{High priority.} Every acceptance criterion has at least one test case. Test cases
+        cover the valid path and the invalid, exceptional and boundary inputs derived with the
+        techniques below. Business rules are covered by unit tests, interactions with the database
+        and API by integration tests, and the flow in the user interface is checked on the
+        deployed system. A
+        high-priority story cannot be marked as accepted while any of its test cases fails.
+  \item \textbf{Medium priority.} The main flow is covered by a functional test and the most
+        likely negative case by one additional test. Unit tests are added where the logic is
+        non-trivial.
+  \item \textbf{Low priority.} Covered by a manual smoke check during the sprint review, or
+        deferred.
+\end{itemize}
+
+The justification is the limited time available in two sprints and the order of attack defined
+in the Software I risk management plan, which deals first with the risks of highest probability
+and impact. Medium- and low-priority stories are tested less because a failure there is either
+unlikely or cheap to detect and fix later. Their test cases keep their identifiers in the
+traceability matrix, so the ones not executed can be scheduled in Sprints 3 and 4.
+
+\subsection{Test Design Techniques}
+\begingroup\sloppy % long test method names
+
+Test inputs are derived with three black-box techniques. The examples below are taken from the
+automated tests of the Leodega repository (\texttt{backend/tests}); the test method that
+implements each case is named so that it can be traced in Section~\ref{sec:test-execution}.
+Cases that are not one of the three scenarios of a story are numbered from \texttt{04} onwards
+(see Section~\ref{sec:tc-ids}).
+
+\paragraph{Decision table (HUA-01, High).} The result of a moderation request depends on whether
+the warehouse has a permit, on the administrator's decision, and on the extra data the decision
+requires. Table~\ref{tab:decision-hua01} lists the rules implemented and tested in
+\texttt{StoreRoomModerationTest}.
+
+\begin{longtable}{@{}L{4.3cm}L{3.7cm}L{2.2cm}L{4.4cm}@{}}
+  \caption{Decision table for HUA-01 (fire department permit validation).}
+  \label{tab:decision-hua01} \\
+  \toprule
+  Conditions & Expected result & Test case & Test method \\
+  \midrule
+  \endfirsthead
+  \toprule
+  Conditions & Expected result & Test case & Test method \\
+  \midrule
+  \endhead
+  Permit attached; approve & Approved, moderation record written, manager notified
+    & TC-HUA-01-01 & \testref{test_approving_creates_moderation_record_and_notifies_landlord} \\
+  Reject with a reason code & Rejected, moderation record written
+    & TC-HUA-01-02 & \testref{test_rejecting_with_reason_creates_moderation_record} \\
+  Reject without a reason code & Rejected request, nothing written
+    & TC-HUA-01-04 & \testref{test_rejecting_requires_a_reason} \\
+  Reject with reason ``otro'' and no comment & Rejected request
+    & TC-HUA-01-05 & \testref{test_rejecting_with_reason_code_otro_requires_a_comment} \\
+  No permit; approve without waiver acknowledgment & Rejected request
+    & TC-HUA-01-06 & \testref{test_approving_a_permitless_room_without_waiver_acknowledgment_fails} \\
+  No permit; approve with waiver acknowledgment & Approved, acknowledgment timestamp recorded
+    & TC-HUA-01-07 & \testref{test_approving_a_permitless_room_with_waiver_acknowledgment_records_the_timestamp} \\
+  \bottomrule
+\end{longtable}
+
+\paragraph{Equivalence partitioning.}
+\begin{itemize}
+  \item \emph{HUE-05 (High).} The organization context of a reservation is sent in a request
+        header. \texttt{ReservationTest} covers one representative of each class: no header,
+        personal reservation (\texttt{TC-HUE-05-03},
+        \testref{test_org_s4_no_header_stays_personal_even_for_a_tenant_with_organizations});
+        header of an organization the client belongs to, organization reservation
+        (\texttt{TC-HUE-05-01},
+        \testref{test_org_s1_admin_reserves_in_org_context_and_the_row_carries_the_organization});
+        header of an organization the client does not belong to, rejected with nothing written
+        (\texttt{TC-HUE-05-04},
+        \testref{test_org_s8_a_non_member_header_is_rejected_and_writes_nothing}); and header of
+        an inactive organization, rejected with no row written (\texttt{TC-HUE-05-05},
+        \testref{test_org_s6_reserving_in_an_inactive_organization_is_rejected_with_no_row_written}).
+  \item \emph{HUG-08 (Medium).} The monthly price has one valid class (positive) and two invalid
+        classes, zero (\texttt{TC-HUG-08-02},
+        \testref{test_zero_price_is_rejected_and_nothing_is_saved}) and negative
+        (\texttt{TC-HUG-08-04}, \testref{test_negative_price_is_rejected}), in
+        \texttt{StoreRoomUpdateTest}.
+\end{itemize}
+
+\paragraph{Boundary value analysis.}
+\begin{itemize}
+  \item \emph{HUC-03 (Medium).} In \texttt{StoreRoomsOverlapTest}, a period that starts exactly on
+        the end date of a confirmed reservation overlaps (\texttt{TC-HUC-03-04},
+        \testref{test_block_starting_exactly_on_reservation_end_date_overlaps}), while one that
+        starts the day after is allowed (\texttt{TC-HUC-03-05},
+        \testref{test_block_starting_the_day_after_reservation_end_date_is_allowed}).
+  \item \emph{HUG-07 (Medium).} In \texttt{StoreRoomDeletionTest}, a confirmed reservation that
+        ends today still blocks the deletion (\texttt{TC-HUG-07-04},
+        \testref{test_deletion_blocked_by_confirmed_reservation_ending_today_boundary}).
+  \item \emph{HUE-04 (Medium).} The RUC must have exactly 13 digits; \texttt{OrganizationTest}
+        rejects a 12-digit (\texttt{TC-HUE-04-04}) and a 14-digit RUC (\texttt{TC-HUE-04-05})
+        through the data provider of
+        \testref{test_invalid_payload_returns_422_with_the_field_message_and_writes_nothing}.
+  \item \emph{HUE-06 (Medium).} The cancellation reason has a minimum length of 10 characters;
+        \texttt{OrganizationReservationCancelReasonTest} rejects 9 characters
+        (\texttt{TC-HUE-06-04},
+        \testref{test_a_reason_of_nine_characters_is_rejected_with_the_min_message}) and accepts
+        exactly 10 (\texttt{TC-HUE-06-05},
+        \testref{test_a_reason_of_exactly_ten_characters_is_accepted_and_stored}).
+\end{itemize}
+\endgroup
+
 \subsection{Scope: What Is and Is Not Tested}
+
+\textbf{In scope:}
+\begin{itemize}[nosep]
+  \item All acceptance criteria of the High-priority stories delivered in Sprints 1 and 2.
+  \item The main flow and key negative case of the Medium-priority stories.
+  \item The web client, the Leodeguita mobile client and the shared REST API\@.
+  \item The simulated payment flow (paid, pending and failed results), which is the only payment
+        mechanism in the MVP\@.
+  \item Authentication and role checks of RNF-03 on the routes used by the stories above:
+        unauthenticated requests and requests from another role are rejected (for example
+        \testref{test_unauthenticated_request_cannot_delete_storeroom} and
+        \testref{test_non_admin_cannot_approve_or_reject_a_store_room}).
+\end{itemize}
+
+\textbf{Out of scope:}
+\begin{itemize}[nosep]
+  \item Low-priority stories beyond a smoke check (listed in Table~\ref{tab:risk-matrix}).
+  \item Stories planned for Sprints 3 and 4 (communication, incidents, ratings, external
+        inventory and the administrative dashboard).
+  \item Real payment gateways. Real payment processing is excluded by the Software I
+        specification (the payment flow of HUC-05 is simulated); no real money, card data,
+        refunds or reconciliation are tested.
+  \item Features kept from the legacy platform and not re-specified as user stories (favorites,
+        session token management and password reset), which the Software I specification also
+        leaves out of scope.
+  \item Performance and scalability (RNF-01, RNF-10). The repository contains no performance or
+        load tests, so these requirements were not verified in Sprints 1 and 2. Neither the
+        project risks (R-01 to R-06) nor the story risks of the Software I register include a
+        performance or scalability risk, so under the prioritization rule they received no test
+        effort in these sprints.
+  \item Tests that depend on PostgreSQL behavior. The automated suite runs on SQLite, which
+        ignores \texttt{SELECT \ldots{} FOR UPDATE} row locks, cannot open two concurrent
+        connections and has no \texttt{ADD CONSTRAINT}. Tests in nine test classes covering
+        wallet and spending-limit locking, concurrent invitation responses and revocations, and
+        database constraints therefore skip themselves on SQLite. They are reported as a
+        limitation in Section~\ref{sec:test-execution}.
+\end{itemize}
 
 \subsection{Test Levels, Tools and Owners}
 
 \begin{table}[H]
   \centering
-  \begin{tabularx}{\linewidth}{L{3.2cm}L{4cm}Y}
+  \begin{tabularx}{\linewidth}{L{3.2cm}L{6.3cm}Y}
     \toprule
     Level & Tools & Owner \\
     \midrule
-    Unit & & \\
-    Integration & & \\
-    Functional / acceptance & & \\
+    Unit & Backend: PHPUnit 11 (\texttt{tests/Unit}). Web and mobile clients: Vitest with
+           React Testing Library. & Geovanny Díaz, Darwin Díaz \\
+    Integration & PHPUnit feature tests (\texttt{tests/Feature}) against the REST API and an
+                  in-memory SQLite database. & Geovanny Díaz, Darwin Díaz \\
+    Functional / acceptance & Manual review of every flow of the web app and Leodeguita, and the
+                              client's acceptance review. Cypress is installed but was not
+                              run. & Carla Gutierrez, Joao Dorado; the client (acceptance) \\
     \bottomrule
   \end{tabularx}
   \caption{Test levels, tools and owners.}
   \label{tab:test-levels}
 \end{table}
 
+Owners of the unit and integration levels are the authors of those tests in the history of the
+Leodega repository. PHPUnit and Vitest run automatically on every push and pull request to
+\texttt{main} and \texttt{develop} through the continuous integration pipeline described in
+Section~\ref{sec:ci}, which was created on 2026-11-04, during Sprint 2; the backend job also
+collects code coverage with PCOV\@. The Sprint 1 suites were therefore run afterwards on the
+deployed Sprint 1 code (Section~\ref{sec:test-execution}).
+
+Cypress is installed as a development dependency of the web client, but it has no npm script and
+is not part of the pipeline. Its five specs (\texttt{auth}, \texttt{bodegas}, \texttt{landing},
+\texttt{login} and \texttt{navigation}) come from the initial commit of the repository and were
+not modified or run in Sprints 1 and 2. Functional checks were therefore manual: Carla Gutierrez
+and Joao Dorado reviewed every flow of the web app and Leodeguita and reported feedback to the
+developers (Section~\ref{sec:contributions}), each story is shown in the deployed applications
+(one screenshot per story in Section~\ref{sec:sprints}), and the client accepted every story on
+2026-11-16. The High-priority cases are also verified by PHPUnit integration tests that call the
+API and check the database.
+
+\subsection{Test Case Identifiers}
+\label{sec:tc-ids}
+
+Test cases are named \texttt{TC-<story>-<nn>}, where \texttt{<story>} is the story ID and
+\texttt{<nn>} is a two-digit number. Numbers \texttt{01} to \texttt{03} correspond to Scenarios 1
+to 3 of the story's acceptance criteria, so \texttt{TC-HUC-03-02} tests Scenario 2 of HUC-03.
+Additional cases derived with the design techniques are numbered from \texttt{04}. The same
+identifiers are used in the traceability matrix, in the execution results of
+Section~\ref{sec:test-execution}, and in the evidence files, so every result can be traced back to
+a story and an acceptance criterion.
+
 \subsection{Traceability Matrix}
 
-\begin{longtable}{@{}L{2.2cm}L{2.4cm}L{6.6cm}L{3cm}@{}}
+Table~\ref{tab:traceability} maps every acceptance criterion of Sprints 1 and 2 to its test case.
+The second column is the test priority from Table~\ref{tab:risk-matrix}; whether a case is
+executed, deferred or smoke-tested follows from it and from the prioritization rule.
+
+\begin{longtable}{@{}L{1.5cm}L{1.5cm}L{8.3cm}L{2.7cm}@{}}
+  \caption{Traceability from user story to test case (S = scenario of the acceptance criteria).}
+  \label{tab:traceability} \\
   \toprule
-  Story ID & Risk level & Acceptance criterion & Test case ID \\
+  Story & Priority & Acceptance criterion & Test case \\
+  \midrule
+  \endfirsthead
+  \toprule
+  Story & Priority & Acceptance criterion & Test case \\
   \midrule
   \endhead
-  & & & \\
+  \multicolumn{4}{@{}l}{\textit{Sprint 1}} \\
+  HUG-04 & High &  S1: Registration with attached permit creates the warehouse as pending verification & TC-HUG-04-01 \\
+         &      & S2: Submission without permit is blocked & TC-HUG-04-02 \\
+         &      & S3: Submission with incomplete required fields is blocked & TC-HUG-04-03 \\
+  HUG-07 & Medium & S1: Warehouse without reservations is deleted from catalog and listings & TC-HUG-07-01 \\
+         &      & S2: Deletion with active or future reservations is blocked & TC-HUG-07-02 \\
+         &      & S3: Warehouse with only past reservations is marked inactive, history kept & TC-HUG-07-03 \\
+         &      & Confirmed reservation ending today blocks the deletion (boundary) & TC-HUG-07-04 \\
+  HUG-08 & Medium & S1: Valid changes are saved and shown in catalog and listings & TC-HUG-08-01 \\
+         &      & S2: Missing or invalid field (e.g.\ zero rate) is rejected & TC-HUG-08-02 \\
+         &      & S3: Changes do not affect existing confirmed reservations & TC-HUG-08-03 \\
+         &      & Negative monthly rate is rejected (equivalence class) & TC-HUG-08-04 \\
+  HUA-01 & High & S1: Approval makes the warehouse visible and notifies the manager & TC-HUA-01-01 \\
+         &      & S2: Rejection requires a reason and keeps the warehouse hidden & TC-HUA-01-02 \\
+         &      & S3: Publication request without permit is blocked & TC-HUA-01-03 \\
+         &      & Rejection without a reason code is refused (decision table) & TC-HUA-01-04 \\
+         &      & Rejection with reason ``otro'' and no comment is refused (decision table) & TC-HUA-01-05 \\
+         &      & Approval without permit and without waiver acknowledgment is refused (decision table) & TC-HUA-01-06 \\
+         &      & Approval without permit with waiver acknowledgment records it (decision table) & TC-HUA-01-07 \\
+  HUA-03 & Medium & S1: Blocking sets status, revokes tokens, logs and notifies & TC-HUA-03-01 \\
+         &      & S2: Blocked user cannot log in, credentials not revealed & TC-HUA-03-02 \\
+         &      & S3: Reactivation restores access and is logged & TC-HUA-03-03 \\
+  HUL-01 & Medium & S1: Mobile login redirects to the role's main screen & TC-HUL-01-01 \\
+         &      & S2: Incorrect credentials are rejected & TC-HUL-01-02 \\
+         &      & S3: Blank fields are highlighted, no authentication attempt & TC-HUL-01-03 \\
+  HUL-03 & Medium & S1: Mobile publication is sent for review and hidden from catalog & TC-HUL-03-01 \\
+         &      & S2: Incomplete required fields are rejected & TC-HUL-03-02 \\
+         &      & S3: Duplicate warehouse name for the same manager is rejected & TC-HUL-03-03 \\
+  HUL-04 & Low  & S1: List shows title, location and status of each warehouse & TC-HUL-04-01 \\
+         &      & S2: Empty state offers to publish a new warehouse & TC-HUL-04-02 \\
+  HUC-01 & Medium & S1: Filters return only matching approved warehouses & TC-HUC-01-01 \\
+         &      & S2: No results shows message and option to clear filters & TC-HUC-01-02 \\
+         &      & S3: Map shows markers with a card linking to the detail & TC-HUC-01-03 \\
+  HUC-02 & Low  & S1: Detail page shows all data; Reserve only if available & TC-HUC-02-01 \\
+         &      & S2: Unavailable warehouse shows ``Currently unavailable'' & TC-HUC-02-02 \\
+         &      & S3: Non-existent warehouse shows error page with link to catalog & TC-HUC-02-03 \\
+  HUC-03 & Medium & S1: Reservation is created as pending payment and holds the dates & TC-HUC-03-01 \\
+         &      & S2: Overlapping dates are rejected without creating a record & TC-HUC-03-02 \\
+         &      & S3: Reserving without session redirects to login and back & TC-HUC-03-03 \\
+         &      & Start on the end date of a confirmed reservation overlaps (boundary) & TC-HUC-03-04 \\
+         &      & Start on the day after a confirmed reservation is allowed (boundary) & TC-HUC-03-05 \\
+  HUC-05 & Medium & S1: Simulated payment confirms the reservation and issues a receipt & TC-HUC-05-01 \\
+         &      & S2: Payment after the hold window is rejected and dates released & TC-HUC-05-02 \\
+         &      & S3: Receipt shows all fields and can be downloaded as PDF & TC-HUC-05-03 \\
+  HUG-02 & Medium & S1: Manager is notified of payment and contract becomes active & TC-HUG-02-01 \\
+         &      & S2: Expired payment window frees the space and notifies the manager & TC-HUG-02-02 \\
+         &      & S3: Active contract is shown with details and chat access & TC-HUG-02-03 \\
+  HUG-05 & Low  & S1: Reservation table lists all reservations of the manager & TC-HUG-05-01 \\
+         &      & S2: Filters by date, status and client narrow the list & TC-HUG-05-02 \\
+         &      & S3: Reservation detail shows client data and receipt & TC-HUG-05-03 \\
+  HUG-06 & Medium & S1: Future paid reservation is cancelled with reason, client notified & TC-HUG-06-01 \\
+         &      & S2: Ongoing or completed reservation cannot be cancelled & TC-HUG-06-02 \\
+         &      & S3: Cancellation without reason is blocked & TC-HUG-06-03 \\
+  HUL-06 & Medium & S1: Complete profile is shown on mobile & TC-HUL-06-01 \\
+         &      & S2: Empty optional fields are omitted without errors & TC-HUL-06-02 \\
+  \midrule
+  \multicolumn{4}{@{}l}{\textit{Sprint 2}} \\
+  HUE-04 & Medium & S1: Organization is created with a valid, unique 13-digit RUC & TC-HUE-04-01 \\
+         &      & S2: Existing RUC is rejected & TC-HUE-04-02 \\
+         &      & S3: Missing required fields are highlighted, nothing created & TC-HUE-04-03 \\
+         &      & 12-digit RUC is rejected (boundary) & TC-HUE-04-04 \\
+         &      & 14-digit RUC is rejected (boundary) & TC-HUE-04-05 \\
+  HUE-02 & Medium & S1: Switching to an organization shows only its data & TC-HUE-02-01 \\
+         &      & S2: Switching back to personal mode restores personal data & TC-HUE-02-02 \\
+         &      & S3: Login with one organization starts in personal mode & TC-HUE-02-03 \\
+  HUE-05 & High & S1: Reservation in organization context belongs to the organization & TC-HUE-05-01 \\
+         &      & S2: Another member sees the reservation and who made it & TC-HUE-05-02 \\
+         &      & S3: Reservation in personal context is personal & TC-HUE-05-03 \\
+         &      & Context of an organization the client does not belong to is rejected (equivalence class) & TC-HUE-05-04 \\
+         &      & Reservation in an inactive organization is rejected (equivalence class) & TC-HUE-05-05 \\
+  HUE-06 & Medium & S1: Delete option is hidden for members & TC-HUE-06-01 \\
+         &      & S2: Organization admin cancels with reason; members notified & TC-HUE-06-02 \\
+         &      & S3: Member request via direct URL returns 403 and is logged & TC-HUE-06-03 \\
+         &      & Reason of 9 characters is rejected (boundary) & TC-HUE-06-04 \\
+         &      & Reason of exactly 10 characters is accepted (boundary) & TC-HUE-06-05 \\
+  HUE-01 & Medium & S1: Invitation to a client is created as pending and notified & TC-HUE-01-01 \\
+         &      & S2: Inviting a storage manager is blocked & TC-HUE-01-02 \\
+         &      & S3: Inviting an existing member is blocked, no duplicate & TC-HUE-01-03 \\
+  HUC-14 & Medium & S1: Accepting links the client and enables the context selector & TC-HUC-14-01 \\
+         &      & S2: Rejecting discards the invitation and notifies the admin & TC-HUC-14-02 \\
+         &      & S3: Responding to an expired invitation is refused and archived & TC-HUC-14-03 \\
+  HUL-02 & Low  & S1: Selecting another company updates the whole view & TC-HUL-02-01 \\
+         &      & S2: Single company is set automatically, selector hidden & TC-HUL-02-02 \\
+         &      & S3: Client without companies goes to the client view & TC-HUL-02-03 \\
+  HUE-03 & Medium & S1: Dashboard shows members, reservations, history and invitations & TC-HUE-03-01 \\
+         &      & S2: Removing a member revokes access and keeps their history & TC-HUE-03-02 \\
+         &      & S3: History lists actions with member and date & TC-HUE-03-03 \\
   \bottomrule
-  \caption{Traceability from user story to test case.}
-  \label{tab:traceability}
 \end{longtable}
 
 \subsection{Metrics and Stopping Criterion}
+
+The following metrics are collected per sprint and reported in Section~\ref{sec:test-execution}:
+
+\begin{itemize}
+  \item \textbf{Execution rate} = executed test cases / planned test cases.
+  \item \textbf{Pass rate} = passed test cases / executed test cases.
+  \item \textbf{High-priority criterion coverage} = acceptance criteria of High-priority stories
+        with at least one passing test case / total acceptance criteria of High-priority stories.
+  \item \textbf{Defects} found, fixed and open, by severity (critical, major, minor).
+  \item \textbf{Code coverage} of the backend suite, measured with PCOV in the CI pipeline
+        (Clover report). It is available from Sprint 2, when the pipeline was created.
+\end{itemize}
+
+The stopping criterion takes its pass-rate thresholds from requirement RNF-09 (Testability) of
+the Software I specification, which asks for a 100\% pass rate of the PHPUnit and Cypress suites
+and for at least one passing test of each critical flow (reservation, report and moderation).
+Testing of a sprint stops when all of the following hold:
+
+\begin{enumerate}
+  \item 100\% of the test cases of High-priority stories have been executed;
+  \item High-priority criterion coverage is 100\%, or the uncovered criteria belong to stories
+        marked as pending in Section~\ref{sec:test-execution};
+  \item there are no open critical or major defects in High-priority stories;
+  \item the automated suites pass at 100\% (RNF-09), with tests skipped on SQLite reported
+        separately; Cypress was not run in these sprints, so this applies to the PHPUnit and
+        Vitest suites;
+  \item the reservation and moderation flows delivered in the sprint have at least one passing
+        test (RNF-09; the report flow belongs to Sprints 3 and 4).
+\end{enumerate}
+
+These thresholds follow from the prioritization rule and from RNF-09: High-priority stories must
+be fully verified before the client accepts the sprint, while some failures in Medium- and
+Low-priority stories are tolerated if they are known, reported and scheduled. Reaching the end of
+the sprint without meeting the criterion is reported explicitly rather than treated as
+completion.
