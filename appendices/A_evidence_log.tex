@@ -1,12 +1,32 @@
 \section{Evidence Log}
 \label{app:evidence}
 
-\begin{longtable}{@{}L{2cm}L{1.3cm}L{4cm}L{2cm}L{2.6cm}L{1.9cm}@{}}
+Original evidence files are stored in the repository folders \nolinkurl{evidence/sprint1/} and \nolinkurl{evidence/sprint2/}.
+Sprint 1 files come from the run on 2026-11-20 at the tag \texttt{sprint1-deploy}, and Sprint 2 files come from CI run \#7.
+
+\begin{longtable}{@{}L{1.9cm}L{1.2cm}L{5cm}L{2.2cm}L{2cm}L{1.4cm}@{}}
   \toprule
-  ID & Sprint & Artifact & Date & Tag / SHA & Report section \\
+  ID & Sprint & Artifact & Date & SHA & Section \\
   \midrule
   \endhead
-  & & & & & \\
+  \evid{EV-S1-01} & 1 & Backend JUnit report & 2026-11-20 & \sha{3bbef9d} &\ref{sec:test-execution} \\
+  \evid{EV-S1-02} & 1 & Frontend JUnit report & 2026-11-20 & \sha{3bbef9d} &\ref{sec:test-execution} \\
+  \evid{EV-S1-03} & 1 & Leodeguita JUnit report & 2026-11-20 & \sha{3bbef9d} &\ref{sec:test-execution} \\
+  \evid{EV-S1-04} & 1 & Frontend JUnit report, first run (1 timeout) & 2026-11-20 & \sha{3bbef9d} &\ref{sec:test-execution} \\
+  \evid{EV-S1-05} & 1 & Backend PHPUnit screenshot & 2026-11-20 & \sha{3bbef9d} &\ref{sec:test-execution} \\
+  \evid{EV-S1-06} & 1 & Frontend Vitest screenshot & 2026-11-20 & \sha{3bbef9d} &\ref{sec:test-execution} \\
+  \evid{EV-S1-07} & 1 & Leodeguita Vitest screenshot & 2026-11-20 & \sha{3bbef9d} &\ref{sec:test-execution} \\
+  \evid{EV-S1-08} & 1 & HUA-01 cases screenshot & 2026-11-20 & \sha{3bbef9d} &\ref{sec:test-execution} \\
+  \evid{EV-S2-01} & 2 & Backend JUnit report & 2026-11-16 & \sha{90dbf81} &\ref{sec:test-execution} \\
+  \evid{EV-S2-02} & 2 & Backend coverage report (Clover) & 2026-11-16 & \sha{90dbf81} &\ref{sec:test-execution} \\
+  \evid{EV-S2-03} & 2 & Frontend JUnit report & 2026-11-16 & \sha{90dbf81} &\ref{sec:test-execution} \\
+  \evid{EV-S2-04} & 2 & Leodeguita JUnit report & 2026-11-16 & \sha{90dbf81} &\ref{sec:test-execution} \\
+  \evid{EV-S2-05} & 2 & Frontend ESLint report & 2026-11-16 & \sha{90dbf81} &\ref{sec:static-analysis} \\
+  \evid{EV-S2-06} & 2 & Leodeguita ESLint report & 2026-11-16 & \sha{90dbf81} &\ref{sec:static-analysis} \\
+  \evid{EV-S2-07} & 2 & Backend PHPUnit screenshot & 2026-11-16 & \sha{90dbf81} &\ref{sec:test-execution} \\
+  \evid{EV-S2-08} & 2 & Frontend Vitest screenshot & 2026-11-16 & \sha{90dbf81} &\ref{sec:test-execution} \\
+  \evid{EV-S2-09} & 2 & Leodeguita Vitest screenshot & 2026-11-16 & \sha{90dbf81} &\ref{sec:test-execution} \\
+  \evid{EV-S2-10} & 2 & HUE-05 cases screenshot & 2026-11-20 & \sha{90dbf81} &\ref{sec:test-execution} \\
   \bottomrule
   \caption{Evidence log.}
   \label{tab:evidence-log}

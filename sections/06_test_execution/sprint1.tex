@@ -1,19 +1,106 @@
 \subsection{Sprint 1 Results}
 \label{sec:results-sprint1}
 
-\begin{longtable}{@{}L{1.5cm}L{1.6cm}L{2.8cm}L{2.8cm}L{1.3cm}L{1.5cm}L{1.8cm}@{}}
+The CI pipeline did not exist during Sprint 1.
+It was created on 2026-11-04, in Sprint 2.
+For this reason the same suites were run on 2026-11-20 on the Sprint 1 code, with the commands of the current pipeline from Section~\ref{sec:ci}.
+
+The code tested is the deployed one: tag \texttt{sprint1-deploy}, commit \sha{3bbef9d}.
+It is the merge of pull request \#44 into \texttt{main} (\sha{ca1799a}, 2026-10-04) plus one deployment-configuration commit.
+It predates the first organization pull request, so it holds only Sprint 1 work.
+Evidence files are \evid{EV-S1-01} to \evid{EV-S1-08}.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\linewidth}{L{3cm}L{2.6cm}L{1.4cm}L{1.4cm}L{1.3cm}L{1.4cm}Y}
+    \toprule
+    Suite & Level & Tests & Passed & Failed & Skipped & Evidence \\
+    \midrule
+    Backend, Unit & Unit & 151 & 151 & 0 & 0 & \evid{EV-S1-01} \\
+    Backend, Feature & Integration & 700 & 700 & 0 & 0 & \evid{EV-S1-01} \\
+    Frontend & Unit, component & 518 & 518 & 0 & 0 & \evid{EV-S1-02} \\
+    Leodeguita & Unit, component & 157 & 157 & 0 & 0 & \evid{EV-S1-03} \\
+    \midrule
+    \textbf{Total} & & \textbf{1526} & \textbf{1526} & \textbf{0} & \textbf{0} & \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Sprint 1 automated tests, final results after the re-test described below.}
+  \label{tab:results-sprint1-automated}
+\end{table}
+
+The backend uses PHPUnit 11.5 and the two frontends use Vitest.
+Coverage was not measured, because that step was added to the pipeline later.
+
+\evidencefigure{tests/sprint1-backend-phpunit.png}{Backend, PHPUnit result. Tag \texttt{sprint1-deploy}, \sha{3bbef9d}, run on 2026-11-20.}{fig:results-sprint1-backend}
+\evidencefigure{tests/sprint1-frontend-vitest.png}{Frontend, Vitest result. Tag \texttt{sprint1-deploy}, \sha{3bbef9d}, run on 2026-11-20.}{fig:results-sprint1-frontend}
+\evidencefigure{tests/sprint1-leodeguita-vitest.png}{Leodeguita, Vitest result. Tag \texttt{sprint1-deploy}, \sha{3bbef9d}, run on 2026-11-20.}{fig:results-sprint1-leodeguita}
+
+\subsubsection*{High-priority test cases}
+
+Case IDs come from the test plan in Section~\ref{sec:test-plan}.
+Integration cases are PHPUnit tests, and their results come from the report \evid{EV-S1-01}.
+Functional cases run on the deployed system.
+
+\begin{longtable}{@{}L{1.9cm}L{1.9cm}L{3.4cm}L{1.7cm}L{1.4cm}L{1.1cm}L{1.9cm}@{}}
   \toprule
   Case ID & Level & Expected & Actual & Result & Defect & Evidence \\
   \midrule
   \endhead
-  & & & & & & \\
+  \multicolumn{7}{@{}l}{\textit{HUA-01, fire department permit validation (High)}} \\
+  TC-HUA-01-01 & Integration & Approved, moderation record written, manager notified & As expected & Pass & --- & \evid{EV-S1-01} \\
+  TC-HUA-01-02 & Integration & Rejection with a reason code is recorded & As expected & Pass & --- & \evid{EV-S1-01} \\
+  TC-HUA-01-03 & Integration & Publication request without permit is blocked & As expected & Pass & --- & \evid{EV-S1-01} \\
+  TC-HUA-01-04 & Integration & Rejection without a reason code is refused & As expected & Pass & --- & \evid{EV-S1-01} \\
+  TC-HUA-01-05 & Integration & Reason ``otro'' without a comment is refused & As expected & Pass & --- & \evid{EV-S1-01} \\
+  TC-HUA-01-06 & Integration & No permit, approval without waiver is refused & As expected & Pass & --- & \evid{EV-S1-01} \\
+  TC-HUA-01-07 & Integration & No permit, approval with waiver records the timestamp & As expected & Pass & --- & \evid{EV-S1-01} \\
+  \midrule
+  \multicolumn{7}{@{}l}{\textit{HUG-04, warehouse registration with permit (High)}} \\
+  TC-HUG-04-01 & Integration & Registration with permit creates the warehouse as pending verification & As expected & Pass & --- & \evid{EV-S1-01} \\
+  TC-HUG-04-02 & Integration & Submission without permit is blocked & As expected & Pass & --- & \evid{EV-S1-01} \\
+  TC-HUG-04-03 & Integration & Submission with incomplete fields is blocked & As expected & Pass & --- & \evid{EV-S1-01} \\
   \bottomrule
-  \caption{Sprint 1 test case results.}
+  \caption{Sprint 1 test cases of High-priority stories.}
   \label{tab:results-sprint1}
 \end{longtable}
 
-\evidencefigure{tests/sprint1-report.png}{Sprint 1 test report.}{fig:results-sprint1}
+All 10 High-priority cases passed.
+They are verified by PHPUnit integration tests, which call the API and check the database.
+No test drives the web interface, so these cases are not end-to-end tests.
+Table~\ref{tab:cases-sprint1} lists the test behind each case that is not in the figure below.
+Cases of Medium and Low priority follow the prioritization rule of Section~\ref{sec:test-plan}.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\linewidth}{L{2.6cm}Y}
+    \toprule
+    Case ID & PHPUnit test \\
+    \midrule
+    TC-HUG-04-01 & \texttt{StoreRoomTest::test\_\allowbreak valid\_\allowbreak permit\_\allowbreak end\_\allowbreak to\_\allowbreak end\_\allowbreak and\_\allowbreak bracket\_\allowbreak notation\_\allowbreak prices} \\
+    TC-HUG-04-02 & \texttt{StoreRoomTest::test\_\allowbreak permit\_\allowbreak missing\_\allowbreak returns\_\allowbreak 400\_\allowbreak with\_\allowbreak exact\_\allowbreak message} \\
+    TC-HUG-04-03 & \texttt{StoreRoomTest::test\_\allowbreak create\_\allowbreak store\_\allowbreak room\_\allowbreak without\_\allowbreak store\_\allowbreak prices\_\allowbreak is\_\allowbreak rejected}, \texttt{StoreRoomTest::test\_\allowbreak missing\_\allowbreak cancellation\_\allowbreak policy\_\allowbreak tier\_\allowbreak returns\_\allowbreak 400} \\
+    TC-HUA-01-03 & Same test as TC-HUG-04-02, seen from the administrator story. \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Tests behind the Sprint 1 cases not shown in the figure.}
+  \label{tab:cases-sprint1}
+\end{table}
+
+\evidencefigure{tests/sprint1-backend-hua01.png}{HUA-01, the six integration cases of the table above (\texttt{TC-HUA-01-01, 02, 04, 05, 06, 07}). Tag \texttt{sprint1-deploy}, \sha{3bbef9d}, run on 2026-11-20.}{fig:results-sprint1-hua01}
 
 \subsubsection*{Summary}
 
+All 1526 tests passed in the final run, with none skipped.
+No defects were recorded.
+
 \subsubsection*{Failures and Re-tests}
+
+Two failures appeared, and both came from the environment, not from the application.
+\begin{itemize}
+  \item On the first attempt, all 157 Leodeguita tests failed because Node 26 has a native \texttt{localStorage} that the tests do not expect.
+  After disabling that feature, they passed on the same commit.
+  \item On the run at \sha{3bbef9d}, one Frontend test, \texttt{LeodegaUI overlap message and server errors (RB-4)}, failed with a timeout of 5000\,ms.
+  The machine was slow in that run, and the suite took 72\,s instead of 36\,s.
+  The complete suite was run again and all 518 tests passed.
+  The report of the failed run is kept as \evid{EV-S1-04}.
+\end{itemize}

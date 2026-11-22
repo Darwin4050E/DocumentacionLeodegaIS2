@@ -127,12 +127,20 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
     }
     .slide:last-child { break-after: auto; page-break-after: auto; }
     .deck-controls { display: none !important; }
+    /* Export shows every slide in its final state: reveals done, build steps revealed */
+    .reveal, .pixels { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .slide[data-steps] .pre { display: none !important; }
+    .slide[data-steps] .post { display: block !important; animation: none !important; }
+    .slide[data-steps] .pill.post { display: inline-block !important; }
+    .progress, .edit-hotzone, .edit-toggle { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.2s !important;
     }
+    .reveal, .pixels { transform: none !important; }
 }
 
 /* ===========================================
@@ -167,6 +175,13 @@ p  { font-size: 32px; line-height: 1.45; }
 .muted { color: var(--text-on-dark-2); }
 .light .muted { color: var(--text-on-light-2); }
 .mono { font-family: var(--font-mono); }
+h1, h2, h3 { text-wrap: balance; }
+p, .kind, .lead { text-wrap: pretty; }
+
+/* Numerals in data align column to column; browser surfaces carry the palette */
+.stat .n, .sp .big .n, .sar .v, .mc .sc, .counter, .foot span, .tr, .stack, .row .spec { font-variant-numeric: tabular-nums; }
+::selection { background: var(--amber); color: var(--ink); }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
 
 /* Footer: deck name + slide counter, inside the stage */
 .foot {
@@ -185,15 +200,15 @@ p  { font-size: 32px; line-height: 1.45; }
 /* ===========================================
    ANIMATION: staggered reveal on the active slide
    =========================================== */
-.reveal { opacity: 0; transform: translateY(34px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
 .slide.visible .reveal { opacity: 1; transform: none; }
-.slide.visible .reveal:nth-child(1) { transition-delay: .05s; }
-.slide.visible .reveal:nth-child(2) { transition-delay: .15s; }
-.slide.visible .reveal:nth-child(3) { transition-delay: .25s; }
-.slide.visible .reveal:nth-child(4) { transition-delay: .35s; }
-.slide.visible .reveal:nth-child(5) { transition-delay: .45s; }
-.slide.visible .reveal:nth-child(6) { transition-delay: .55s; }
-.pixels { opacity: 0; transform: scale(.92) translateY(20px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.slide.visible .reveal:nth-child(1) { transition-delay: .04s; }
+.slide.visible .reveal:nth-child(2) { transition-delay: .11s; }
+.slide.visible .reveal:nth-child(3) { transition-delay: .18s; }
+.slide.visible .reveal:nth-child(4) { transition-delay: .25s; }
+.slide.visible .reveal:nth-child(5) { transition-delay: .32s; }
+.slide.visible .reveal:nth-child(6) { transition-delay: .39s; }
+.pixels { opacity: 0; transform: scale(.92) translateY(20px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
 .slide.visible .pixels { opacity: 1; transform: none; }
 
 /* ===========================================
@@ -235,7 +250,7 @@ p  { font-size: 32px; line-height: 1.45; }
    =========================================== */
 .type-grid { margin-top: 48px; display: grid; grid-template-columns: 640px 1fr; gap: 72px; flex: 1; min-height: 0; }
 .specimen { background: var(--paper); border-radius: 40px; padding: 48px; display: flex; flex-direction: column; justify-content: space-between; color: var(--ink); }
-.specimen .aa { display: inline-block; align-self: flex-start; padding: 0 56px 12px 0; font-family: var(--font-display); font-weight: 800; font-size: 360px; line-height: .9; letter-spacing: -.04em; background: linear-gradient(120deg, var(--violet) 40%, var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.specimen .aa { display: inline-block; align-self: flex-start; padding: 0 56px 12px 0; font-family: var(--font-display); font-weight: 800; font-size: 360px; line-height: .9; letter-spacing: -.04em; color: var(--violet); }
 .specimen .nm { font-family: var(--font-display); font-weight: 700; font-size: 52px; }
 .specimen .ds { font-size: 26px; color: var(--text-on-light-2); line-height: 1.4; margin-top: 8px; }
 .scale { display: flex; flex-direction: column; justify-content: space-between; }
@@ -252,7 +267,7 @@ p  { font-size: 32px; line-height: 1.45; }
    4. SECTION DIVIDER
    =========================================== */
 .divider .frame { justify-content: center; }
-.divider .num { font-family: var(--font-display); font-weight: 800; font-size: 460px; line-height: .85; letter-spacing: -.05em; color: var(--ink); }
+.divider .num { font-family: var(--font-display); font-weight: 800; font-size: 460px; line-height: .85; letter-spacing: -.04em; color: var(--ink); }
 .divider h2 { font-size: 120px; margin-top: 20px; max-width: 1150px; }
 .divider .lead { margin-top: 28px; font-size: 38px; max-width: 1000px; color: rgba(23,10,46,.78); line-height: 1.35; }
 .divider .pixels { right: 96px; bottom: 90px; width: 540px; }
@@ -281,7 +296,7 @@ p  { font-size: 32px; line-height: 1.45; }
 .meta-chips { display: flex; flex-direction: column; gap: 14px; margin-top: auto; }
 .mchip { display: flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: 24px; background: var(--ink-2); border: 2px solid var(--ink-3); padding: 16px 22px; border-radius: 18px; }
 .mchip i { font-style: normal; color: var(--amber); letter-spacing: .12em; text-transform: uppercase; font-size: 18px; min-width: 84px; }
-.window { background: #0d0620; border: 2px solid var(--ink-3); border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 40px 80px -30px rgba(0,0,0,.6), 0 0 0 10px rgba(146,63,251,.12); }
+.window { background: #0d0620; border: 2px solid var(--ink-3); border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 40px 80px -30px rgba(0,0,0,.6); }
 .window .bar { display: flex; align-items: center; gap: 12px; padding: 20px 26px; background: var(--ink-2); border-bottom: 2px solid var(--ink-3); }
 .window .bar i { width: 18px; height: 18px; border-radius: 50%; background: var(--ink-3); }
 .window .bar i:nth-child(1) { background: var(--violet); }
@@ -296,7 +311,7 @@ p  { font-size: 32px; line-height: 1.45; }
 .stats { margin-top: 44px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .stat { background: var(--paper); border-radius: 28px; padding: 30px 34px; box-shadow: 0 16px 40px -24px rgba(79,30,150,.35); }
 .stat .n { font-family: var(--font-display); font-weight: 800; font-size: 104px; letter-spacing: -.03em; line-height: 1; color: var(--violet); }
-.stat.a .n { color: #D98F00; } .stat.p .n { color: var(--pass); } .stat.f .n { color: var(--fail); }
+.stat.a .n { color: #B26F00; } .stat.p .n { color: var(--pass); } .stat.f .n { color: var(--fail); }
 .stat .l { font-family: var(--font-mono); font-size: 20px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-on-light-2); margin-top: 8px; }
 .table { margin-top: 32px; background: var(--paper); border-radius: 28px; overflow: hidden; box-shadow: 0 16px 40px -24px rgba(79,30,150,.35); }
 .tr { display: grid; grid-template-columns: 190px 1fr 260px 190px; align-items: center; padding: 30px 36px; font-size: 30px; border-top: 2px solid var(--lavender); }
@@ -340,7 +355,9 @@ p  { font-size: 32px; line-height: 1.45; }
 [contenteditable="true"] { outline: 2px dashed var(--amber); outline-offset: 6px; }
 .edit-hotzone { position: fixed; top: 0; left: 0; width: 80px; height: 80px; z-index: 10000; cursor: pointer; }
 .edit-toggle { position: fixed; top: 14px; left: 14px; opacity: 0; pointer-events: none; transition: opacity .3s ease; z-index: 10001; background: var(--amber); border: 0; border-radius: 10px; padding: 8px 12px; font: 600 13px var(--font-mono); color: var(--ink); cursor: pointer; }
+.edit-toggle { transition: opacity .3s ease, transform 160ms ease-out; }
 .edit-toggle.show, .edit-toggle.active { opacity: 1; pointer-events: auto; }
+.edit-toggle:active { transform: scale(.97); }
 
 /* ===========================================
    MIDTERM DECK: ADDITIONAL COMPONENTS
@@ -362,7 +379,7 @@ p  { font-size: 32px; line-height: 1.45; }
 .sar .v.ph { justify-self: center; align-self: center; }
 /* Big numbers keep their semantic color and drop the underline */
 .n .ph { color: inherit; border-bottom: 0; }
-.sp.two .big .n .ph { color: #D98F00; }
+.sp.two .big .n .ph { color: #B26F00; }
 
 /* --- WHO IS PRESENTING chip (top-right of every content slide) --- */
 .who { position: absolute; top: 84px; right: var(--pad); display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 20px; letter-spacing: .12em; text-transform: uppercase; padding: 10px 24px; border-radius: 999px; border: 2px solid var(--line); color: var(--t2); z-index: 2; }
@@ -403,7 +420,7 @@ p  { font-size: 32px; line-height: 1.45; }
 .sp p { font-size: 30px; color: var(--t2); }
 .sp .big { margin-top: auto; display: flex; align-items: baseline; gap: 22px; }
 .sp .big .n { font-family: var(--font-display); font-weight: 800; font-size: 150px; line-height: .9; letter-spacing: -.04em; color: var(--violet); }
-.sp.two .big .n { color: #D98F00; }
+.sp.two .big .n { color: #B26F00; }
 .sp .big .l { font-size: 30px; color: var(--t2); line-height: 1.3; }
 .sp .sub { font-family: var(--font-mono); font-size: 22px; letter-spacing: .08em; color: var(--t2); text-transform: uppercase; }
 
@@ -427,6 +444,21 @@ p  { font-size: 32px; line-height: 1.45; }
 .rule .box .row2:first-of-type { border-top: 0; }
 .rule .box .row2 b { font-family: var(--font-mono); font-weight: 500; color: var(--amber); }
 
+/* --- 5x5 heat map (levels from Table 7 of the report) --- */
+.matrix.m5 { grid-template-columns: 56px repeat(5, 1fr); grid-template-rows: repeat(5, 1fr) 52px; gap: 10px; }
+.m5 .mc { padding: 10px 14px; font-size: 20px; border-radius: 16px; align-items: flex-start; }
+.m5 .mc .sc { font-size: 20px; opacity: .75; }
+.m5 .mc.vl { background: #fff; border: 2px solid var(--lavender-2); color: var(--ink); }
+.m5 .mc.l  { background: #F1E8FF; color: var(--ink); }
+.m5 .mc.m  { background: #DCC6FF; color: var(--ink); }
+.m5 .mc.h  { background: var(--violet); color: #fff; }
+.m5 .mc.vh { background: var(--violet-deep); color: #fff; }
+.m5 .mc.ex { background: #3A1B6B; color: #fff; }
+.m5 .mc.h .sc, .m5 .mc.vh .sc, .m5 .mc.ex .sc { opacity: 1; }
+.m5 .mc .id { font-family: var(--font-mono); font-weight: 700; font-size: 20px; background: var(--amber); color: var(--ink); padding: 4px 12px; border-radius: 999px; align-self: flex-start; }
+.m5 .ax { font-size: 22px; }
+.rule .box .row2 { grid-template-columns: 130px 1fr; font-size: 24px; }
+
 /* --- Technique table (dark) --- */
 .tech { margin-top: 44px; display: grid; grid-template-columns: 1fr 520px; gap: 40px; }
 .dtable { background: var(--card); border: 2px solid var(--line); border-radius: 28px; overflow: hidden; }
@@ -440,7 +472,7 @@ p  { font-size: 32px; line-height: 1.45; }
 .case .live { align-self: flex-start; display: flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: 24px; letter-spacing: .16em; text-transform: uppercase; padding: 12px 26px; border-radius: 999px; background: rgba(240,80,110,.16); color: #FF7C93; font-weight: 700; }
 .case .live i { width: 16px; height: 16px; border-radius: 50%; background: var(--fail); animation: pulse 1.4s infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
-.case .tc { font-family: var(--font-display); font-weight: 800; font-size: 200px; line-height: .9; letter-spacing: -.04em; background: linear-gradient(120deg, var(--violet) 30%, var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; padding: 0 20px 14px 0; align-self: flex-start; }
+.case .tc { font-family: var(--font-display); font-weight: 800; font-size: 200px; line-height: .9; letter-spacing: -.04em; color: var(--amber); padding: 0 20px 14px 0; align-self: flex-start; }
 .case .kind { font-size: 34px; color: var(--t2); }
 .case .fields { background: var(--card); border: 2px solid var(--line); border-radius: 36px; padding: 18px 48px; }
 .fld { display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: center; padding: 28px 0; border-top: 2px solid var(--line); font-size: 32px; line-height: 1.35; }
@@ -448,6 +480,16 @@ p  { font-size: 32px; line-height: 1.45; }
 .fld i { font-style: normal; font-family: var(--font-mono); font-size: 20px; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
 .dark .pill.pass { color: #5BE0A0; } .dark .pill.fail { color: #FF7C93; } .dark .pill.pending { color: var(--amber); }
 .pill.lg { font-size: 26px; padding: 12px 30px; }
+
+/* --- Build step (data-steps): .pre is shown first, .post replaces it on reveal --- */
+.slide[data-steps] .fld:nth-last-child(2) { min-height: 146px; } /* Obtained row keeps its height, so the card does not jump on reveal */
+.slide[data-steps] .post { display: none; }
+.slide[data-steps].revealed .pre { display: none; }
+.slide[data-steps].revealed .post { display: block; animation: rise .6s var(--ease); }
+.slide[data-steps].revealed .pill.post { display: inline-block; justify-self: start; }
+.pre:not(.pill) { color: var(--t2); display: flex; align-items: center; gap: 18px; }
+.pre:not(.pill)::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--amber); animation: pulse 1.4s infinite; flex: none; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
 /* --- Static analysis table (light) --- */
 .sa { margin-top: 40px; background: var(--card); border: 2px solid var(--line); border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); }
@@ -502,6 +544,110 @@ p  { font-size: 32px; line-height: 1.45; }
 /* --- Reduced vertical rhythm for light content slides --- */
 .light h2 { color: var(--ink); }
 
+/* ===========================================
+   REDESIGN LAYER
+   Same palette, fonts and pixel-grid identity. Open layouts instead of
+   repeated cards, solid color for the two peaks (sprints), and every
+   content slide fills the stage instead of stopping at 70%.
+   =========================================== */
+.frame > h2.reveal:first-child { margin-top: 0; }
+
+/* Agenda: four open columns, huge numerals */
+.spk { margin-top: 72px; height: auto; flex: 1; min-height: 0; gap: 56px; margin-bottom: 12px; }
+.spk .p { background: none; border: 0; border-top: 3px solid var(--ink-3); border-radius: 0; padding: 36px 0 0; gap: 14px; }
+.spk .p .ord { font-size: 300px; line-height: .8; }
+.spk .p h3 { font-size: 60px; margin-top: 12px; }
+.spk .p p { font-size: 32px; }
+.spk .p .time { font-size: 24px; }
+
+/* Open info columns (context, results) */
+.info3 { margin-top: 64px; gap: 64px; flex: 1; min-height: 0; }
+.dcard { background: none; border: 0; border-top: 3px solid var(--line); border-radius: 0; box-shadow: none; padding: 36px 0 0; min-height: 0; }
+.dcard h3 { font-size: 60px; }
+.dcard p { font-size: 34px; }
+.tech .dcard { background: var(--card); border: 2px solid var(--line); border-radius: 32px; box-shadow: var(--shadow); padding: 44px; }
+.tech .dcard h3 { font-size: 46px; }
+.tech .dcard p { font-size: 30px; }
+
+/* Sprints: the two peaks of the deck, solid brand color */
+.sprints { margin-top: 56px; height: auto; flex: 1; min-height: 0; margin-bottom: 12px; }
+.sp { border: 0; box-shadow: none; padding: 56px 64px; }
+.sp::before { display: none; }
+.sp h3 { font-size: 72px; }
+.sp p { font-size: 34px; }
+.sp .big .n { font-size: 200px; }
+.sp .big .l { font-size: 34px; }
+.sp.one { background: var(--violet); color: #fff; }
+.sp.two { background: var(--amber); color: var(--ink); }
+.sp.one .k, .sp.one p, .sp.one .big .l, .sp.one .sub { color: #fff; }
+.sp.two .k, .sp.two p, .sp.two .big .l, .sp.two .sub { color: rgba(23,10,46,.82); }
+.sp.one .big .n { color: #fff; }
+.sp.two .big .n { color: var(--ink); }
+.sp.one .ph { color: #fff; border-bottom-color: rgba(255,255,255,.75); }
+.sp.two .ph, .sp.two .big .n .ph { color: var(--ink); border-bottom-color: rgba(23,10,46,.6); }
+
+/* Risk, technique: fill the canvas */
+.risk { height: auto; flex: 1; min-height: 0; margin-top: 48px; margin-bottom: 12px; }
+.tech { flex: 1; min-height: 0; margin-top: 56px; margin-bottom: 12px; align-items: stretch; }
+.dtable { display: flex; flex-direction: column; }
+.dtr:not(.th) { flex: 1; padding-top: 0; padding-bottom: 0; font-size: 32px; }
+.dtr .nm { font-size: 44px; }
+
+/* Live cases: the test ID leads, fields fill the height */
+.case { grid-template-columns: 720px 1fr; align-items: stretch; }
+.case .left { justify-content: center; }
+.case .tc { font-size: 230px; white-space: nowrap; }
+.case .fld .ph, .dtr .ph { align-self: center; }
+.info3.ctx .dcard h3 { font-size: 76px; }
+.info3.ctx .dcard p { font-size: 40px; }
+.info3.ctx .dcard .k, .info3.res .dcard .k { font-size: 26px; }
+.info3.res .dcard p { font-size: 40px; }
+.spk .p .ord { font-size: 360px; }
+.case .kind { font-size: 40px; }
+.case .fields { padding: 12px 56px; display: flex; flex-direction: column; }
+.case .fld { grid-template-columns: 220px 1fr; flex: 1; padding: 0; font-size: 34px; }
+.slide[data-steps] .fld:nth-last-child(2) { min-height: 0; }
+.case .fld i { font-size: 22px; }
+
+/* Static analysis: bigger rows, nothing left floating */
+.sa { margin-top: 48px; }
+.sar { height: 112px; font-size: 32px; }
+.sar.g { height: 68px; }
+.sar.s { height: 56px; }
+.sar .tool b { font-size: 42px; }
+.sar .tool em { font-size: 24px; }
+.sar .v { font-size: 38px; }
+
+/* CI: run history takes the leftover height */
+.flow { margin-top: 56px; }
+.job { height: 104px; }
+.run { height: auto; flex: 1; min-height: 0; margin-bottom: 12px; }
+
+/* Results: numerals sit on the slide, no cards */
+.stats { margin-top: 56px; gap: 48px; }
+.stat { background: none; box-shadow: none; border-radius: 0; padding: 28px 0 0; border-top: 3px solid var(--lavender-2); }
+.stat .n { font-size: 144px; }
+.stat .l { font-size: 22px; margin-top: 14px; }
+.stat.p .n { color: #168553; }
+
+
+/* --- Architecture diagrams (drawn from the documented stack) --- */
+.dia { border: 2px solid var(--line); border-radius: 32px; background: rgba(146,63,251,.06); display: flex; flex-direction: column; gap: 14px; padding: 26px 32px 22px; min-height: 0; }
+.dia .t { font-family: var(--font-display); font-weight: 700; font-size: 38px; }
+.dia svg { flex: 1; min-height: 0; width: 100%; }
+.dia .bx { fill: var(--ink-2); stroke: var(--ink-3); stroke-width: 2; }
+.dia .bx.hot { fill: var(--violet); stroke: var(--violet); }
+.dia .gp { fill: none; stroke: var(--ink-3); stroke-width: 2; stroke-dasharray: 8 8; }
+.dia .nt { font-family: var(--font-display); font-weight: 700; font-size: 32px; fill: #fff; }
+.dia .nt.sm { font-size: 26px; }
+.dia .ns { font-family: var(--font-body); font-size: 22px; fill: var(--t2); }
+.dia .bx.hot + .nt, .dia .nt.hot, .dia .ns.hot { fill: #fff; }
+.dia .gt { font-family: var(--font-mono); font-size: 22px; letter-spacing: .12em; text-transform: uppercase; fill: var(--amber); }
+.dia .tg { font-family: var(--font-mono); font-size: 22px; fill: var(--amber); }
+.dia .ln { fill: none; stroke: var(--amber); stroke-width: 3; }
+.dia .ah { fill: var(--amber); }
+.dtr { grid-template-columns: 300px 1fr 1fr; padding-top: 28px; padding-bottom: 28px; }
+.diagrams { height: auto; flex: 1; min-height: 0; margin-bottom: 12px; }
 </style>
 </head>
 <body>
@@ -538,7 +684,6 @@ p  { font-size: 32px; line-height: 1.45; }
     <!-- ============ 2. RUNNING ORDER (Carla) ============ -->
     <section class="slide dark" data-name="Running order">
         <div class="frame">
-            <div class="eyebrow reveal">Agenda</div>
             <h2 class="reveal">Four voices, eight minutes</h2>
             <div class="spk reveal">
                 <div class="p"><div class="ord">1</div><h3>Carla</h3><p>System, architecture and sprint goals</p><div class="time">~2 min</div></div>
@@ -553,19 +698,18 @@ p  { font-size: 32px; line-height: 1.45; }
     <!-- ============ 3. CONTEXT (Carla) ============ -->
     <section class="slide light" data-name="Context">
         <div class="frame">
-            <div class="eyebrow reveal">Context</div>
             <h2 class="reveal">Who it serves and what it solves</h2>
             <span class="who"><b>Carla</b></span>
-            <div class="info3 reveal">
+            <div class="info3 ctx reveal">
                 <div class="dcard"><span class="k">Client</span><h3>Leodega</h3><p>Product Owner: Leonardo Castro. Accepted the Sprint 1 increment on November 16, 2026.</p></div>
-                <div class="dcard"><span class="k">Problem</span><h3><span class="ph">[One-line problem]</span></h3><p><span class="ph">[Who struggles today and why, in one or two sentences]</span></p></div>
-                <div class="dcard"><span class="k">Scope</span><h3><span class="ph">[Web + mobile?]</span></h3><p><span class="ph">[What the system covers: rent, publish, permits, payments&hellip;]</span></p></div>
+                <div class="dcard"><span class="k">Problem</span><h3>Storage is hard to find and rent</h3><p>Owners and renters lack one place to publish, find, reserve and pay for storage space.</p></div>
+                <div class="dcard"><span class="k">Scope</span><h3>Web and mobile web</h3><p>Search and booking, simulated payment, permit validation, warehouse management and company accounts.</p></div>
             </div>
             <div class="roles reveal">
                 <span class="lab">User roles</span>
-                <span class="role"><span class="ph">[Role 1]</span></span>
-                <span class="role"><span class="ph">[Role 2]</span></span>
-                <span class="role"><span class="ph">[Role 3]</span></span>
+                <span class="role">Customer</span>
+                <span class="role">Warehouse manager</span>
+                <span class="role">Administrator</span>
             </div>
         </div>
         <div class="foot"><span>Leodega &middot; Midterm</span><span>03</span></div>
@@ -574,18 +718,39 @@ p  { font-size: 32px; line-height: 1.45; }
     <!-- ============ 4. ARCHITECTURE (Carla) ============ -->
     <section class="slide dark" data-name="Architecture">
         <div class="frame">
-            <div class="eyebrow reveal">Architecture</div>
             <h2 class="reveal">How Leodega is built and deployed</h2>
             <span class="who"><b>Carla</b></span>
             <div class="diagrams reveal">
-                <div class="ph-box"><div class="t">Component diagram</div><div class="s">Drop PNG or SVG here &middot; must match what was built</div></div>
-                <div class="ph-box"><div class="t">Deployment diagram</div><div class="s">Drop PNG or SVG here &middot; include platforms and tags</div></div>
+                <div class="dia"><div class="t">Component diagram</div>
+                    <svg viewBox="0 0 760 390" role="img" aria-label="Components: two React apps call the Laravel API, which uses PostgreSQL and a file volume">
+                        <defs><marker id="ar1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ah"/></marker></defs>
+                        <rect class="bx" x="40" y="20" width="300" height="96" rx="22"/><text class="nt" x="190" y="66" text-anchor="middle">Web app</text><text class="ns" x="190" y="96" text-anchor="middle">React</text>
+                        <rect class="bx" x="420" y="20" width="300" height="96" rx="22"/><text class="nt" x="570" y="66" text-anchor="middle">Leodeguita</text><text class="ns" x="570" y="96" text-anchor="middle">React &#183; mobile web</text>
+                        <rect class="bx hot" x="140" y="166" width="480" height="96" rx="22"/><text class="nt hot" x="380" y="212" text-anchor="middle">Backend API</text><text class="ns hot" x="380" y="242" text-anchor="middle">Laravel &#183; PHP 8.3</text>
+                        <rect class="bx" x="40" y="314" width="300" height="76" rx="22"/><text class="nt" x="190" y="350" text-anchor="middle">PostgreSQL</text><text class="ns" x="190" y="376" text-anchor="middle">Main database</text>
+                        <rect class="bx" x="420" y="314" width="300" height="76" rx="22"/><text class="nt" x="570" y="350" text-anchor="middle">File volume</text><text class="ns" x="570" y="376" text-anchor="middle">Uploaded files</text>
+                        <path class="ln" d="M190 116 L300 166" marker-end="url(#ar1)"/><path class="ln" d="M570 116 L460 166" marker-end="url(#ar1)"/>
+                        <path class="ln" d="M300 262 L190 314" marker-end="url(#ar1)"/><path class="ln" d="M460 262 L570 314" marker-end="url(#ar1)"/>
+                    </svg></div>
+                <div class="dia"><div class="t">Deployment diagram</div>
+                    <svg viewBox="0 0 760 390" role="img" aria-label="Deployment: two React apps on Vercel, the API, PostgreSQL 18 and a volume on Railway">
+                        <defs><marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ah"/></marker></defs>
+                        <rect class="gp" x="10" y="10" width="320" height="270" rx="26"/><text class="gt" x="36" y="50">Vercel</text>
+                        <rect class="bx" x="36" y="70" width="268" height="84" rx="18"/><text class="nt sm" x="170" y="108" text-anchor="middle">leodega-frontend</text><text class="ns" x="170" y="136" text-anchor="middle">Web app</text>
+                        <rect class="bx" x="36" y="172" width="268" height="84" rx="18"/><text class="nt sm" x="170" y="210" text-anchor="middle">leodeguita</text><text class="ns" x="170" y="238" text-anchor="middle">Mobile web</text>
+                        <rect class="gp" x="430" y="10" width="320" height="270" rx="26"/><text class="gt" x="456" y="50">Railway</text>
+                        <rect class="bx hot" x="456" y="64" width="268" height="62" rx="16"/><text class="nt sm hot" x="590" y="103" text-anchor="middle">API &#183; Docker</text>
+                        <rect class="bx" x="456" y="136" width="268" height="62" rx="16"/><text class="nt sm" x="590" y="175" text-anchor="middle">PostgreSQL 18</text>
+                        <rect class="bx" x="456" y="208" width="268" height="62" rx="16"/><text class="nt sm" x="590" y="247" text-anchor="middle">Volume &#183; uploads</text>
+                        <path class="ln" d="M330 145 L430 145" marker-end="url(#ar2)"/><text class="ns" x="380" y="130" text-anchor="middle">HTTPS</text>
+                        <text class="tg" x="10" y="336">sprint1-deploy &#183; 3bbef9d</text><text class="tg" x="10" y="372">sprint2-deploy &#183; 9b8427d</text>
+                    </svg></div>
             </div>
             <div class="stack reveal">
-                <div><i>Frontend</i><span class="ph">[Framework]</span></div>
-                <div><i>Backend</i><span class="ph">[Framework]</span></div>
-                <div><i>Database</i><span class="ph">[Engine]</span></div>
-                <div><i>Deployment</i><span class="ph">[Platforms]</span></div>
+                <div><i>Frontend</i><span>React</span></div>
+                <div><i>Backend</i><span>Laravel &middot; PHP 8.3</span></div>
+                <div><i>Database</i><span>PostgreSQL 18</span></div>
+                <div><i>Deployment</i><span>Vercel &middot; Railway</span></div>
             </div>
         </div>
         <div class="foot"><span>Leodega &middot; Midterm</span><span>04</span></div>
@@ -594,23 +759,22 @@ p  { font-size: 32px; line-height: 1.45; }
     <!-- ============ 5. SPRINT GOALS (Carla) ============ -->
     <section class="slide light" data-name="Sprint goals">
         <div class="frame">
-            <div class="eyebrow reveal">Sprints</div>
             <h2 class="reveal">Two sprints, two increments</h2>
             <span class="who"><b>Carla</b></span>
             <div class="sprints reveal">
-                <div class="sp">
+                <div class="sp one">
                     <span class="k">Sprint 1 &middot; Oct 1 &ndash; Oct 21, 2026</span>
                     <h3>Goal</h3>
-                    <p><span class="ph">[Sprint 1 goal in one sentence]</span></p>
+                    <p>Shared web and mobile login, warehouse management and moderation, and search and booking with simulated payment.</p>
                     <div class="big"><div class="n">16</div><div class="l">user stories<br>accepted</div></div>
                     <div class="sub">0 deferred &middot; 0 rejected</div>
                 </div>
                 <div class="sp two">
-                    <span class="k">Sprint 2 &middot; <span class="ph">[dates]</span></span>
+                    <span class="k">Sprint 2 &middot; Oct 22 &ndash; Nov 13, 2026</span>
                     <h3>Goal</h3>
-                    <p><span class="ph">[Sprint 2 goal in one sentence]</span></p>
-                    <div class="big"><div class="n"><span class="ph">00</span></div><div class="l">user stories<br>accepted</div></div>
-                    <div class="sub"><span class="ph">[00]</span> deferred &middot; <span class="ph">[00]</span> rejected</div>
+                    <p>Multi-company operations: organizations, invitations, context switching and company reservations.</p>
+                    <div class="big"><div class="n">8</div><div class="l">user stories<br>accepted</div></div>
+                    <div class="sub">0 deferred &middot; 0 rejected</div>
                 </div>
             </div>
         </div>
@@ -621,7 +785,6 @@ p  { font-size: 32px; line-height: 1.45; }
     <section class="slide divider amber" data-name="Risk divider">
         <img class="pixels" src="assets/grid.png" alt="">
         <div class="frame">
-            <div class="eyebrow reveal">Test plan</div>
             <div class="num reveal">04</div>
             <h2 class="reveal">Risk-based test plan</h2>
             <p class="lead reveal">Where testing effort goes, and why.</p>
@@ -630,37 +793,60 @@ p  { font-size: 32px; line-height: 1.45; }
         <div class="foot"><span>Leodega &middot; Midterm</span><span>06</span></div>
     </section>
 
-    <!-- ============ 7. RISK MATRIX (Johao) ============ -->
+    <!-- ============ 7. RISK MATRIX (Johao) ============
+         Source: report Section 4.1 to 4.3, Tables 7 to 9. Rows = probability 5..1, columns = impact 1..5.
+         High priority = High, Very high or Extreme (score 10 or more). -->
     <section class="slide light" data-name="Risk matrix">
         <div class="frame">
-            <div class="eyebrow reveal">Risk matrix</div>
             <h2 class="reveal">Where the risk is highest</h2>
             <span class="who"><b>Johao</b></span>
             <div class="risk reveal">
-                <div class="matrix">
-                    <div class="ax">High</div>
-                    <div class="mc m"><span class="sc">3</span><span class="ph">[IDs]</span></div>
-                    <div class="mc h"><span class="sc">6</span><span class="ph">[IDs]</span></div>
-                    <div class="mc h"><span class="sc">9</span><span class="ph">[IDs]</span></div>
-                    <div class="ax">Med</div>
-                    <div class="mc l"><span class="sc">2</span><span class="ph">[IDs]</span></div>
-                    <div class="mc m"><span class="sc">4</span><span class="ph">[IDs]</span></div>
-                    <div class="mc h"><span class="sc">6</span><span class="ph">[IDs]</span></div>
-                    <div class="ax">Low</div>
-                    <div class="mc l"><span class="sc">1</span><span class="ph">[IDs]</span></div>
-                    <div class="mc l"><span class="sc">2</span><span class="ph">[IDs]</span></div>
-                    <div class="mc m"><span class="sc">3</span><span class="ph">[IDs]</span></div>
-                    <div class="ax">I &times; P</div>
-                    <div class="ax">Low</div><div class="ax">Med</div><div class="ax">High</div>
+                <div class="matrix m5">
+                    <div class="ax">5</div>
+                    <div class="mc m"><span class="sc">5</span></div>
+                    <div class="mc h"><span class="sc">10</span></div>
+                    <div class="mc vh"><span class="sc">15</span></div>
+                    <div class="mc ex"><span class="sc">20</span></div>
+                    <div class="mc ex"><span class="sc">25</span></div>
+                    <div class="ax">4</div>
+                    <div class="mc m"><span class="sc">4</span></div>
+                    <div class="mc m"><span class="sc">8</span></div>
+                    <div class="mc h"><span class="sc">12</span><span class="id">HUE-05</span></div>
+                    <div class="mc vh"><span class="sc">16</span></div>
+                    <div class="mc ex"><span class="sc">20</span></div>
+                    <div class="ax">3</div>
+                    <div class="mc l"><span class="sc">3</span></div>
+                    <div class="mc m"><span class="sc">6</span></div>
+                    <div class="mc m"><span class="sc">9</span></div>
+                    <div class="mc h"><span class="sc">12</span><span class="id">HUG-04</span></div>
+                    <div class="mc vh"><span class="sc">15</span></div>
+                    <div class="ax">2</div>
+                    <div class="mc vl"><span class="sc">2</span></div>
+                    <div class="mc l"><span class="sc">4</span></div>
+                    <div class="mc m"><span class="sc">6</span></div>
+                    <div class="mc m"><span class="sc">8</span></div>
+                    <div class="mc h"><span class="sc">10</span><span class="id">HUA-01</span></div>
+                    <div class="ax">1</div>
+                    <div class="mc vl"><span class="sc">1</span></div>
+                    <div class="mc vl"><span class="sc">2</span></div>
+                    <div class="mc l"><span class="sc">3</span></div>
+                    <div class="mc m"><span class="sc">4</span></div>
+                    <div class="mc m"><span class="sc">5</span></div>
+                    <div class="ax"></div>
+                    <div class="ax">1</div>
+                    <div class="ax">2</div>
+                    <div class="ax">3</div>
+                    <div class="ax">4</div>
+                    <div class="ax">5</div>
                 </div>
                 <div class="rule">
-                    <div class="box"><div class="k">Rule</div><p>Probability &times; impact on a 1&ndash;3 scale. High risk when the score is <span class="ph">&ge; [6]</span>. <span class="ph">[Confirm scale reused from Software I]</span></p></div>
-                    <div class="box hot"><div class="k">High-risk stories we test first</div>
-                        <div class="row2"><b class="ph">[HU-ID]</b><span class="ph">[why it is high risk]</span></div>
-                        <div class="row2"><b class="ph">[HU-ID]</b><span class="ph">[why it is high risk]</span></div>
-                        <div class="row2"><b class="ph">[HU-ID]</b><span class="ph">[why it is high risk]</span></div>
+                    <div class="box"><div class="k">Rule</div><p>Rows are probability, columns are impact, each from 1 to 5. A score of 10 or more is high priority.</p></div>
+                    <div class="box hot"><div class="k">High-priority stories</div>
+                        <div class="row2"><b>HUG-04</b><span>Warehouse + fire permit</span></div>
+                        <div class="row2"><b>HUA-01</b><span>Permit validation</span></div>
+                        <div class="row2"><b>HUE-05</b><span>Company reservations</span></div>
                     </div>
-                    <div class="box"><div class="k">Medium and low</div><p><span class="ph">[Tested less or deferred, and the reason]</span></p></div>
+                    <div class="box"><div class="k">Medium and low</div><p>16 medium: main flow plus the most likely error. 2 low: a quick check, or later.</p></div>
                 </div>
             </div>
         </div>
@@ -670,22 +856,22 @@ p  { font-size: 32px; line-height: 1.45; }
     <!-- ============ 8. TEST DESIGN TECHNIQUE (Johao) ============ -->
     <section class="slide dark" data-name="Technique">
         <div class="frame">
-            <div class="eyebrow reveal">Test design technique</div>
             <h2 class="reveal">One technique, applied to a real story</h2>
             <span class="who"><b>Johao</b></span>
             <div class="tech reveal">
                 <div class="dtable">
                     <div class="dtr th"><span>Partition</span><span>Example input</span><span>Expected</span></div>
-                    <div class="dtr"><span class="nm">Valid</span><span class="ph">[input]</span><span class="ph">[expected]</span></div>
-                    <div class="dtr"><span class="nm">Invalid</span><span class="ph">[input]</span><span class="ph">[expected]</span></div>
-                    <div class="dtr"><span class="nm">Boundary</span><span class="ph">[input]</span><span class="ph">[expected]</span></div>
+                    <div class="dtr"><span class="nm">No header</span><span>Reservation without an organization header</span><span>Stays personal</span></div>
+                    <div class="dtr"><span class="nm">Member</span><span>Header of an organization the client belongs to</span><span>Reservation belongs to the organization</span></div>
+                    <div class="dtr"><span class="nm">Not a member</span><span>Header of an organization the client does not belong to</span><span>Request rejected</span></div>
+                    <div class="dtr"><span class="nm">Inactive</span><span>Header of an inactive organization</span><span>Rejected, nothing written</span></div>
                 </div>
                 <div class="dcard" style="min-height:0">
                     <span class="k">Technique</span>
-                    <h3><span class="ph">[Technique name]</span></h3>
-                    <p style="font-size:24px">Pick one: equivalence partitions, boundary values or decision table.</p>
-                    <p>Story: <span class="ph">[HU-ID and name]</span></p>
-                    <p>Why it fits: <span class="ph">[one sentence]</span></p>
+                    <h3>Equivalence partitions</h3>
+                    <p style="font-size:24px">Four groups, one test for each.</p>
+                    <p>Story: HUE-05 &middot; Enterprise-level reservation</p>
+                    <p>Why it fits: the organization arrives in a request header, so every input falls in one of four groups.</p>
                 </div>
             </div>
         </div>
@@ -693,60 +879,87 @@ p  { font-size: 32px; line-height: 1.45; }
     </section>
 
     <!-- ============ 9. LIVE CASE 1 (Geovanny) ============ -->
-    <section class="slide dark" data-name="Live case 1">
+    <!-- Build step: data-steps="1" means the first "next" key (right arrow) reveals the
+         .post elements (Obtained and Result) instead of leaving the slide. -->
+    <section class="slide dark" data-name="Live Case 1" data-steps="1">
         <div class="case">
             <div class="left reveal">
                 <span class="live"><i></i>Live</span>
-                <div class="tc">TC-01</div>
-                <div class="kind"><span class="ph">[Type: valid / invalid / boundary]</span></div>
+                <div class="tc" style="font-size:170px">TC-HUE-<br>05-01</div>
+                <div class="kind">Valid case &middot; Sprint 2 &middot; high risk</div>
                 <span class="who" style="position:static;align-self:flex-start"><b>Geovanny</b></span>
             </div>
+            <!-- Speaker note: Case 1 writes real data. Rehearse it locally and run it only once on the deployed system. -->
             <div class="fields reveal">
-                <div class="fld"><i>Story</i><span class="ph">[HU-ID &middot; acceptance criterion]</span></div>
-                <div class="fld"><i>Input</i><span class="ph">[What we type or click]</span></div>
-                <div class="fld"><i>Expected</i><span class="ph">[Expected result]</span></div>
-                <div class="fld"><i>Obtained</i><span class="ph">[Fill in after the live run]</span></div>
-                <div class="fld"><i>Result</i><span class="pill pending lg">Pending</span></div>
+                <div class="fld"><i>Story</i><span>HUE-05 &middot; Reservations made for a company</span></div>
+                <div class="fld"><i>Input</i><span>Reserve Galp&oacute;n Log&iacute;stico Centro as the company Andina Log&iacute;stica, from <b class="mono">12/01/2026</b> to <b class="mono">01/01/2027</b></span></div>
+                <div class="fld"><i>Expected</i><span>The reservation belongs to the company and the company wallet is charged</span></div>
+                <div class="fld"><i>Obtained</i>
+                    <span class="pre">Live demo in progress&hellip;</span>
+                    <span class="post">The reservation is confirmed and paid with the company wallet. The balance went down by 540 dollars</span>
+                </div>
+                <div class="fld"><i>Result</i>
+                    <span class="pill pending lg pre">Pending</span>
+                    <span class="pill pass lg post">Pass</span>
+                </div>
             </div>
         </div>
         <div class="foot"><span>Leodega &middot; Midterm</span><span>09</span></div>
     </section>
 
     <!-- ============ 10. LIVE CASE 2 (Geovanny) ============ -->
-    <section class="slide dark" data-name="Live case 2">
+    <!-- Build step: data-steps="1" means the first "next" key (right arrow) reveals the
+         .post elements (Obtained and Result) instead of leaving the slide. -->
+    <section class="slide dark" data-name="Live Case 2" data-steps="1">
         <div class="case">
             <div class="left reveal">
                 <span class="live"><i></i>Live</span>
-                <div class="tc">TC-02</div>
-                <div class="kind"><span class="ph">[Invalid, exceptional or boundary case]</span></div>
+                <div class="tc" style="font-size:170px">TC-HUC-<br>03-02</div>
+                <div class="kind">Invalid case &middot; Sprint 1</div>
                 <span class="who" style="position:static;align-self:flex-start"><b>Geovanny</b></span>
             </div>
+            <!-- Speaker note: Do NOT click &ldquo;Confirmar reserva&rdquo;. Type the dates and show the rejection only. -->
             <div class="fields reveal">
-                <div class="fld"><i>Story</i><span class="ph">[HU-ID &middot; acceptance criterion]</span></div>
-                <div class="fld"><i>Input</i><span class="ph">[What we type or click]</span></div>
-                <div class="fld"><i>Expected</i><span class="ph">[Expected result]</span></div>
-                <div class="fld"><i>Obtained</i><span class="ph">[Fill in after the live run]</span></div>
-                <div class="fld"><i>Result</i><span class="pill pending lg">Pending</span></div>
+                <div class="fld"><i>Story</i><span>HUC-03 &middot; Reservation with a date conflict</span></div>
+                <div class="fld"><i>Input</i><span>Open Bodega V&iacute;a a Daule and type dates inside an occupied period: <b class="mono">12/10/2026</b> to <b class="mono">12/15/2026</b></span></div>
+                <div class="fld"><i>Expected</i><span>The system rejects the dates and creates nothing</span></div>
+                <div class="fld"><i>Obtained</i>
+                    <span class="pre">Live demo in progress&hellip;</span>
+                    <span class="post">The fields turn red, the message says the dates are not available, and no reservation was created</span>
+                </div>
+                <div class="fld"><i>Result</i>
+                    <span class="pill pending lg pre">Pending</span>
+                    <span class="pill pass lg post">Pass</span>
+                </div>
             </div>
         </div>
         <div class="foot"><span>Leodega &middot; Midterm</span><span>10</span></div>
     </section>
 
     <!-- ============ 11. LIVE CASE 3 (Darwin) ============ -->
-    <section class="slide dark" data-name="Live case 3">
+    <!-- Build step: data-steps="1" means the first "next" key (right arrow) reveals the
+         .post elements (Obtained and Result) instead of leaving the slide. -->
+    <section class="slide dark" data-name="Live case 3" data-steps="1">
         <div class="case">
             <div class="left reveal">
                 <span class="live"><i></i>Live</span>
-                <div class="tc">TC-03</div>
-                <div class="kind"><span class="ph">[Type: valid / invalid / boundary]</span></div>
+                <div class="tc" style="font-size:170px">TC-HUE-<br>04-04</div>
+                <div class="kind">Boundary value &middot; Sprint 2 &middot; medium risk</div>
                 <span class="who" style="position:static;align-self:flex-start"><b>Darwin</b></span>
             </div>
+            <!-- Speaker note: type the 12-digit RUC exactly. Do NOT add a digit: a 13-digit RUC ending in 001 is valid and would create a real company. -->
             <div class="fields reveal">
-                <div class="fld"><i>Story</i><span class="ph">[HU-ID &middot; acceptance criterion]</span></div>
-                <div class="fld"><i>Input</i><span class="ph">[What we type or click]</span></div>
-                <div class="fld"><i>Expected</i><span class="ph">[Expected result]</span></div>
-                <div class="fld"><i>Obtained</i><span class="ph">[Fill in after the live run]</span></div>
-                <div class="fld"><i>Result</i><span class="pill pending lg">Pending</span></div>
+                <div class="fld"><i>Story</i><span>HUE-04 &middot; Organization creation: the RUC must have exactly 13 digits</span></div>
+                <div class="fld"><i>Input</i><span>Create an organization with a 12-digit RUC: <b class="mono">179214673900</b></span></div>
+                <div class="fld"><i>Expected</i><span>The form rejects it with &ldquo;El RUC debe tener 13 d&iacute;gitos&rdquo; and nothing is created</span></div>
+                <div class="fld"><i>Obtained</i>
+                    <span class="pre">Live demo in progress&hellip;</span>
+                    <span class="post">The form says &ldquo;El RUC debe tener 13 d&iacute;gitos&rdquo; and nothing was created</span>
+                </div>
+                <div class="fld"><i>Result</i>
+                    <span class="pill pending lg pre">Pending</span>
+                    <span class="pill pass lg post">Pass</span>
+                </div>
             </div>
         </div>
         <div class="foot"><span>Leodega &middot; Midterm</span><span>11</span></div>
@@ -756,7 +969,6 @@ p  { font-size: 32px; line-height: 1.45; }
          Source: report Section 5, Tables 11 and 13 (runs of 2026-11-17 UTC) -->
     <section class="slide light" data-name="Static analysis">
         <div class="frame">
-            <div class="eyebrow reveal">Code quality</div>
             <h2 class="reveal">Static analysis: before and after</h2>
             <span class="who"><b>Darwin</b></span>
             <div class="sa reveal">
@@ -779,7 +991,6 @@ p  { font-size: 32px; line-height: 1.45; }
          Source: report Section 7, Tables 17 and 18 (run R7 = latest, passed) -->
     <section class="slide dark" data-name="CI">
         <div class="frame">
-            <div class="eyebrow reveal">Continuous integration</div>
             <h2 class="reveal">Every push runs three jobs</h2>
             <span class="who"><b>Darwin</b></span>
             <div class="flow reveal">
@@ -815,7 +1026,6 @@ p  { font-size: 32px; line-height: 1.45; }
          Source: report Section B.2 (expected results of tag sprint2-deploy) and Section 7 -->
     <section class="slide light" data-name="Results">
         <div class="frame">
-            <div class="eyebrow reveal">Wrap-up</div>
             <h2 class="reveal">Results and quality at a glance</h2>
             <span class="who"><b>Darwin</b></span>
             <div class="stats reveal">
@@ -824,9 +1034,9 @@ p  { font-size: 32px; line-height: 1.45; }
                 <div class="stat p"><div class="n">478</div><div class="l">Leodeguita tests passed</div></div>
                 <div class="stat a"><div class="n">3</div><div class="l">CI runs failed (of 7)</div></div>
             </div>
-            <div class="info3 reveal" style="grid-template-columns:1fr 1fr;margin-top:32px">
-                <div class="dcard" style="min-height:330px"><span class="k">Static analysis</span><p>PHPStan reports 0 errors with the baseline but 126 without it. Pint and PHPMD are not in the CI, so they depend on manual runs.</p></div>
-                <div class="dcard" style="min-height:330px"><span class="k">Continuous integration</span><p>The 3 failed runs were real PHPStan errors, fixed in PR #57. Since R4 all jobs pass, and ESLint now fails the job too.</p></div>
+            <div class="info3 res reveal" style="grid-template-columns:1fr 1fr;margin-top:96px">
+                <div class="dcard"><span class="k">Static analysis</span><p>PHPStan reports 0 errors with the baseline but 126 without it. Pint and PHPMD are not in the CI, so they depend on manual runs.</p></div>
+                <div class="dcard"><span class="k">Continuous integration</span><p>The 3 failed runs were real PHPStan errors, fixed in PR #57. Since R4 all jobs pass, and ESLint now fails the job too.</p></div>
             </div>
         </div>
         <div class="foot"><span>Leodega &middot; Midterm</span><span>14</span></div>
@@ -880,8 +1090,8 @@ class SlidePresentation {
     bind() {
         addEventListener('keydown', e => {
             if (e.target.isContentEditable) return;
-            if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.show(this.current + 1); }
-            if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.show(this.current - 1); }
+            if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.next(); }
+            if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.prev(); }
             if (e.key === 'Home') this.show(0);
             if (e.key === 'End') this.show(this.slides.length - 1);
         });
@@ -889,17 +1099,31 @@ class SlidePresentation {
         addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
         addEventListener('touchend', e => {
             const dx = e.changedTouches[0].clientX - sx;
-            if (Math.abs(dx) > 50) this.show(this.current + (dx < 0 ? 1 : -1));
+            if (Math.abs(dx) > 50) { dx < 0 ? this.next() : this.prev(); }
         }, { passive: true });
         addEventListener('wheel', e => {
             if (this.wheelLock || Math.abs(e.deltaY) < 30) return;
             this.wheelLock = true; setTimeout(() => this.wheelLock = false, 700);
-            this.show(this.current + (e.deltaY > 0 ? 1 : -1));
+            e.deltaY > 0 ? this.next() : this.prev();
         }, { passive: true });
+    }
+    /* next(): reveal the next build step of the current slide (data-steps), or go to the next slide */
+    next() {
+        const s = this.slides[this.current];
+        if (this.step < (parseInt(s.dataset.steps, 10) || 0)) { this.step++; s.classList.add('revealed'); }
+        else this.show(this.current + 1);
+    }
+    /* prev(): undo one build step, or go to the previous slide */
+    prev() {
+        const s = this.slides[this.current];
+        if (this.step > 0) { this.step--; s.classList.toggle('revealed', this.step > 0); }
+        else this.show(this.current - 1);
     }
     show(i) {
         this.current = Math.max(0, Math.min(i, this.slides.length - 1));
+        this.step = 0;
         this.slides.forEach((s, n) => {
+            s.classList.remove('revealed');
             s.classList.toggle('active', n === this.current);
             s.classList.toggle('visible', n === this.current);
         });

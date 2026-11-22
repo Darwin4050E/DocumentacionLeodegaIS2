@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="478" failures="0" errors="0" time="24.75506254">
+    <testsuite name="src/App.test.tsx" timestamp="2026-11-16T18:53:29.565Z" hostname="runnervmccnms" tests="21" failures="0" errors="0" skipped="0" time="0.694434458">
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; sends a visitor without a session from /empresa to /login" time="0.08123713">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; renders the picker for a tenant at /empresa" time="0.195730281">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; keeps a landlord out of /empresa" time="0.027549034">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; lands a tenant who reloads on / on Explorar, not the picker or Home" time="0.036711593">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; renders the profile for a tenant at /perfil" time="0.022657051">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; renders the reservations for a tenant at /reservas" time="0.028842219">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; renders the received reservations for a landlord at /reservas" time="0.048245551">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; keeps an admin out of /reservas" time="0.015474661">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; renders the profile for a landlord at /perfil" time="0.048084676">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; keeps an admin out of /perfil" time="0.018058526">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; lands a landlord on Mis bodegas from /, not the placeholder Home" time="0.022282572">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; keeps the placeholder Home at / for an admin" time="0.005290738">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; keeps a landlord out of the tenant catalog at /bodegas" time="0.013607766">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; keeps a landlord out of the tenant catalog at /bodegas/5" time="0.022016896">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; sends an admin from /bodegas to Home" time="0.007294068">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; sends an admin from /bodegas/5 to Home" time="0.0073054">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; still opens the catalog for a tenant" time="0.017629274">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; redirects an unknown path to Explorar for a tenant" time="0.019408857">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; redirects an unknown path to Mis bodegas for a landlord" time="0.017046226">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; keeps a tenant out of the gestor detail at /mis-bodegas/5" time="0.015202984">
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App routes (HUL-02) &gt; keeps a tenant out of the gestor editor at /mis-bodegas/5/editar" time="0.02199777">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/api/client.test.ts" timestamp="2026-11-16T18:53:29.570Z" hostname="runnervmccnms" tests="43" failures="0" errors="0" skipped="0" time="0.088644876">
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; clears the session and notifies once on a 401 from a GET" time="0.022037023">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does the same for a 401 from a mutation" time="0.004042059">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; rejects with the original error instead of swallowing it" time="0.005289596">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; handles three concurrent 401s once" time="0.004988394">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; handles the same way a blocked user whose revoked token now returns 401" time="0.001360477">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; ignores a 401 for a request sent before a newer login replaced the token" time="0.001541264">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does nothing on a 401 when there was no session" time="0.001552475">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 403 as session expiry" time="0.001710149">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 404 as session expiry" time="0.001579706">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 422 as session expiry" time="0.002329665">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; does not treat a 500 as session expiry" time="0.001465233">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor &gt; passes a 2xx response through untouched" time="0.001112696">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /login" time="0.001332796">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /login/" time="0.000869852">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /login?next=1" time="0.00097617">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /logout" time="0.001164041">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session on a 401 from /logout/" time="0.001067181">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; does not exclude the lookalike /loginx" time="0.001137982">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; does not exclude the lookalike /users/login" time="0.000973707">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; does not exclude the lookalike /logout-all" time="0.001116483">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session when the real login() gets a 401 for wrong credentials" time="0.001516538">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client 401 interceptor exclusions &gt; keeps the session when the real logout() gets a 401" time="0.001325833">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; sends the stored id and the unchanged Authorization for a tenant" time="0.001069615">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; omits the header for a tenant without a stored id" time="0.000892365">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; omits the header for a landlord with a stale key" time="0.000706247">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; omits the header for an admin with a key" time="0.000784503">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; sends neither header on a request without a token" time="0.000814168">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; sends the header on every authenticated route, including /organizations" time="0.001026835">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; reads the key at request time" time="0.000959149">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; omits the header without throwing when the stored user is invalid" time="0.003169301">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; omits the header for the invalid key &quot;0&quot;" time="0.000673496">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization header &gt; omits the header for the invalid key &quot;abc&quot;" time="0.000566557">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; removes the key on the exact message and still rejects with the 403" time="0.001465934">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; keeps the key when the message is different" time="0.001044878">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; keeps a key written after a request that sent no header" time="0.001250152">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; keeps a newer choice when a late 403 belongs to a superseded one" time="0.001305565">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; keeps the key on a 404 with the exact message" time="0.001032225">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; keeps the key on a 422 with the exact message" time="0.000863421">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; keeps the key on a 500 with the exact message" time="0.000886774">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; only runs session expiry on a 401 with the exact message" time="0.001086546">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; leaves another user&apos;s key untouched" time="0.001326504">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; is idempotent when two concurrent requests both get the 403" time="0.001893502">
+        </testcase>
+        <testcase classname="src/api/client.test.ts" name="client organization 403 fallback &gt; sends no header on the request after the fallback ran" time="0.001146738">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/auth/AuthContext.test.tsx" timestamp="2026-11-16T18:53:29.578Z" hostname="runnervmccnms" tests="4" failures="0" errors="0" skipped="0" time="0.301922845">
+        <testcase classname="src/auth/AuthContext.test.tsx" name="AuthProvider logout and active context &gt; removes the departing tenant key together with token and user" time="0.243063012">
+        </testcase>
+        <testcase classname="src/auth/AuthContext.test.tsx" name="AuthProvider logout and active context &gt; leaves another user&apos;s key unchanged" time="0.032771411">
+        </testcase>
+        <testcase classname="src/auth/AuthContext.test.tsx" name="AuthProvider logout and active context &gt; does not throw and still clears the session when the stored user is unreadable" time="0.016475676">
+        </testcase>
+        <testcase classname="src/auth/AuthContext.test.tsx" name="AuthProvider logout and active context &gt; keeps the key on a 401 expiry while the header stops being sent" time="0.007580714">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/auth/returnPath.test.ts" timestamp="2026-11-16T18:53:29.579Z" hostname="runnervmccnms" tests="30" failures="0" errors="0" skipped="0" time="0.026277034">
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path / unchanged" time="0.006203384">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /mis-bodegas unchanged" time="0.000406869">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /bodegas/7?x=1#a unchanged" time="0.000328503">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /%5c unchanged" time="0.00038057">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /loginx unchanged" time="0.000461631">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; accepts the app-internal path /a/login unchanged" time="0.002687374">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects protocol-relative" time="0.000379658">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects absolute https URL" time="0.000198691">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects javascript scheme" time="0.003455807">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects data scheme" time="0.000342459">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects slash plus backslash" time="0.000210914">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects leading backslashes" time="0.000296173">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects backslash inside the path" time="0.000209411">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects encoded protocol-relative (not a leading slash)" time="0.00037523">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects newline" time="0.000347148">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects tab" time="0.000193241">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects NUL" time="0.000156873">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects DEL" time="0.000145241">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects empty string" time="0.000137276">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects relative path without a leading slash" time="0.000558101">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login itself" time="0.000536661">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login with a query" time="0.000571717">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login with a trailing slash" time="0.0006379">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects login with a hash" time="0.000504">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value undefined" time="0.000636307">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value null" time="0.000491897">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value number" time="0.000576415">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value object" time="0.000153125">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value array" time="0.000876164">
+        </testcase>
+        <testcase classname="src/auth/returnPath.test.ts" name="safeReturnPath &gt; rejects the non-string value boolean" time="0.000174295">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/auth/sessionExpiry.test.ts" timestamp="2026-11-16T18:53:29.584Z" hostname="runnervmccnms" tests="10" failures="0" errors="0" skipped="0" time="0.013519483">
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="sessionExpiry constants &gt; exposes the router-state reason and the Spanish notice" time="0.003399793">
+        </testcase>
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; clears the stored session and calls the handler once when the sent token is the current one" time="0.002367777">
+        </testcase>
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; clears storage before the handler runs" time="0.000753316">
+        </testcase>
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; fires once for three concurrent 401s carrying the same token" time="0.000533165">
+        </testcase>
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; is a no-op when there is no stored token" time="0.000586434">
+        </testcase>
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; ignores a stale 401 whose request was sent with a previous token" time="0.001377069">
+        </testcase>
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; ignores a 401 whose request carried no Authorization header" time="0.000467623">
+        </testcase>
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; still clears storage when no handler is registered" time="0.000464276">
+        </testcase>
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; stops calling the handler after it is unregistered" time="0.000602163">
+        </testcase>
+        <testcase classname="src/auth/sessionExpiry.test.ts" name="handleUnauthorized &gt; does not drop a newer handler when an older one unregisters late" time="0.000719933">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/components/ActiveContextEntry.test.tsx" timestamp="2026-11-16T18:53:29.586Z" hostname="runnervmccnms" tests="12" failures="0" errors="0" skipped="0" time="0.612912322">
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; shows the personal label and the change action once the list is ready" time="0.220024483">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; shows the name of the resolved active organization" time="0.018767961">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; opens the picker from the change action" time="0.04851591">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; names the change action for assistive tech and keeps the visible text in the name" time="0.015807432">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; shows the loading line while the list loads" time="0.007977334">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; shows the generic label, the error and retry when the list fails with a stored organization" time="0.024647496">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; keeps the personal label when the list fails without a stored organization" time="0.021603034">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; retries the list from the error state" time="0.055071347">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; renders nothing when the list is ready and empty" time="0.063966086">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; renders nothing for a landlord and requests no organizations" time="0.005512051">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; shows only the approved copy and no creation or invitation entry" time="0.010124145">
+        </testcase>
+        <testcase classname="src/components/ActiveContextEntry.test.tsx" name="ActiveContextEntry &gt; reflects the organization picked in the picker when returning to Home" time="0.118615057">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/components/RoleTabBar.test.tsx" timestamp="2026-11-16T18:53:29.588Z" hostname="runnervmccnms" tests="11" failures="0" errors="0" skipped="0" time="0.663598887">
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; offers exactly Explorar, Reservas and Perfil" time="0.338196292">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; marks the tab of /bodegas as current" time="0.055088823">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; marks the tab of /bodegas/5 as current" time="0.045477184">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; marks the tab of /reservas as current" time="0.032255267">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; marks the tab of /perfil as current" time="0.029325441">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; navigates when a tab is tapped" time="0.078793241">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; renders nothing for an admin" time="0.003327058">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; as a landlord &gt; offers exactly Mis bodegas, Reservas and Perfil" time="0.026445748">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; as a landlord &gt; marks the tab of /mis-bodegas as current" time="0.018088597">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; as a landlord &gt; marks the tab of /reservas as current" time="0.017087688">
+        </testcase>
+        <testcase classname="src/components/RoleTabBar.test.tsx" name="RoleTabBar &gt; as a landlord &gt; marks the tab of /perfil as current" time="0.017277808">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/context/ActiveContextProvider.test.tsx" timestamp="2026-11-16T18:53:29.590Z" hostname="runnervmccnms" tests="30" failures="0" errors="0" skipped="0" time="0.894949558">
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="useActiveContext &gt; throws outside the provider" time="0.023598185">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider list lifecycle &gt; stays idle and sends no request for a landlord" time="0.023560034">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider list lifecycle &gt; stays idle and sends no request without a session" time="0.006205995">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider list lifecycle &gt; goes loading and then ready with the list for a tenant" time="0.01158014">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider list lifecycle &gt; goes to error with an empty list and keeps the stored id when the fetch fails" time="0.020145155">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider list lifecycle &gt; reloads from error through loading to ready with a new request" time="0.167629593">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider list lifecycle &gt; exposes the stored organization before the response with no resolved organization" time="0.007796612">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider list lifecycle &gt; does not send another request on a plain re-render" time="0.078660896">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider user changes &gt; ignores a late response of the previous tenant and derives from the next one" time="0.084379315">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider user changes &gt; resets to personal and idle on logout" time="0.042925044">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider user changes &gt; keeps the key on session expiry and revalidates it against the fresh list on re-login" time="0.05504534">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider stored id validation &gt; keeps a stored id that is in the list and resolves the organization" time="0.01185431">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider stored id validation &gt; removes a stored id that is not in the list and goes personal" time="0.00635873">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider stored id validation &gt; clears the stored id when the ready list is empty" time="0.006211937">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider stored id validation &gt; keeps the key and the context while loading" time="0.00341502">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider stored id validation &gt; keeps the key on error and requests still carry the header" time="0.011738435">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider stored id validation &gt; keeps the key on error when the body is not an array" time="0.00848127">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider stored id validation &gt; resolves the stored organization when a reload succeeds with it" time="0.035899752">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider stored id validation &gt; removes the stored id when a reload succeeds without it" time="0.031137338">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider selection &gt; persists the selected organization and the next request carries it" time="0.031929617">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider selection &gt; removes the key on personal and the next request has no header" time="0.038515495">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider selection &gt; issues no request by itself" time="0.054463658">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider selection &gt; leaves state and key unchanged when the same id is selected again" time="0.032378072">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider selection &gt; is a no-op for a landlord" time="0.044736741">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider forced personal context &gt; moves to personal when the organization 403 comes through the real client" time="0.019528439">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider forced personal context &gt; moves to personal when the reset is triggered directly" time="0.005308982">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider multi-tab sync &gt; follows another tab selecting an organization from the ready list" time="0.005950468">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider multi-tab sync &gt; follows another tab going personal" time="0.006925838">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider multi-tab sync &gt; ignores another user&apos;s key" time="0.008168806">
+        </testcase>
+        <testcase classname="src/context/ActiveContextProvider.test.tsx" name="ActiveContextProvider multi-tab sync &gt; removes an id that is not in the ready list and goes personal" time="0.006898453">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/context/activeContextStorage.test.ts" timestamp="2026-11-16T18:53:29.596Z" hostname="runnervmccnms" tests="45" failures="0" errors="0" skipped="0" time="0.018910978">
+        <testcase classname="src/context/activeContextStorage.test.ts" name="constants and key &gt; exposes the header name and the exact forbidden message" time="0.002198335">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="constants and key &gt; builds a per-user key" time="0.000345525">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; parses the canonical value 12" time="0.000288258">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; parses the canonical value 1" time="0.000288338">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; reads &quot;&quot; as absent" time="0.000342329">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; reads &quot;0&quot; as absent" time="0.000181008">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; reads &quot;007&quot; as absent" time="0.000216384">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; reads &quot;-3&quot; as absent" time="0.000144159">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; reads &quot;1.5&quot; as absent" time="0.00029514">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; reads &quot;abc&quot; as absent" time="0.000325407">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; reads &quot;99999999999999999999&quot; as absent" time="0.000220021">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; reads &quot; 12&quot; as absent" time="0.000256969">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="parseOrganizationId &gt; reads null as absent" time="0.000267218">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; writes the canonical string under the user key" time="0.000753788">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; reads the stored id back" time="0.000441965">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; reads absent when the key does not exist" time="0.000249666">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; reads the stored garbage &quot;&quot; as absent" time="0.000347509">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; reads the stored garbage &quot;0&quot; as absent" time="0.000204572">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; reads the stored garbage &quot;007&quot; as absent" time="0.000191167">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; reads the stored garbage &quot;-3&quot; as absent" time="0.00039632">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; reads the stored garbage &quot;1.5&quot; as absent" time="0.000213939">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; reads the stored garbage &quot;abc&quot; as absent" time="0.000190756">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; reads the stored garbage &quot;99999999999999999999&quot; as absent" time="0.000210964">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; never returns another user value on read" time="0.000357387">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="stored organization id &gt; removes only the requested user key" time="0.000494724">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns the stored id for a tenant with a token" time="0.000514451">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; reads the key again on every call" time="0.000474796">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null for a tenant without a stored id" time="0.000241811">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null for a landlord with a stale key" time="0.000268531">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null for an admin with a key" time="0.000254555">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null without a token" time="0.000216545">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null for an invalid stored value" time="0.000268692">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null without throwing for a user with unparsable JSON" time="0.000274472">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null without throwing for a user with a non-object" time="0.000195515">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null without throwing for a user with a missing id" time="0.000183563">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null without throwing for a user with a string id" time="0.000194403">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null without throwing for a user with a missing role" time="0.000213728">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="readRequestOrganizationId &gt; returns null without throwing for a user with a numeric role" time="0.000136385">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="clearStoredActiveContext &gt; removes only the session user key" time="0.000268822">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="clearStoredActiveContext &gt; does not throw and removes nothing when the user is unreadable" time="0.000873831">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="forcePersonalContext &gt; removes the session user key and notifies the handler once" time="0.000933292">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="forcePersonalContext &gt; is idempotent when called twice" time="0.00039642">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="forcePersonalContext &gt; works without a registered handler" time="0.000353089">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="forcePersonalContext &gt; stops notifying after unregister" time="0.000301302">
+        </testcase>
+        <testcase classname="src/context/activeContextStorage.test.ts" name="forcePersonalContext &gt; keeps the newest handler when an older one unregisters late" time="0.000243935">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/routes/Protected.test.tsx" timestamp="2026-11-16T18:53:29.603Z" hostname="runnervmccnms" tests="8" failures="0" errors="0" skipped="0" time="0.434449497">
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; renders the protected screen while the session is valid" time="0.053788746">
+        </testcase>
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects to /login with the original route and reason when the session expires" time="0.052694785">
+        </testcase>
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; keeps the hash in the return route" time="0.010441215">
+        </testcase>
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects a visitor without a session to /login with no state" time="0.006957947">
+        </testcase>
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects a manual logout to /login with no expiry reason" time="0.26374534">
+        </testcase>
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; redirects once and keeps the first route when three 401s land together" time="0.007411446">
+        </testcase>
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; does not navigate or store a /login return route on a late 401 while on /login" time="0.00686239">
+        </testcase>
+        <testcase classname="src/routes/Protected.test.tsx" name="Protected &gt; clears the expired flag on the next login" time="0.030036164">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/routes/RolesOnly.test.tsx" timestamp="2026-11-16T18:53:29.605Z" hostname="runnervmccnms" tests="3" failures="0" errors="0" skipped="0" time="0.051834925">
+        <testcase classname="src/routes/RolesOnly.test.tsx" name="RolesOnly &gt; renders the nested route for a tenant" time="0.038827497">
+        </testcase>
+        <testcase classname="src/routes/RolesOnly.test.tsx" name="RolesOnly &gt; renders the nested route for a landlord" time="0.00385921">
+        </testcase>
+        <testcase classname="src/routes/RolesOnly.test.tsx" name="RolesOnly &gt; redirects any other role to /" time="0.007247892">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/routes/TenantOnly.test.tsx" timestamp="2026-11-16T18:53:29.606Z" hostname="runnervmccnms" tests="3" failures="0" errors="0" skipped="0" time="0.077957771">
+        <testcase classname="src/routes/TenantOnly.test.tsx" name="TenantOnly &gt; redirects a landlord to / without requesting organizations" time="0.059372528">
+        </testcase>
+        <testcase classname="src/routes/TenantOnly.test.tsx" name="TenantOnly &gt; redirects an admin to /" time="0.00872567">
+        </testcase>
+        <testcase classname="src/routes/TenantOnly.test.tsx" name="TenantOnly &gt; renders the nested route for a tenant" time="0.007428259">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/HomeScreen.test.tsx" timestamp="2026-11-16T18:53:29.606Z" hostname="runnervmccnms" tests="2" failures="0" errors="0" skipped="0" time="0.284139228">
+        <testcase classname="src/screens/HomeScreen.test.tsx" name="HomeScreen &gt; shows the admin Home without the organization context" time="0.2567824">
+        </testcase>
+        <testcase classname="src/screens/HomeScreen.test.tsx" name="HomeScreen &gt; offers no landlord actions" time="0.022242727">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/LoginScreen.test.tsx" timestamp="2026-11-16T18:53:29.607Z" hostname="runnervmccnms" tests="31" failures="0" errors="0" skipped="0" time="3.900587115">
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen (HUL-01) &gt; AC-3: shows required-field errors and does not call the API when fields are empty" time="0.312469101">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen (HUL-01) &gt; AC-2: shows an error message on wrong credentials and stays on login" time="0.274545708">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen (HUL-01) &gt; AC-1: stores the session and navigates home on success" time="0.173244184">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; shows the session-ended notice when redirected with the expiry reason" time="0.011693514">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; hides the notice on a plain /login visit" time="0.003936489">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; hides the notice on state without the expiry reason" time="0.004731829">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; hides the notice on an unknown reason" time="0.00649786">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; returns to the original route, query and hash after a successful login" time="0.150223704">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;//evil.com&quot;" time="0.158183426">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;https://evil.com&quot;" time="0.144518027">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;/\\evil.com&quot;" time="0.134732225">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;javascript:alert(1)&quot;" time="0.13638811">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;/login&quot;" time="0.122377094">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the stored return route is &quot;&quot;" time="0.133716798">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; falls back to home when the return route is not a string" time="0.115511076">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; goes home when there is no return route" time="0.11517053">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen session expiry and return route &gt; shows the credentials error without the expiry notice or navigation on a login 401" time="0.107710288">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; shows the backend suspension message and stores no session on a login 403" time="0.117542352">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; does not navigate to the return route on a login 403" time="0.106638008">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; falls back to the generic message on a login 403 with an empty body" time="0.130001893">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen suspended account (403) &gt; falls back to the generic message on a login 403 with no body" time="0.135418041">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; sends a landlord to the existing destination without loading organizations" time="0.124231954">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; sends a admin to the existing destination without loading organizations" time="0.107419053">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; sends a tenant with two organizations to the picker" time="0.149928028">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; sends a tenant with one organization to the picker" time="0.160442331">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; sends a tenant without organizations to Home and never shows the picker" time="0.130627109">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; sends a tenant to Home and keeps the stored organization when the list fails" time="0.116242569">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; lets a safe return path win over the picker" time="0.122976349">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; lands on the picker when the return path is the picker itself" time="0.125019989">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; shows the loading line and no Home content while the list loads" time="0.130000753">
+        </testcase>
+        <testcase classname="src/screens/LoginScreen.test.tsx" name="LoginScreen post-login routing (HUL-02) &gt; replaces the login entry and carries the one-shot gate to the picker route" time="0.135627874">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/organizations.test.ts" timestamp="2026-11-16T18:53:29.612Z" hostname="runnervmccnms" tests="10" failures="0" errors="0" skipped="0" time="0.01617703">
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; sends exactly one GET /organizations through the shared client" time="0.007782339">
+        </testcase>
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; returns the array in API order with every field intact" time="0.000866156">
+        </testcase>
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; returns an empty array for an empty list" time="0.000457012">
+        </testcase>
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; throws instead of returning an empty list when the body is an object" time="0.001979613">
+        </testcase>
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; throws instead of returning an empty list when the body is null" time="0.00043422">
+        </testcase>
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; throws instead of returning an empty list when the body is a string" time="0.00044498">
+        </testcase>
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; rejects with the original error on a 401" time="0.000773112">
+        </testcase>
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; rejects with the original error on a 403" time="0.000434501">
+        </testcase>
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; rejects with the original error on a 500" time="0.000496045">
+        </testcase>
+        <testcase classname="src/services/organizations.test.ts" name="listOrganizations &gt; rejects with the original error on a network failure" time="0.000424953">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/reservations.test.ts" timestamp="2026-11-16T18:53:29.615Z" hostname="runnervmccnms" tests="4" failures="0" errors="0" skipped="0" time="0.008180151">
+        <testcase classname="src/services/reservations.test.ts" name="listTenantReservations &gt; returns the payload from GET /tenant/reservations" time="0.003513395">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="listTenantReservations &gt; lets a failure reach the caller" time="0.001678853">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="listLandlordReservations &gt; returns the payload from GET /landlord/reservations" time="0.000661544">
+        </testcase>
+        <testcase classname="src/services/reservations.test.ts" name="listLandlordReservations &gt; lets a failure reach the caller" time="0.000559364">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/storeRooms.test.ts" timestamp="2026-11-16T18:53:29.616Z" hostname="runnervmccnms" tests="12" failures="0" errors="0" skipped="0" time="0.01271581">
+        <testcase classname="src/services/storeRooms.test.ts" name="listStoreRooms &gt; returns the catalog payload from GET /storeRooms" time="0.003366165">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="getStoreRoomDetail &gt; returns the detail payload from GET /store-rooms/{id}/detail" time="0.00077668">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="getStoreRoomDetail &gt; rethrows a 404 as StoreRoomNotFoundError" time="0.001323241">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="getStoreRoomDetail &gt; rethrows every other error unchanged" time="0.000507418">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="deleteStoreRoom &gt; calls DELETE /storeRooms/{id}" time="0.000387724">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="deleteStoreRoom &gt; treats a 404 as already deleted" time="0.000568882">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="deleteStoreRoom &gt; rethrows every other error" time="0.000399886">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="extractApiMessage &gt; returns the backend message of an axios error" time="0.000281706">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="extractApiMessage &gt; returns null when there is no message" time="0.000412189">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="updateStoreRoom &gt; PUTs the payload to /storeRooms/{id} and returns the body" time="0.000916241">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="replaceStoreRoomPermit &gt; POSTs the PDF as firefighter_permit multipart" time="0.001348277">
+        </testcase>
+        <testcase classname="src/services/storeRooms.test.ts" name="resubmitStoreRoom &gt; POSTs an empty body to /storeRooms/{id}/resubmit" time="0.000343081">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" timestamp="2026-11-16T18:53:29.620Z" hostname="runnervmccnms" tests="18" failures="0" errors="0" skipped="0" time="1.175996342">
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; shows the hero, status chip, stats, description and documentation" time="0.277038692">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; shows the rejection banner with the admin reason" time="0.026739643">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; shows the review banner for a pending room" time="0.019326136">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; renders no banner for an approved room" time="0.052073671">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; renders the read-only map only when the room has coordinates" time="0.042884727">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; falls back to the address text when there are no coordinates" time="0.052503688">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; does not show the bottom tab bar" time="0.034556072">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; goes back to Mis bodegas" time="0.087224426">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; opens the editor from &quot;Editar bodega&quot;, even with active reservations" time="0.068199403">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.05195146">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; shows not-found when the API answers 404" time="0.013252526">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; shows not-found when the room is not among the gestor&apos;s own rooms" time="0.006425234">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; shows not-found for a non-numeric id without calling the API" time="0.008220692">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; delete &gt; opens a confirmation, then deletes and returns to the list" time="0.072956146">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; delete &gt; cancels without deleting" time="0.101026989">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; delete &gt; locks the action when the room has active reservations" time="0.078876288">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; delete &gt; shows the backend error message and stays on the screen" time="0.102846284">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomDetailScreen.test.tsx" name="MyStoreRoomDetailScreen &gt; delete &gt; falls back to a generic message when the error has none" time="0.076785428">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" timestamp="2026-11-16T18:53:29.623Z" hostname="runnervmccnms" tests="14" failures="0" errors="0" skipped="0" time="1.101763004">
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-1: renders one card per owned room with title, location and status" time="0.110553609">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-2: an empty result shows the publish CTA and hides the filter row" time="0.23537531">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-2: a residual 404 swallowed to [] lands on the same empty state" time="0.023978103">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; AC-3: status chips carry counts and narrow the list" time="0.214985781">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows the published count in the header, singular for one room" time="0.050517973">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; labels a pending room &quot;Pendiente de verificación&quot; and keeps the &quot;Pendientes&quot; chip" time="0.029012473">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; offers a floating &quot;Publicar&quot; button that opens the wizard when there are rooms" time="0.049670983">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; does not float &quot;Publicar&quot; in the empty state, which keeps &quot;Publicar una nueva&quot;" time="0.028544179">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; mounts the gestor bottom navigation" time="0.130579921">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; makes each card a &quot;Ver detalle&quot; link to its detail screen" time="0.111593096">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; blocks a non-landlord and never calls the service" time="0.004284291">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.070316122">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows the rejection reason on a rejected room card" time="0.023104846">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/MyStoreRoomsScreen.test.tsx" name="MyStoreRoomsScreen (HUL-04) &gt; shows no rejection reason on an approved room card" time="0.016714705">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/MyStoreRooms/model.test.ts" timestamp="2026-11-16T18:53:29.626Z" hostname="runnervmccnms" tests="13" failures="0" errors="0" skipped="0" time="0.011275161">
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; rejected outranks occupancy" time="0.002984397">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; pending with reservations is still pendiente" time="0.000345344">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; an unknown status enum degrades to pendiente, never disponible" time="0.000316089">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; approved with reservations is ocupada" time="0.000393725">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="deriveStatus precedence &gt; approved with no reservations is disponible" time="0.00049843">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="countByStatus &gt; counts each derived status plus the total" time="0.000998673">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="filterRooms &gt; returns every room for &quot;todas&quot;" time="0.001210027">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="filterRooms &gt; narrows to the selected derived status" time="0.000304027">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="filterRooms &gt; returns an empty array when nothing matches" time="0.000423179">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; labels the reason code and keeps the free-text reason of a rejected room" time="0.000484504">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; maps every reason code to its Spanish label" time="0.000374849">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; returns null for a rejected room without rejection data" time="0.000350233">
+        </testcase>
+        <testcase classname="src/screens/MyStoreRooms/model.test.ts" name="rejectionDetail &gt; returns null for a room that is not rejected" time="0.000229067">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/Profile/ProfileScreen.test.tsx" timestamp="2026-11-16T18:53:29.628Z" hostname="runnervmccnms" tests="10" failures="0" errors="0" skipped="0" time="0.67104525">
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; shows the account identity and role" time="0.218012184">
+        </testcase>
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; shows the operating context and opens the picker from it" time="0.076131149">
+        </testcase>
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; hides the organization section when the user has no organizations" time="0.076938615">
+        </testcase>
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; offers no entries without a destination" time="0.022233209">
+        </testcase>
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; logs out, drops the session and goes to the login" time="0.060257677">
+        </testcase>
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; drops the local session even when the logout request fails" time="0.086925945">
+        </testcase>
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; shows the tab bar with Perfil current" time="0.045128212">
+        </testcase>
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; as a landlord &gt; shows the identity with the Gestor de bodega badge" time="0.013120903">
+        </testcase>
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; as a landlord &gt; never shows the organization section or requests organizations" time="0.021197518">
+        </testcase>
+        <testcase classname="src/screens/Profile/ProfileScreen.test.tsx" name="ProfileScreen &gt; as a landlord &gt; logs out from the account entry" time="0.045709244">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" timestamp="2026-11-16T18:53:29.630Z" hostname="runnervmccnms" tests="15" failures="0" errors="0" skipped="0" time="2.265065148">
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; loads the room and labels the header &quot;Editar · Paso n de 7&quot;" time="0.104532498">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; shows the non-editable steps read-only, letting the gestor move on" time="0.355482502">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; prefills title, description, price and size" time="0.159355178">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; ends with &quot;Guardar y reenviar&quot;, the permit optional and no policy/security fields" time="0.162794447">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; sends only the changed fields and confirms with &quot;Cambios enviados&quot;" time="0.281518916">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; says the changes were saved when the room did not go back to review" time="0.199007146">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; replaces the permit only when a new one is picked" time="0.133191336">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; resubmits a rejected room after saving" time="0.200254523">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; resubmits a rejected room even without field changes" time="0.140210806">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; does not call the API when nothing changed on a non-rejected room" time="0.136856474">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; sends the gestor back to the offending step on a 422" time="0.191978669">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; shows the backend message for other failures and stays on the last step" time="0.140922462">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; goes back to the detail from the first step" time="0.02764857">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; shows not-found, and an error whose &quot;Reintentar&quot; reloads" time="0.024359955">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.edit.test.tsx" name="PublishStoreRoomScreen in edit mode &gt; treats a room outside the gestor&apos;s own list as not found" time="0.004422619">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" timestamp="2026-11-16T18:53:29.633Z" hostname="runnervmccnms" tests="13" failures="0" errors="0" skipped="0" time="7.402209996">
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; scenario 1: completes the 7 steps, sends to review and uploads photos" time="1.2663131">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; scenario 2: each step gates &quot;Continuar&quot; until its fields are complete" time="0.866344641">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; rejects a non-PDF permit before submit and keeps the flow blocked" time="0.72474485">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; photo step stays blocked until at least three photos are added" time="0.14147007">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; sends latitude/longitude when the gestor drops a pin on the map" time="0.615739725">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; scenario 3: a duplicate title sends the gestor back to the title step with the warning" time="0.590577941">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; falls back to the backend message when the 422 has no title field error" time="0.549524729">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; sends the gestor back to the price step when the 422 is about storePrices" time="0.564419963">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; shows a notice when the listing is created but photo upload fails" time="0.577411229">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; retries the photo upload against the created room without creating it again" time="0.722140208">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; keeps the notice and the retry button when the retry fails again" time="0.733161636">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; blocks a non-landlord from the publish flow" time="0.003631253">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/PublishStoreRoomScreen.test.tsx" name="PublishStoreRoomScreen (HUL-03) &gt; sends the gestor back to Mis bodegas from the first step" time="0.043782501">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/PublishStoreRoom/editModel.test.ts" timestamp="2026-11-16T18:53:29.635Z" hostname="runnervmccnms" tests="11" failures="0" errors="0" skipped="0" time="0.010164814">
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="storeRoomToFormValues &gt; maps the detail payload onto the wizard values" time="0.003279808">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="storeRoomToFormValues &gt; leaves the price empty when there is no monthly row" time="0.000417068">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="hasMonthlyPrice &gt; is true only with a month-mode row" time="0.000469005">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="buildEditPayload &gt; is empty when nothing changed (representation differences ignored)" time="0.000437756">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="buildEditPayload &gt; sends only the changed editable fields, numbers as numbers" time="0.000447194">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="buildEditPayload &gt; sends the description when it changes" time="0.000384607">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="buildEditPayload &gt; never sends a price when the room has no monthly row" time="0.000316722">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="buildEditPayload &gt; ignores fields the backend cannot edit" time="0.000259584">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="isEditStepComplete &gt; treats the read-only steps and the optional permit as complete" time="0.000613344">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="isEditStepComplete &gt; requires title and description on step 4" time="0.000471139">
+        </testcase>
+        <testcase classname="src/screens/PublishStoreRoom/editModel.test.ts" name="isEditStepComplete &gt; requires a positive size, and a price only when the room has one" time="0.000483533">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/Reservations/LandlordReservationsScreen.test.tsx" timestamp="2026-11-16T18:53:29.637Z" hostname="runnervmccnms" tests="7" failures="0" errors="0" skipped="0" time="0.796546771">
+        <testcase classname="src/screens/Reservations/LandlordReservationsScreen.test.tsx" name="LandlordReservationsScreen &gt; shows the header, a loading state, then the active reservations by default" time="0.331088844">
+        </testcase>
+        <testcase classname="src/screens/Reservations/LandlordReservationsScreen.test.tsx" name="LandlordReservationsScreen &gt; renders the storeroom, client, dates and amount of a row" time="0.064241973">
+        </testcase>
+        <testcase classname="src/screens/Reservations/LandlordReservationsScreen.test.tsx" name="LandlordReservationsScreen &gt; counts both tabs and switches to the finished ones" time="0.136408477">
+        </testcase>
+        <testcase classname="src/screens/Reservations/LandlordReservationsScreen.test.tsx" name="LandlordReservationsScreen &gt; mounts the gestor bottom navigation with Reservas current" time="0.065337717">
+        </testcase>
+        <testcase classname="src/screens/Reservations/LandlordReservationsScreen.test.tsx" name="LandlordReservationsScreen &gt; offers no cancel or receipt actions" time="0.01968104">
+        </testcase>
+        <testcase classname="src/screens/Reservations/LandlordReservationsScreen.test.tsx" name="LandlordReservationsScreen &gt; shows an empty state per tab" time="0.122635028">
+        </testcase>
+        <testcase classname="src/screens/Reservations/LandlordReservationsScreen.test.tsx" name="LandlordReservationsScreen &gt; shows an error whose &quot;Reintentar&quot; refetches" time="0.05491784">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/Reservations/ReservationsScreen.test.tsx" timestamp="2026-11-16T18:53:29.638Z" hostname="runnervmccnms" tests="9" failures="0" errors="0" skipped="0" time="0.688367949">
+        <testcase classname="src/screens/Reservations/ReservationsScreen.test.tsx" name="ReservationsScreen &gt; shows a loading state, then the active reservations by default" time="0.240909945">
+        </testcase>
+        <testcase classname="src/screens/Reservations/ReservationsScreen.test.tsx" name="ReservationsScreen &gt; renders the card fields" time="0.033102363">
+        </testcase>
+        <testcase classname="src/screens/Reservations/ReservationsScreen.test.tsx" name="ReservationsScreen &gt; counts each tab and switches between them" time="0.129919353">
+        </testcase>
+        <testcase classname="src/screens/Reservations/ReservationsScreen.test.tsx" name="ReservationsScreen &gt; shows the organization and its creator on an organization reservation" time="0.021167249">
+        </testcase>
+        <testcase classname="src/screens/Reservations/ReservationsScreen.test.tsx" name="ReservationsScreen &gt; shows the empty state with a way back to the catalog" time="0.054723182">
+        </testcase>
+        <testcase classname="src/screens/Reservations/ReservationsScreen.test.tsx" name="ReservationsScreen &gt; names the empty tab" time="0.060063676">
+        </testcase>
+        <testcase classname="src/screens/Reservations/ReservationsScreen.test.tsx" name="ReservationsScreen &gt; shows an error and retries" time="0.046194277">
+        </testcase>
+        <testcase classname="src/screens/Reservations/ReservationsScreen.test.tsx" name="ReservationsScreen &gt; reloads the list when the active organization changes" time="0.047941949">
+        </testcase>
+        <testcase classname="src/screens/Reservations/ReservationsScreen.test.tsx" name="ReservationsScreen &gt; shows the tab bar with Reservas current" time="0.052019952">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/Reservations/landlordModel.test.ts" timestamp="2026-11-16T18:53:29.639Z" hostname="runnervmccnms" tests="8" failures="0" errors="0" skipped="0" time="0.009887777">
+        <testcase classname="src/screens/Reservations/landlordModel.test.ts" name="deriveLandlordTab &gt; puts a confirmed reservation that has not ended in activa" time="0.003233973">
+        </testcase>
+        <testcase classname="src/screens/Reservations/landlordModel.test.ts" name="deriveLandlordTab &gt; puts a confirmed reservation that already ended in finalizada" time="0.000414403">
+        </testcase>
+        <testcase classname="src/screens/Reservations/landlordModel.test.ts" name="deriveLandlordTab &gt; leaves canceled and unpaid (pending) reservations out of both tabs" time="0.000536">
+        </testcase>
+        <testcase classname="src/screens/Reservations/landlordModel.test.ts" name="groupLandlord &gt; groups by tab and drops the hidden ones" time="0.001383311">
+        </testcase>
+        <testcase classname="src/screens/Reservations/landlordModel.test.ts" name="clientName &gt; joins name and lastname" time="0.000488531">
+        </testcase>
+        <testcase classname="src/screens/Reservations/landlordModel.test.ts" name="clientName &gt; falls back to &quot;Cliente&quot;" time="0.000321651">
+        </testcase>
+        <testcase classname="src/screens/Reservations/landlordModel.test.ts" name="toLandlordRow &gt; maps the fields the row shows" time="0.000586864">
+        </testcase>
+        <testcase classname="src/screens/Reservations/landlordModel.test.ts" name="toLandlordRow &gt; falls back to &quot;Bodega&quot; without a store room" time="0.000320258">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/Reservations/model.test.ts" timestamp="2026-11-16T18:53:29.641Z" hostname="runnervmccnms" tests="12" failures="0" errors="0" skipped="0" time="0.021889837">
+        <testcase classname="src/screens/Reservations/model.test.ts" name="deriveTab &gt; puts a canceled reservation in cancelada" time="0.006542416">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="deriveTab &gt; puts a confirmed reservation that already ended in finalizada" time="0.003435109">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="deriveTab &gt; keeps a confirmed reservation ending today or later in activa" time="0.000455781">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="deriveTab &gt; keeps an unpaid pending reservation in activa even when its dates passed" time="0.000315518">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="groupByTab &gt; buckets reservations preserving order" time="0.001402417">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="formatReservationCode &gt; zero-pads the real id, matching the backend and the web" time="0.000510513">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="formatAmount &gt; formats 150.5 as $150.50" time="0.000513819">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="formatAmount &gt; formats 150 as $150.00" time="0.000404735">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="formatAmount &gt; formats null as $0.00" time="0.000478263">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="toCardViewModel &gt; maps the room, period, amount, code and tab" time="0.001908671">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="toCardViewModel &gt; falls back when the room is missing and shows the refund only when canceled" time="0.000405146">
+        </testcase>
+        <testcase classname="src/screens/Reservations/model.test.ts" name="toCardViewModel &gt; hides the creator when the reservation is personal" time="0.00028464">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" timestamp="2026-11-16T18:53:29.642Z" hostname="runnervmccnms" tests="29" failures="0" errors="0" skipped="0" time="1.39567072">
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; lists the personal row first, then the organizations in API order" time="0.289834984">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; shows the logo with its alt text, or the initials when there is none" time="0.065039351">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; labels the role of each organization" time="0.025550124">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; renders only copy rows, names and roles: no ruc, email, status or counts" time="0.016309252">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; marks only the current row with aria-current" time="0.063542598">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; marks the personal row as current when no organization is stored" time="0.043204465">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; truncates a long name visually and keeps the full name in the DOM" time="0.010392765">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; lists inactive and suspended organizations like active ones" time="0.060490235">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; offers no create-organization or invitation entry" time="0.021902662">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; has one level-1 heading that holds focus on mount" time="0.03008139">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; exposes rows as buttons named after the organization and its role" time="0.047709691">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen content &gt; hides decorative avatars from assistive tech" time="0.019733377">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen selection &gt; writes the tapped organization and lands on Home" time="0.072821825">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen selection &gt; removes the stored organization when Modo personal is tapped" time="0.058805404">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen selection &gt; only navigates when the current row is tapped" time="0.068221287">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen selection &gt; selects once when the same row is tapped twice in a row" time="0.060288791">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen selection &gt; does not request anything when selecting" time="0.058691895">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen selection &gt; replaces the history entry when it navigates home" time="0.051853024">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen selection &gt; always offers Volver, which goes home without touching storage" time="0.033538115">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen selection &gt; keeps the stored id on a list error and still lets the tenant go personal" time="0.056848203">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen states &gt; shows the loading line with the personal row and no organizations" time="0.030834612">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen states &gt; shows the error alert and a focusable retry, keeping the personal row selectable" time="0.028170842">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen states &gt; retries the request, shows loading, then the organizations" time="0.064789625">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen states &gt; shows the error and retry again when the retry fails" time="0.064612497">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen states &gt; redirects to Home with replace when the tenant has no organizations" time="0.013663317">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen post-login gate &gt; shows only the loading line while the list loads" time="0.005438263">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen post-login gate &gt; shows the picker when the tenant has at least one organization" time="0.011917386">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen post-login gate &gt; goes to Home when the tenant has no organizations" time="0.009492876">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/SelectCompanyScreen.test.tsx" name="SelectCompanyScreen post-login gate &gt; goes to Home on a list error and keeps the stored id" time="0.008872732">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/SelectCompany/model.test.ts" timestamp="2026-11-16T18:53:29.650Z" hostname="runnervmccnms" tests="7" failures="0" errors="0" skipped="0" time="0.005465717">
+        <testcase classname="src/screens/SelectCompany/model.test.ts" name="organizationInitials &gt; uses the first letter of the first two words, uppercased" time="0.002190176">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/model.test.ts" name="organizationInitials &gt; uses the first letter for a one-word name" time="0.000349963">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/model.test.ts" name="organizationInitials &gt; falls back to OR for a blank or empty name" time="0.000266417">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/model.test.ts" name="organizationInitials &gt; ignores extra spaces and never returns more than two letters" time="0.000249716">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/model.test.ts" name="roleLabel &gt; maps admin to Administrador" time="0.000307564">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/model.test.ts" name="roleLabel &gt; maps member to Miembro" time="0.000211906">
+        </testcase>
+        <testcase classname="src/screens/SelectCompany/model.test.ts" name="roleLabel &gt; falls back to Miembro for an unexpected value" time="0.000202838">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" timestamp="2026-11-16T18:53:29.651Z" hostname="runnervmccnms" tests="9" failures="0" errors="0" skipped="0" time="0.565134779">
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; shows the tenant tab bar while loading, on error and when ready" time="0.271757283">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; shows the tab bar with the list" time="0.072605613">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; keeps the plain subtitle in personal mode" time="0.016919438">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; subtitles the header with the active organization initials" time="0.014687425">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; renders one card per approved room" time="0.025917409">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; shows an empty state when there are no rooms" time="0.012689829">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.073514267">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; navigates to the detail screen when a card is opened" time="0.050377936">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/StoreRoomCatalogScreen.test.tsx" name="StoreRoomCatalogScreen &gt; excludes a room flagged unavailable via navigation state (AC3)" time="0.024363262">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/StoreRoomCatalog/model.test.ts" timestamp="2026-11-16T18:53:29.652Z" hostname="runnervmccnms" tests="7" failures="0" errors="0" skipped="0" time="0.008295457">
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="monthlyPrice &gt; formats a numeric monthly price" time="0.002901894">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="monthlyPrice &gt; returns null when the price is not published" time="0.000472341">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="excludeUnavailable &gt; drops the matching id" time="0.001028077">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="excludeUnavailable &gt; returns every room when there is no id to exclude" time="0.000531652">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="excludeUnavailable &gt; returns every room when the id does not match any of them" time="0.000415455">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="toCardViewModel &gt; maps a catalog room to a display-ready card" time="0.000462934">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomCatalog/model.test.ts" name="toCardViewModel &gt; falls back to the raw room_type value for an unknown type" time="0.000281806">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" timestamp="2026-11-16T18:53:29.653Z" hostname="runnervmccnms" tests="6" failures="0" errors="0" skipped="0" time="0.515012633">
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; renders the full profile including the gestor phone (AC1)" time="0.269877539">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; omits photos, prices, security, and the map when those fields are empty (AC2)" time="0.033129137">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; shows an amber unavailability banner when the room is no longer available" time="0.02960542">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; shows a not-found state distinct from the unavailability notice" time="0.01099095">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; shows an error state whose &quot;Reintentar&quot; refetches" time="0.087486631">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/StoreRoomDetailScreen.test.tsx" name="StoreRoomDetailScreen &gt; propagates the unavailable id back to the catalog on back navigation (AC3)" time="0.08203958">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/screens/StoreRoomDetail/model.test.ts" timestamp="2026-11-16T18:53:29.654Z" hostname="runnervmccnms" tests="11" failures="0" errors="0" skipped="0" time="0.010059217">
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="hasCoordinates &gt; is true only when both latitude and longitude are set" time="0.00291593">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="hasPhotos &gt; reflects whether the photos array has entries" time="0.000475758">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="monthlyPrice &gt; prefers the month-mode price" time="0.000376864">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="monthlyPrice &gt; falls back to the first price when no month-mode entry exists" time="0.000406689">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="monthlyPrice &gt; returns null when there are no prices" time="0.000369039">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns the keys whose value is true" time="0.001053305">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns an empty array for null" time="0.000298887">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns an empty array for malformed JSON instead of throwing" time="0.000415235">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="parseSecurity &gt; returns an empty array for a JSON value that is not an object" time="0.000436033">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="availabilityStat &gt; reads &quot;Ahora&quot; when available" time="0.000470838">
+        </testcase>
+        <testcase classname="src/screens/StoreRoomDetail/model.test.ts" name="availabilityStat &gt; reads &quot;No disponible&quot; when not available" time="0.00025237">
+        </testcase>
+    </testsuite>
+</testsuites>
