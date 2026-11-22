@@ -36,7 +36,7 @@ El PDF se llama `T<número><Proyecto>_Midterm.pdf`. Ambos datos se leen de `conf
 │   ├── 03_sprints/             sprint1.tex, sprint2.tex
 │   ├── 05_static_analysis/     sprint1.tex, sprint2.tex
 │   └── 06_test_execution/      sprint1.tex, sprint2.tex
-├── appendices/                 Anexo A (instalación y despliegue)
+├── appendices/                 Anexo A (evidencias) y Anexo B (instalación)
 ├── figures/                    Imágenes incluidas en el informe, por sección
 ├── evidence/                   Archivos originales de evidencia, por sprint
 ├── presentation/               Guion del video

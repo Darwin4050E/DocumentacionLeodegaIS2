@@ -42,7 +42,7 @@ Ejemplos:
 
 - Los archivos originales (PDF de ejecuciones del CI, `junit.xml`, formularios) van en `evidence/sprintN/`.
 - Nombre: `EV-S<sprint>-<nn>_<descripcion>.<ext>`. Ejemplo: `EV-S1-03_ci-run-41928519922.pdf`.
-- Cada evidencia se cita en la sección del informe que la usa, con fecha y tag o SHA.
+- Cada evidencia se registra en el Anexo A con fecha, tag o SHA y sección del informe.
 - Las capturas que se muestran en el informe van en `figures/<sección>/`.
 - Nunca subir credenciales, tokens ni variables de entorno reales.
 
