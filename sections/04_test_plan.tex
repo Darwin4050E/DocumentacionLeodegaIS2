@@ -100,12 +100,12 @@ Leodega}, sheet \emph{Resumen}). Jira keys refer to the team backlog (project ES
   HUL-01 & ESL-6  & Mobile login to Leodeguita with Leodega credentials & 4 & 1 & 4 & Medium \\
   HUL-03 & ESL-7  & Mobile warehouse publication for review & 4 & 2 & 8 & Medium \\
   HUL-04 & ESL-8  & List of published warehouses (mobile) & 3 & 1 & 3 & Low \\
-  HUC-01 & ESL-9  & Search, filtering and map view of warehouses & -- & -- & -- & \tbd \\
-  HUC-02 & ESL-10 & Warehouse detail view & -- & -- & -- & \tbd \\
+  HUC-01 & ESL-9  & Search, filtering and map view of warehouses & 2 & 3 & 6 & Medium \\
+  HUC-02 & ESL-10 & Warehouse detail view & 2 & 2 & 4 & Low \\
   HUC-03 & ESL-11 & Warehouse reservation with date conflict detection & 3 & 3 & 9 & Medium \\
   HUC-05 & ESL-12 & Simulated payment confirmation & 3 & 3 & 9 & Medium \\
   HUG-02 & ESL-13 & Payment confirmation notification and contract activation & 2 & 3 & 6 & Medium \\
-  HUG-05 & ESL-14 & Reservation list view, filtering and detail & -- & -- & -- & \tbd \\
+  HUG-05 & ESL-14 & Reservation list view, filtering and detail & 2 & 2 & 4 & Low \\
   HUG-06 & ESL-15 & Cancellation of future paid reservations & 2 & 3 & 6 & Medium \\
   HUL-06 & ESL-16 & Mobile warehouse detail view & 3 & 2 & 6 & Medium \\
   \midrule
@@ -121,15 +121,19 @@ Leodega}, sheet \emph{Resumen}). Jira keys refer to the team backlog (project ES
   \bottomrule
 \end{longtable}
 
-Three stories are High priority (HUG-04, HUA-01 and HUE-05), sixteen are Medium and two are Low.
-Notes on the transfer from Software I:
+Three stories are High priority (HUG-04, HUA-01 and HUE-05), seventeen are Medium and four are
+Low (HUL-04, HUC-02, HUG-05 and HUL-02).
+Notes on the transfer from Software I\@:
 
 \begin{itemize}
   \item Software I registered two risks for HUG-04 (12 and 8), HUC-03 (9 and 3) and HUL-03
         (8 and 6); the table uses the higher of the two.
-  \item HUC-01, HUC-02 and HUG-05 have no entry in the Software I risk register.
-        \pending{The team must rate HUC-01, HUC-02 and HUG-05 (P and I) and confirm whether any
-        other rating changed after Sprints 1 and 2.}
+  \item HUC-01, HUC-02 and HUG-05 have no entry in the Software I risk register; Software I
+        classifies all three as features inherited from the previous platform. They were rated
+        for this plan. Probability is 2 (Unlikely) because their code already existed before
+        Sprint 1. Impact is 3 for HUC-01, because search is the client's way into every
+        reservation, and 2 for HUC-02 and HUG-05, which are read-only views, like the mobile
+        detail view HUL-06 that Software I rated with impact 2.
 \end{itemize}
 
 \subsection{Prioritization Rule}
@@ -140,7 +144,8 @@ Testing effort is assigned by test priority (Table~\ref{tab:risk-scale}):
   \item \textbf{High priority.} Every acceptance criterion has at least one test case. Test cases
         cover the valid path and the invalid, exceptional and boundary inputs derived with the
         techniques below. Business rules are covered by unit tests, interactions with the database
-        and API by integration tests, and the end-to-end flow by a functional test. A
+        and API by integration tests, and the flow in the user interface is checked on the
+        deployed system. A
         high-priority story cannot be marked as accepted while any of its test cases fails.
   \item \textbf{Medium priority.} The main flow is covered by a functional test and the most
         likely negative case by one additional test. Unit tests are added where the logic is
@@ -152,8 +157,8 @@ Testing effort is assigned by test priority (Table~\ref{tab:risk-scale}):
 The justification is the limited time available in two sprints and the order of attack defined
 in the Software I risk management plan, which deals first with the risks of highest probability
 and impact. Medium- and low-priority stories are tested less because a failure there is either
-unlikely or cheap to detect and fix later, and their deferred cases are listed explicitly so they
-can be scheduled in Sprints 3 and 4.
+unlikely or cheap to detect and fix later. Their test cases keep their identifiers in the
+traceability matrix, so the ones not executed can be scheduled in Sprints 3 and 4.
 
 \subsection{Test Design Techniques}
 \begingroup\sloppy % long test method names
@@ -245,9 +250,9 @@ requires. Table~\ref{tab:decision-hua01} lists the rules implemented and tested 
 \begin{itemize}[nosep]
   \item All acceptance criteria of the High-priority stories delivered in Sprints 1 and 2.
   \item The main flow and key negative case of the Medium-priority stories.
-  \item The web client, the Leodeguita mobile client and the shared REST API.
+  \item The web client, the Leodeguita mobile client and the shared REST API\@.
   \item The simulated payment flow (paid, pending and failed results), which is the only payment
-        mechanism in the MVP.
+        mechanism in the MVP\@.
   \item Authentication and role checks of RNF-03 on the routes used by the stories above:
         unauthenticated requests and requests from another role are rejected (for example
         \testref{test_unauthenticated_request_cannot_delete_storeroom} and
@@ -266,8 +271,10 @@ requires. Table~\ref{tab:decision-hua01} lists the rules implemented and tested 
         session token management and password reset), which the Software I specification also
         leaves out of scope.
   \item Performance and scalability (RNF-01, RNF-10). The repository contains no performance or
-        load tests, so these requirements were not verified in Sprints 1 and 2.
-        \pending{Add the team's reason for not testing RNF-01 and RNF-10 in these sprints.}
+        load tests, so these requirements were not verified in Sprints 1 and 2. Neither the
+        project risks (R-01 to R-06) nor the story risks of the Software I register include a
+        performance or scalability risk, so under the prioritization rule they received no test
+        effort in these sprints.
   \item Tests that depend on PostgreSQL behavior. The automated suite runs on SQLite, which
         ignores \texttt{SELECT \ldots{} FOR UPDATE} row locks, cannot open two concurrent
         connections and has no \texttt{ADD CONSTRAINT}. Tests in nine test classes covering
@@ -285,25 +292,33 @@ requires. Table~\ref{tab:decision-hua01} lists the rules implemented and tested 
     Level & Tools & Owner \\
     \midrule
     Unit & Backend: PHPUnit 11 (\texttt{tests/Unit}). Web and mobile clients: Vitest with
-           React Testing Library. & \pending{name} \\
+           React Testing Library. & Geovanny Diaz, Darwin Diaz \\
     Integration & PHPUnit feature tests (\texttt{tests/Feature}) against the REST API and an
-                  in-memory SQLite database. & \pending{name} \\
-    Functional / acceptance & Cypress end-to-end tests (\texttt{frontend/cypress/e2e}).
-                              \pending{and/or manual execution of test cases?} & \pending{name} \\
+                  in-memory SQLite database. & Geovanny Diaz, Darwin Diaz \\
+    Functional / acceptance & Manual checks of each story on the deployed web and mobile
+                              applications, and the client's acceptance review. Cypress is
+                              installed but was not run. & Geovanny Diaz; the client
+                              (acceptance) \\
     \bottomrule
   \end{tabularx}
   \caption{Test levels, tools and owners.}
   \label{tab:test-levels}
 \end{table}
 
-PHPUnit and Vitest run automatically on every push and pull request to \texttt{main} and
-\texttt{develop} through the continuous integration pipeline described in Section~\ref{sec:ci};
-the backend job also collects code coverage with PCOV. Cypress is installed as a development
-dependency of the web client, but it has no npm script and is not part of the pipeline. Its five
-specs (\texttt{auth}, \texttt{bodegas}, \texttt{landing}, \texttt{login} and
-\texttt{navigation}) come from the initial commit of the repository and were not modified in
-Sprints 1 and 2. \pending{State how the functional test cases of Sprints 1 and 2 were executed
-(manually, with Cypress, or both) and by whom.}
+Owners of the unit and integration levels are the authors of those tests in the history of the
+Leodega repository. PHPUnit and Vitest run automatically on every push and pull request to
+\texttt{main} and \texttt{develop} through the continuous integration pipeline described in
+Section~\ref{sec:ci}, which was created on 2026-11-04, during Sprint 2; the backend job also
+collects code coverage with PCOV\@. The Sprint 1 suites were therefore run afterwards on the
+deployed Sprint 1 code (Section~\ref{sec:test-execution}).
+
+Cypress is installed as a development dependency of the web client, but it has no npm script and
+is not part of the pipeline. Its five specs (\texttt{auth}, \texttt{bodegas}, \texttt{landing},
+\texttt{login} and \texttt{navigation}) come from the initial commit of the repository and were
+not modified or run in Sprints 1 and 2. Functional checks were therefore manual: each story was
+exercised on the deployed applications (one screenshot per story in Section~\ref{sec:sprints}),
+the client accepted every story on 2026-11-16, and the High-priority cases are verified by PHPUnit
+integration tests that call the API and check the database.
 
 \subsection{Test Case Identifiers}
 \label{sec:tc-ids}
@@ -363,10 +378,10 @@ executed, deferred or smoke-tested follows from it and from the prioritization r
          &      & S3: Duplicate warehouse name for the same manager is rejected & TC-HUL-03-03 \\
   HUL-04 & Low  & S1: List shows title, location and status of each warehouse & TC-HUL-04-01 \\
          &      & S2: Empty state offers to publish a new warehouse & TC-HUL-04-02 \\
-  HUC-01 & \tbd & S1: Filters return only matching approved warehouses & TC-HUC-01-01 \\
+  HUC-01 & Medium & S1: Filters return only matching approved warehouses & TC-HUC-01-01 \\
          &      & S2: No results shows message and option to clear filters & TC-HUC-01-02 \\
          &      & S3: Map shows markers with a card linking to the detail & TC-HUC-01-03 \\
-  HUC-02 & \tbd & S1: Detail page shows all data; Reserve only if available & TC-HUC-02-01 \\
+  HUC-02 & Low  & S1: Detail page shows all data; Reserve only if available & TC-HUC-02-01 \\
          &      & S2: Unavailable warehouse shows ``Currently unavailable'' & TC-HUC-02-02 \\
          &      & S3: Non-existent warehouse shows error page with link to catalog & TC-HUC-02-03 \\
   HUC-03 & Medium & S1: Reservation is created as pending payment and holds the dates & TC-HUC-03-01 \\
@@ -380,7 +395,7 @@ executed, deferred or smoke-tested follows from it and from the prioritization r
   HUG-02 & Medium & S1: Manager is notified of payment and contract becomes active & TC-HUG-02-01 \\
          &      & S2: Expired payment window frees the space and notifies the manager & TC-HUG-02-02 \\
          &      & S3: Active contract is shown with details and chat access & TC-HUG-02-03 \\
-  HUG-05 & \tbd & S1: Reservation table lists all reservations of the manager & TC-HUG-05-01 \\
+  HUG-05 & Low  & S1: Reservation table lists all reservations of the manager & TC-HUG-05-01 \\
          &      & S2: Filters by date, status and client narrow the list & TC-HUG-05-02 \\
          &      & S3: Reservation detail shows client data and receipt & TC-HUG-05-03 \\
   HUG-06 & Medium & S1: Future paid reservation is cancelled with reason, client notified & TC-HUG-06-01 \\
@@ -434,7 +449,7 @@ The following metrics are collected per sprint and reported in Section~\ref{sec:
         with at least one passing test case / total acceptance criteria of High-priority stories.
   \item \textbf{Defects} found, fixed and open, by severity (critical, major, minor).
   \item \textbf{Code coverage} of the backend suite, measured with PCOV in the CI pipeline
-        (Clover report).
+        (Clover report). It is available from Sprint 2, when the pipeline was created.
 \end{itemize}
 
 The stopping criterion takes its pass-rate thresholds from requirement RNF-09 (Testability) of
@@ -448,7 +463,8 @@ Testing of a sprint stops when all of the following hold:
         marked as pending in Section~\ref{sec:test-execution};
   \item there are no open critical or major defects in High-priority stories;
   \item the automated suites pass at 100\% (RNF-09), with tests skipped on SQLite reported
-        separately;
+        separately; Cypress was not run in these sprints, so this applies to the PHPUnit and
+        Vitest suites;
   \item the reservation and moderation flows delivered in the sprint have at least one passing
         test (RNF-09; the report flow belongs to Sprints 3 and 4).
 \end{enumerate}
