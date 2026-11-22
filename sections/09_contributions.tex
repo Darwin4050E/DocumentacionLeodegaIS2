@@ -1,18 +1,23 @@
 \section{Individual Contributions}
 \label{sec:contributions}
 
-The team has four members and the project has four sprints, so the team split into two pairs and each pair implements two sprints.
-Darwin Díaz and Geovanny Díaz implemented Sprints~1 and~2.
+The project started before the team entered the Software Engineering~II course.
+The first meeting of this phase with the client was on 2026-08-31 (C09 in Table~\ref{tab:communications}), and the first commit in the code repository (\sha{8ff13c8}, ``Initial commit: backend Laravel + frontend React'') is from 2026-09-01.
+Of the 155 commits that form Sprint~1, 115 were made in September 2026, before the course sprints started on 2026-10-01 (Table~\ref{tab:sprint-plan}).
+
+Because of this early start, the team split into two pairs and each pair implements two sprints.
+Darwin Díaz and Geovanny Díaz had already started the implementation, so they took Sprints~1 and~2.
 Carla Gutierrez and Joao Dorado will implement Sprints~3 and~4.
 For this reason, Carla and Joao have no commits in the code repository (\texttt{Darwin4050E/Leodega}) during Sprints~1 and~2.
-During these sprints they worked on the project documents and documentation: they prepared the Sprint Planning document and wrote most of this report.
+During these sprints they worked on the project documents, such as the Sprint Planning document, and wrote most of this report.
+They were also in charge of reviewing every flow of the web app and of Leodeguita to point out feedback to the developers.
 
 Commit counts come from \texttt{git shortlog -{}-no-merges} on the code repository.
 Sprint~1 is the history up to \sha{ca1799a} (base of \texttt{sprint1-deploy}), and Sprint~2 is the range \sha{ca1799a}..\sha{90dbf81}.
 
-\begin{longtable}{@{}L{2.2cm}L{4.2cm}L{4.5cm}L{3.8cm}@{}}
+\begin{longtable}{@{}L{2.2cm}L{6.2cm}L{6.3cm}@{}}
   \toprule
-  Member & Sprint 1 & Sprint 2 & Evidence \\
+  Member & Sprint 1 & Sprint 2 \\
   \midrule
   \endhead
   Darwin Díaz &
@@ -20,27 +25,26 @@ Sprint~1 is the history up to \sha{ca1799a} (base of \texttt{sprint1-deploy}), a
     Merged and reviewed pull requests as repository owner.
     Signed the Project Scope Document as team leader. &
     Built the CI pipeline (PR \#56) and fixed the PHPStan and ESLint errors (PR \#57).
-    Merged \texttt{develop} into \texttt{main} (PR \#58) and prepared both deployment branches and tags.
-    Wrote Sections~\ref{sec:static-analysis} and~\ref{sec:ci}, Appendix~\ref{app:install} and the slide deck. &
-    Code repo: 38 + 6 commits; PRs \#56, \#57, \#58; tags \texttt{sprint1-deploy}, \texttt{sprint2-deploy}.
-    Report repo: PRs \#1 and \#2. \\
+    Merged \texttt{develop} into \texttt{main} (PR \#58) and prepared both deployment branches and tags (6 commits).
+    Wrote Sections~\ref{sec:static-analysis} and~\ref{sec:ci}, Appendix~\ref{app:install} and the slide deck. \\
   Geovanny Díaz &
     Implemented most Sprint~1 features in the backend, the web app and Leodeguita (117 commits). &
-    Implemented the organization features: creation, booking for the organization, wallet, protected reservations, invitations, control panel and the Leodeguita company selector (91 commits).
+    Implemented the organization features: creation, booking for the organization, wallet, protected reservations, invitations, control panel and the Leodeguita company selector (PRs \#45 to \#54, 91 commits).
     Aligned the screens with the prototype (PR \#55).
-    Writes Sections~\ref{sec:sprints} and~\ref{sec:test-execution}. &
-    Code repo: 117 + 91 commits; PRs \#45 to \#55. \\
+    Writes Sections~\ref{sec:sprints} and~\ref{sec:test-execution}. \\
   Carla Gutierrez &
-    Prepared the Sprint Planning document (Class Activity~1) with Joao: sprint goals, user stories with acceptance criteria, Jira backlog and team capacity. &
+    Prepared the Sprint Planning document and the Scope with Joao: sprint goals, user stories with acceptance criteria, Jira backlog and team capacity.
+    Reviewed every flow of the web app and Leodeguita with Joao and reported feedback to the developers. &
     Wrote the report cover and Sections~\ref{sec:context},~\ref{sec:architecture} (including both diagrams, checked against the code),~\ref{sec:client},~\ref{sec:contributions} and~\ref{sec:ai}.
     Gave the deployment tags and SHAs to the other sections.
-    Will implement Sprints~3 and~4 with Joao. &
-    Sprint Planning document; report repo PR \pending{PR number}. \\
+    Reviewed every flow of the web app and Leodeguita with Joao and reported feedback to the developers.
+    Will implement Sprints~3 and~4 with Joao. \\
   Joao Dorado &
-    Prepared the Sprint Planning document with Carla. &
+    Prepared the Sprint Planning document with Carla.
+    Reviewed every flow of the web app and Leodeguita with Carla and reported feedback to the developers. &
     Wrote the risk-based test plan (Section~\ref{sec:test-plan}), including the test case IDs used in Section~\ref{sec:test-execution}, and Section~\ref{sec:video}.
-    Will implement Sprints~3 and~4 with Carla. &
-    Sprint Planning document; report repo PR \pending{PR number}. \\
+    Reviewed every flow of the web app and Leodeguita with Carla and reported feedback to the developers.
+    Will implement Sprints~3 and~4 with Carla. \\
   \bottomrule
   \caption{Contributions per team member and sprint.}
   \label{tab:contributions}

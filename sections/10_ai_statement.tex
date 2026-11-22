@@ -1,7 +1,7 @@
 \section{AI Usage Statement}
 \label{sec:ai}
 
-The team used Claude (Anthropic) as a support tool for three tasks: reviewing code, testing code, and formatting this report.
+The team used Claude (Anthropic) as a support tool for four tasks: generating code, reviewing code, testing code, and formatting this report.
 AI output was never accepted as is: each member checked it against the repository, the Sprint Planning document and the client's instructions, and corrected it before using it.
 Facts in this report (dates, SHAs, tags, counts and test results) come from Git, GitHub Actions and the tools themselves, not from AI\@.
 
@@ -10,9 +10,10 @@ Facts in this report (dates, SHAs, tags, counts and test results) come from Git,
   Tool & Purpose & Affected parts & Human verification \\
   \midrule
   \endhead
+  Claude (Anthropic) & Code generation: writing first versions of features, components and fixes from the user stories and their acceptance criteria. & Backend, web app and Leodeguita code (repository \texttt{Darwin4050E/}\allowbreak\texttt{Leodega}). & Used responsibly: no generated code went into the repository without a human filter. The developer read it, tested it and changed it as needed to fit the existing code, the client's requirements and the situation of each feature. The change then went through code review and the CI pipeline like any other change. \\
   Claude (Anthropic) & Code review: reading changes before a merge to find defects, unclear code and cases the change did not handle. & Backend, web app and Leodeguita code (repository \texttt{Darwin4050E/}\allowbreak\texttt{Leodega}). & The author of the change read each comment and decided whether to apply it. No change was merged until the CI pipeline passed (Section~\ref{sec:ci}). \\
   Claude (Anthropic) & Testing: proposing test cases, including edge cases, and helping to write and debug automated tests. & Backend and frontend test suites. & Each test was run locally and in the CI pipeline. A test was kept only if it checked the behavior described in the acceptance criteria of its user story. \\
-  Claude Code (Anthropic) & Report format and syntax: Latex tables and figures, fixing compilation errors and linter warnings, and correcting the English text. Also analyzing the repositories (Git history, tags, configuration). & The whole report. & The report must compile with no errors and no linter warnings in CI\@. The whole team checked every SHA, tag and date with \texttt{git log} and \texttt{git show}, and checked the diagrams against \texttt{sprint2-deploy}. \\
+  Claude Code (Anthropic) & Report format and syntax: Latex tables and figures, fixing compilation errors and linter warnings, and correcting the English text. Also analyzing the repositories (Git history, tags, configuration). & The whole report. & The report must compile with no errors and no linter warnings in CI\@. The whole team checked every SHA, tag and date with \texttt{git log} and \texttt{git show}, and checked the diagrams against \texttt{sprint2-deploy}. Check that the AI doesn't replace the principal ideas of the drafts given by the team or make assumptions about the project just from the drafts. \\
   \bottomrule
   \caption{AI tools used in the project.}
   \label{tab:ai-usage}
