@@ -10,3 +10,7 @@ build/
 *.blg
 .DS_Store
 Thumbs.db
+
+# Local copies of the code repo and the Software Engineering I docs
+/Leodega/
+/DocumentacionLeodega/
