@@ -11,36 +11,36 @@ The team talked with the client (\ClientName{}) through Microsoft Teams and Zoom
   \midrule
   \endhead
   \multicolumn{6}{@{}l}{\textit{Software Engineering II (up to Sprint 2)}} \\
-  C09 & \texttt{reunion\_po\_}\allowbreak\texttt{1.jpeg} (Figure~\ref{fig:meeting-c09}) & Meeting with the client: Sprint Planning & Teams & Client, full team & 2026-08-31 \\
-  C10 & \texttt{reunion\_po\_}\allowbreak\texttt{2.png} (Figure~\ref{fig:meeting-c10}) & Geovanny Díaz shows the client the organization panel of the deployed web app: wallet balance, members, bookings for the organization and action history. & Teams & Client, full team & 2026-09-21 \\
-  C11 & Project Scope Document (PDF available on the virtual classroom) & Scope agreement: user stories, MVP features and limitations, such as simulated payment. Client signature: Yes & PDF & Client, Darwin Díaz (team leader) & 2026-10-04 \\
-  C12 & \texttt{reunion\_po\_}\allowbreak\texttt{3.jpeg} (Figure~\ref{fig:meeting-c12}) & Geovanny Díaz shows the client the catalog and the selector between personal mode and an organization. & Zoom & Client, full team & 2026-11-12 \\
-  C13 & \texttt{acceptance-}\allowbreak\texttt{sprint1\_}\allowbreak\texttt{signed.jpg} (Figure~\ref{fig:acceptance-sprint1}) & Sprint~1 acceptance letter: the client accepts the 16 user stories of Sprint~1 (2026-10-01 to 2026-10-21). & Signed letter & Client (Product Owner), full team & 2026-11-16 \\
-  C14 & \texttt{acceptance-}\allowbreak\texttt{sprint2\_}\allowbreak\texttt{signed.png} (Figure~\ref{fig:acceptance-sprint2}) & Sprint~2 acceptance letter: the client accepts the 8 user stories of Sprint~2 (2026-10-22 to 2026-11-13). & Signed letter & Client (Product Owner), full team & 2026-11-16 \\
+  C01 & \texttt{reunion\_po\_}\allowbreak\texttt{1.jpeg} (Figure~\ref{fig:meeting-c01}) & Meeting with the client: Sprint Planning & Teams & Client, full team & 2026-08-31 \\
+  C02 & \texttt{reunion\_po\_}\allowbreak\texttt{2.png} (Figure~\ref{fig:meeting-c02}) & Geovanny Díaz shows the client the organization panel of the deployed web app: wallet balance, members, bookings for the organization and action history. & Teams & Client, full team & 2026-09-21 \\
+  C03 & Project Scope Document (PDF available on the virtual classroom) & Scope agreement: user stories, MVP features and limitations, such as simulated payment. Client signature: Yes & PDF & Client, Darwin Díaz (team leader) & 2026-10-04 \\
+  C04 & \texttt{reunion\_po\_}\allowbreak\texttt{3.jpeg} (Figure~\ref{fig:meeting-c04}) & Geovanny Díaz shows the client the catalog and the selector between personal mode and an organization. & Zoom & Client, full team & 2026-11-12 \\
+  C05 & \texttt{acceptance-}\allowbreak\texttt{sprint1\_}\allowbreak\texttt{signed.jpg} (Figure~\ref{fig:acceptance-sprint1}) & Sprint~1 acceptance letter: the client accepts the 16 user stories of Sprint~1 (2026-10-01 to 2026-10-21). & Signed letter & Client (Product Owner), full team & 2026-11-16 \\
+  C06 & \texttt{acceptance-}\allowbreak\texttt{sprint2\_}\allowbreak\texttt{signed.png} (Figure~\ref{fig:acceptance-sprint2}) & Sprint~2 acceptance letter: the client accepts the 8 user stories of Sprint~2 (2026-10-22 to 2026-11-13). & Signed letter & Client (Product Owner), full team & 2026-11-16 \\
   \bottomrule
-  \caption{Index of client interactions. The Software Engineering I log recorded dates but not start times; times can be read from the recordings.}
+  \caption{Index of client interactions during Software Engineering~II\@. Meeting start times can be read from the recordings.}
   \label{tab:communications}
 \end{longtable}
 
 \subsection{Key Client Decisions}
 
 \begin{itemize}
-  \item \textbf{Build on the existing system} (C02, C03): the client gave the code and deployment manuals of the previous Laravel and React project.
+  \item \textbf{Build on the existing system}: the client gave the code and deployment manuals of the previous Laravel and React project.
         The team kept that stack (Table~\ref{tab:tech-decisions}).
-  \item \textbf{One backend for web and mobile} (C06, C07): Leodega and Leodeguita share accounts, the warehouse model and the business rules.
+  \item \textbf{One backend for web and mobile}: Leodega and Leodeguita share accounts, the warehouse model and the business rules.
         This is why Leodeguita is a client of the same REST API (Figure~\ref{fig:components}).
-  \item \textbf{Organizations} (C06): a client can work under a company with several members.
+  \item \textbf{Organizations}: a client can work under a company with several members.
         This became the Sprint~2 goal.
-  \item \textbf{External inventory} (C01): clients connect their own inventory systems through an endpoint and a field mapping.
+  \item \textbf{External inventory}: clients connect their own inventory systems through an endpoint and a field mapping.
         This is planned for Sprint~4.
-  \item \textbf{Simulated payment} (C11): the MVP uses a simulated payment instead of the Paganini gateway, which another team is still building.
+  \item \textbf{Simulated payment} (C03): the MVP uses a simulated payment instead of the Paganini gateway, which another team is still building.
         Real payment is postponed to a later phase.
-  \item \textbf{Scope changes} (C11): any change to the signed scope must be discussed and accepted by both parties.
+  \item \textbf{Scope changes} (C03): any change to the signed scope must be discussed and accepted by both parties.
 \end{itemize}
 
 \subsection{Acceptance Forms}
 
-The Product Owner signed one acceptance letter per sprint on 2026-11-16 (C13 and C14).
+The Product Owner signed one acceptance letter per sprint on 2026-11-16 (C05 and C06).
 Each letter lists the user stories of the sprint with their status.
 All stories were accepted: 16 in Sprint~1 and 8 in Sprint~2, with none deferred or rejected.
 These are the same stories listed in Section~\ref{sec:sprints}.
@@ -51,8 +51,8 @@ These are the same stories listed in Section~\ref{sec:sprints}.
 
 \subsection{Meeting Evidence}
 
-\evidencefigure[0.8\linewidth]{communications/reunion_po_1.jpeg}{Meeting C09 with the client on Microsoft Teams, 2026-08-31.}{fig:meeting-c09}
+\evidencefigure[0.8\linewidth]{communications/reunion_po_1.jpeg}{Meeting C01 with the client on Microsoft Teams, 2026-08-31.}{fig:meeting-c01}
 
-\evidencefigure[0.8\linewidth]{communications/reunion_po_2.png}{Meeting C10 with the client: demonstration of the organization panel, 2026-09-21.}{fig:meeting-c10}
+\evidencefigure[0.8\linewidth]{communications/reunion_po_2.png}{Meeting C02 with the client: demonstration of the organization panel, 2026-09-21.}{fig:meeting-c02}
 
-\evidencefigure[0.8\linewidth]{communications/reunion_po_3.jpeg}{Meeting C12 with the client on Zoom: demonstration of the catalog and the context selector, 2026-11-12.}{fig:meeting-c12}
+\evidencefigure[0.8\linewidth]{communications/reunion_po_3.jpeg}{Meeting C04 with the client on Zoom: demonstration of the catalog and the context selector, 2026-11-12.}{fig:meeting-c04}
