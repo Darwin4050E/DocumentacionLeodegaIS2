@@ -40,7 +40,7 @@ Todo sale de las secciones 1 (contexto), 2 (arquitectura) y 9 (contribuciones) d
 
 Notas:
 - La razón de dividirnos en pares está en la sección 9: el proyecto empezó antes de la materia (primer commit el 2026-09-01). No hace falta decirla completa en el video; si sobra tiempo, se puede agregar una frase.
-- "All 16 and all 8 stories accepted" está respaldado por las cartas de aceptación firmadas por el Product Owner el 2026-11-16 (sección 8, C13 y C14).
+- "All 16 and all 8 stories accepted" está respaldado por las cartas de aceptación firmadas por el Product Owner el 2026-11-16 (sección 8, C05 y C06).
 
 ---
 
