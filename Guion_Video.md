@@ -21,22 +21,26 @@ Uso interno del equipo. No es parte del informe.
 
 ## 1. Carla: sistema, arquitectura y sprints (1:40)
 
-**Diapositiva 1 (portada)**
-> Hello, we are [Team name], from ESPOL, Software Engineering II. This is our midterm presentation for Leodega. I am Carla, and I am here with Johao, Geovanny and Darwin.
+Todo sale de las secciones 1 (contexto), 2 (arquitectura) y 9 (contribuciones) del informe, y de la sección 3 de Geovanny para las historias aceptadas. Son unas 230 palabras: cerca de 1:45 hablando con calma.
 
-**Diapositiva 2 (agenda)**
-> In eight minutes, we will show our system, how we planned our tests, and three live test cases. We will also share our code quality results.
+**Diapositiva 1 (portada)** (unos 10 segundos)
+> Hello, we are Group 4, from ESPOL, Software Engineering II. This is our midterm presentation of Leodega. I am Carla Gutierrez, and I am here with Joao, Geovanny and Darwin.
 
-**Diapositiva 3 (contexto)**
-> Our client is Leodega, and the Product Owner is Leonardo Castro. The problem is [one sentence about the problem]. Leodega has a web app and a mobile web app called Leodeguita. It has three kinds of users: [role 1], [role 2] and [role 3].
+**Diapositiva 2 (orden)** (unos 10 segundos)
+> In eight minutes, we will show our system, our risk-based test plan, and three live test cases on the deployed system. We end with our code quality and CI results.
 
-**Diapositiva 4 (arquitectura)**
-> Here are our component and deployment diagrams. [One sentence about each diagram.] The backend is a Laravel API. The web apps use React. The database is PostgreSQL on Railway, and the web apps run on Vercel. We chose them because [reason 1] and [reason 2].
+**Diapositiva 3 (contexto)** (unos 25 segundos)
+> Our client and Product Owner is Leonardo Castro. In Guayaquil, people who need storage find it through informal deals, with no guarantee of safety or legal compliance. And owners with empty warehouses have no formal way to offer them. Leodega connects both. It has three roles: the storage manager publishes warehouses, the administrator checks them and their fire permit, and the client searches, books and pays. A client can also work for a company.
 
-Nota: Laravel, React, PostgreSQL, Railway y Vercel salen del Anexo B. Los motivos de la elección los pone Carla.
+**Diapositiva 4 (arquitectura)** (unos 35 segundos)
+> This is our architecture. One Laravel API holds all the business rules. Two React apps use it: the Leodega web app, and Leodeguita, an installable mobile web app. In production, Vercel serves the two apps, and Railway runs the API in a Docker container, with PostgreSQL and a volume for uploaded files. Why these tools? We kept the stack of the previous team, so we did not rewrite the system. We made Leodeguita a web app instead of React Native, so we use one language and install it from the browser. And PostgreSQL gives us the transactions we need to avoid double bookings. Each sprint is deployed from its own tag.
 
-**Diapositiva 5 (sprints)**
-> We finished two sprints. Sprint 1 ran from October 1 to October 21. The goal was login for web and mobile, and the basic flows: warehouses, moderation, search, booking and simulated payment. The client accepted all 16 stories. Sprint 2 ran from October 22 to November 13. The goal was companies: organizations, invitations, switching context, and reservations for a company. [X of 8 stories accepted.]
+**Diapositiva 5 (sprints)** (unos 25 segundos)
+> We finished two sprints. Sprint 1, from October 1 to October 21, delivered login for web and mobile, warehouse management and moderation, and search and booking with simulated payment. Sprint 2, from October 22 to November 13, delivered companies: organizations, invitations, context switching and company reservations. The client accepted all 16 and all 8 stories. Darwin and Geovanny built these two sprints, and Joao and I will build Sprints 3 and 4. Now, Joao will explain our test plan.
+
+Notas:
+- La razón de dividirnos en pares está en la sección 9: el proyecto empezó antes de la materia (primer commit el 2026-09-01). No hace falta decirla completa en el video; si sobra tiempo, se puede agregar una frase.
+- "All 16 and all 8 stories accepted" está respaldado por las cartas de aceptación firmadas por el Product Owner el 2026-11-16 (sección 8, C13 y C14).
 
 ---
 
@@ -117,6 +121,33 @@ Tiempo estimado de tu parte: unas 190 palabras (1:30) más 30 segundos de demo e
 6. Ensayar cada caso al menos una vez. El caso 1 (Geovanny) **escribe datos reales**: ensayarlo en local y hacerlo una sola vez en el despliegue.
 7. Darwin: **no agregues un dígito** al RUC. Uno de 13 dígitos que termine en 001 es válido y crearía una empresa real.
 8. Darwin: antes de grabar, confirmar que los números 1,820, 1,553 y 478 coinciden con lo que muestra el sistema.
+
+## Contenido y recursos de cada diapositiva
+
+Qué tiene que decir cada diapositiva (el mensaje, no el texto exacto) y qué imágenes o recursos van en ella. Todo sale del informe o del proyecto; la última columna dice de dónde, para poder revisarlo.
+
+| Diap. | Quién | Qué debe decir | Imágenes y recursos | Fuente |
+|---|---|---|---|---|
+| 1. Portada | Carla | Materia (Software Engineering II, Midterm), nombre del sistema, equipo "Group 4", los cuatro integrantes, cliente y fecha (noviembre 2026). | Logo de ESPOL y logo de Leodega. Nombres completos: Carla Gutierrez, Joao Dorado, Geovanny Díaz, Darwin Díaz. | Portada del informe, `config/metadata.tex` |
+| 2. Orden | Carla | Los cuatro bloques del video, quién habla en cada uno y el tiempo. | Solo texto: Carla (sistema, arquitectura, sprints), Joao (plan de pruebas), Geovanny (casos en vivo 1 y 2), Darwin (caso 3, análisis estático, CI). | Tabla "Tiempos" de este guion |
+| 3. Contexto | Carla | Cliente y Product Owner: Ing. Leonardo Castro. El problema: en Guayaquil se alquila almacenamiento con acuerdos informales, sin garantía de seguridad ni legalidad, y los dueños de bodegas vacías no tienen un canal formal. Leodega conecta ambos lados. Tres roles: administrador, gestor de bodegas y cliente (que puede actuar por una organización). | Una captura del catálogo desplegado, por ejemplo de `figures/sprints/sprint1-deployment-1.png`. Íconos o recuadros simples para los tres roles. | Sección 1.1 y 1.3 |
+| 4. Arquitectura | Carla | Un backend (API REST en Laravel) con todas las reglas de negocio y dos clientes React: la web y Leodeguita (PWA instalable). Despliegue: Vercel sirve las dos apps; Railway corre la API en Docker con PostgreSQL y un volumen para archivos. Tres decisiones con su motivo: mantener la pila del equipo anterior, PWA en vez de React Native, PostgreSQL por las transacciones de reservas. | Los diagramas de componentes y de despliegue del informe (Figuras de la sección 2; se pueden recortar del PDF). Pila exacta: Laravel 12, PHP 8.2, React 19 + TypeScript + Vite, PostgreSQL, Railway, Vercel. Tags: `sprint1-deploy` (3bbef9d) y `sprint2-deploy` (9b8427d). | Sección 2, tabla de decisiones de tecnología y tabla de versiones desplegadas |
+| 5. Sprints | Carla | Objetivo y fechas de cada sprint: S1 del 1 al 21 de octubre, S2 del 22 de octubre al 13 de noviembre. 16 y 8 historias, todas aceptadas. Darwin y Geovanny hicieron S1 y S2; Carla y Joao harán S3 y S4. | Capturas del backlog de Jira: `figures/sprints/sprint1-backlog.png` y `figures/sprints/sprint2-backlog.png`. Como apoyo, `figures/sprints/sprint2-deployment.png`. | Tabla del plan en la sección 1, sección 3, sección 9 |
+| 6. Divisor del plan de pruebas | Joao | Se prueba más donde una falla cuesta más. | Diapositiva de transición, sin datos. | Sección 4 |
+| 7. Matriz de riesgo | Joao | Probabilidad × impacto, de 1 a 5 cada uno; 10 o más es prioridad alta. Las tres historias altas: HUG-04, HUA-01 y HUE-05. Qué cobertura recibe cada nivel. | Matriz 5×5 con las tres historias en su celda. | Sección 4 |
+| 8. Técnica de diseño | Joao | Particiones de equivalencia aplicadas a HUE-05: cuatro grupos según la cabecera de organización, un caso por grupo. | Tabla con los cuatro grupos: sin cabecera, miembro, no miembro, organización inactiva. | Sección 4.4 |
+| 9. Caso en vivo 1 | Geovanny | TC-HUE-05-01, caso válido: historia, entrada y resultado esperado antes de la demo; obtenido y resultado después. | Tabla Historia / Entrada / Esperado / Obtenido / Resultado. Navegador con la web desplegada (`leodega-frontend.vercel.app`) y sesión iniciada antes de grabar. | Sección 6, parte de Geovanny en este guion |
+| 10. Caso en vivo 2 | Geovanny | TC-HUC-03-02, caso inválido: fechas que chocan con una reserva existente se rechazan y no se crea nada. | Misma tabla y el navegador. | Sección 6 |
+| 11. Caso en vivo 3 | Darwin | TC-HUE-04-04, valor límite: un RUC de 12 dígitos se rechaza. | Misma tabla y el navegador. | Sección 6 |
+| 12. Análisis estático | Darwin | PHPStan, PHPMD, Pint y ESLint, antes y después de las correcciones; el baseline de PHPStan oculta errores viejos. | Tabla de antes y después de la sección 5. | Sección 5 |
+| 13. Integración continua | Darwin | Tres jobs (backend, frontend, leodeguita) en cada push y PR a `main` y `develop`. Siete ejecuciones: las tres primeras fallaron por errores reales de PHPStan y las últimas cuatro pasaron. | Captura de la página de GitHub Actions. Corrida R7 (43933294028, 90dbf81, 2026-11-16, aprobada) y R3 (41942989196, d563d66, fallida). | Sección 7 |
+| 14. Resultados | Darwin | Cuántas pruebas pasan en cada app y qué falta en la calidad del código. | Capturas de las pruebas: `figures/tests/sprint2-backend-phpunit.png`, `sprint2-frontend-vitest.png` y `sprint2-leodeguita-vitest.png`. | Secciones 5, 6 y 7 |
+| 15. Cierre | Darwin | Gracias y preguntas. La evidencia está en el Anexo A del informe. | Logos de ESPOL y Leodega. | Anexo A |
+
+Notas de Carla:
+- En el informe el nombre es **Joao Dorado** (`config/metadata.tex`); en otras partes de este guion aparece "Johao". Hay que usar el mismo en todo el video.
+- La versión de PHP del backend desplegado es **8.2** (`backend/Dockerfile` usa `php:8.2-cli`). La versión de PostgreSQL no aparece en el informe, así que no conviene ponerla.
+- Las dos cartas de aceptación están firmadas con fecha **2026-11-16** (sección 8, figuras de "Acceptance Forms"). Si una diapositiva muestra la fecha de aceptación, debe ser esa, y vale para los dos sprints.
 
 ## Cosas del deck que hay que ajustar para que coincida con el guion
 
